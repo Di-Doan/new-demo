@@ -1,15 +1,15 @@
-<div>
-  <form class="row">
-    <div class="col-6 form-group">
-      <input placeholder="Name" formControlName="name"/>
+<div class="contact-form-wrapper">
+  <form class="row px-md-5 form-group contact-form" [formGroup]="contactForm">
+    <div class="mb-3 col-md-6 col-12 form-group">
+      <input placeholder="Name" formControlName="name" />
     </div>
-    <div class="col-6 form-group">
-      <input placeholder="Email" formControlName="email"/>
+    <div class="mb-3 col-md-6 col-12 form-group">
+      <input placeholder="Email" formControlName="email" />
     </div>
-    <div class="col-12 form-group">
-      <input placeholder="Title" formControlName="title"/>
+    <div class="mb-3 col-12 form-group">
+      <input placeholder="Title" formControlName="title" />
     </div>
-    <div class="col-12 form-group">
+    <div class="mb-3 col-12 form-group">
       <textarea placeholder="Note" formControlName="note"></textarea>
     </div>
   </form>

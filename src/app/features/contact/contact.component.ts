@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
+  standalone: true,
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.scss'],
+  imports: [ReactiveFormsModule, FormsModule]
 })
 export class ContactComponent implements OnInit {
 
-  contactForm?: FormGroup;
+  contactForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }
 

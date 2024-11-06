@@ -1,0 +1,11 @@
+.contact-form-wrapper {
+  justify-content: center;
+  display: flex;
+  .contact-form {
+    background-color: rgb(222, 218, 218);
+    text-align: center;
+    align-self: center;
+    padding: 2% 5%;
+    max-width: 80%;
+  }
+}
