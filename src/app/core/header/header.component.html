@@ -1,4 +1,4 @@
-<ngb-carousel>
+<ngb-carousel [showNavigationIndicators]="false">
   @for (slide of slides; track slide) {
   <ng-template ngbSlide>
     <div class="picsum-img-wrapper">
@@ -6,7 +6,7 @@
     </div>
     <div class="carousel-caption">
       <h3>No mouse navigation</h3>
-      <p>This carousel hides navigation arrows and indicators.</p>
+
     </div>
   </ng-template>
   }

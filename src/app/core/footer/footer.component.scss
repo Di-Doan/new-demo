@@ -1,8 +1,10 @@
 .footer {
   .footer-top {
     background-image: url(../../../assets/img/bg-footer.png);
-    height: 230px;
+    height: 240px;
+    max-width: 100%;
     background-size: cover;
+    margin-left: 0;
     .text-box {
       border: solid;
       border-color: white;
@@ -11,18 +13,41 @@
   }
   .footer-mid {
     background-color: #12c469;
-    height: 40px;
+    height: auto;
+    max-width: 100%;
+
+    a {
+      border-radius: 50%;
+      width: 25px;
+      height: auto;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .facebook {
+      background-color: #395195;
+    }
+
+    .twitter {
+      background-color: #00a9ff;
+    }
+
+    .youtube {
+      background-color: #d30b17;
+    }
   }
   .footer-bot {
-    background-color:  #008c44;
+    background-color: #008c44;
     height: auto;
+    max-width: 100%;
+    margin-left: 0;
     input {
       max-width: 100%;
       border-radius: 0;
+      margin-right: 20px;
     }
     button {
       border-radius: 0;
-
     }
   }
 }
