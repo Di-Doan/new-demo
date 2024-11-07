@@ -6,7 +6,12 @@
     <a class="nav-link">Đăng nhập</a>
   </nav>
 
-  <carousel>
+  <carousel
+    [noWrap]="false"
+    [showIndicators]="true"
+    [interval]="10000"
+    [isAnimated]="true"
+  >
     @for (slide of slides; track slide) {
     <slide>
       <img
@@ -17,6 +22,19 @@
     </slide>
     }
   </carousel>
+
+  <!-- <div class="nav-textarea">
+    <p>Liên hệ</p>
+  </div> -->
+
+  <div class="carousel-text">
+    <h1><span>OCB</span><span>OMNI</span></h1>
+    <h3>
+      <span>Tốc độ</span><span class="o-span">o</span><span>An toàn</span
+      ><span class="o-span">o</span><span>Tiện nghi</span>
+    </h3>
+    <h4>Giao dịch online, hoàn toàn miễn phí</h4>
+  </div>
 </div>
 
 <!-- <ngb-carousel [showNavigationIndicators]="false" [showNavigationArrows]="false">

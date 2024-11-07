@@ -3,3 +3,42 @@
   bottom: 43rem;
   left: 10%;
 }
+
+.nav-textarea {
+  background-color: rgb(222, 218, 218);
+
+  p {
+    padding: 20px 0 20px 100px;
+    font-size: 40px;
+    color: #008b43;
+  }
+}
+
+.carousel-text {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  text-align: center;
+  h1 {
+    span:nth-child(2) {
+      margin-left: 15px;
+    }
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    span:nth-child(even) {
+      margin: 0 5px
+    }
+    margin-bottom: 5px;
+  }
+
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  right: 3%;
+}
