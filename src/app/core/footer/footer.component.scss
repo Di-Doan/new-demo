@@ -1,5 +1,28 @@
 .footer {
-  background-image: url(../../../assets/img/bg-footer.png);
-  height: 150px;
-  background-size: cover;
+  .footer-top {
+    background-image: url(../../../assets/img/bg-footer.png);
+    height: 230px;
+    background-size: cover;
+    .text-box {
+      border: solid;
+      border-color: white;
+      border-width: 1px;
+    }
+  }
+  .footer-mid {
+    background-color: #12c469;
+    height: 40px;
+  }
+  .footer-bot {
+    background-color:  #008c44;
+    height: auto;
+    input {
+      max-width: 100%;
+      border-radius: 0;
+    }
+    button {
+      border-radius: 0;
+
+    }
+  }
 }
