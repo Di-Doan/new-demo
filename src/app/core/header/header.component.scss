@@ -20,18 +20,27 @@
   top: 50%;
   text-align: center;
   h1 {
+    span:nth-child(1) {
+      color: #008b43;
+    }
     span:nth-child(2) {
       margin-left: 15px;
+      color: #E39717;
     }
     font-size: 50px;
     margin-bottom: 15px;
   }
 
   h3 {
-    span:nth-child(even) {
-      margin: 0 5px
+    span:nth-child(odd) {
+      color: #008b43;
     }
-    margin-bottom: 5px;
+    span:nth-child(even) {
+      margin: 0 5px;
+      color: #E39717;
+    }
+    margin-bottom: 10px;
+    font-size: 30px;
   }
 
 }
