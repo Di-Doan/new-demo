@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [NgbCarouselModule],
+  imports: [CarouselModule]
 })
 export class HeaderComponent implements OnInit {
   slides: any[] = [

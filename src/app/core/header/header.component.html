@@ -1,13 +1,30 @@
-<ngb-carousel [showNavigationIndicators]="false">
+<div>
+  <nav class="nav justify-content-end">
+    <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+    <a class="nav-link" href="#">Điều khoản</a>
+    <a class="nav-link" href="#">Liên hệ</a>
+    <a class="nav-link">Đăng nhập</a>
+  </nav>
+
+  <carousel>
+    @for (slide of slides; track slide) {
+    <slide>
+      <img
+        [src]="slide"
+        alt="Random slide"
+        style="display: block; max-width: 100%"
+      />
+    </slide>
+    }
+  </carousel>
+</div>
+
+<!-- <ngb-carousel [showNavigationIndicators]="false" [showNavigationArrows]="false">
   @for (slide of slides; track slide) {
   <ng-template ngbSlide>
     <div class="picsum-img-wrapper">
       <img [src]="slide" alt="Random slide" />
     </div>
-    <div class="carousel-caption">
-      <h3>No mouse navigation</h3>
-
-    </div>
   </ng-template>
   }
-</ngb-carousel>
+</ngb-carousel> -->
