@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -6,11 +7,12 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, F
   standalone: true,
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
-  imports: [ReactiveFormsModule, FormsModule]
+  imports: [ReactiveFormsModule, FormsModule, CommonModule]
 })
 export class ContactComponent implements OnInit {
 
   contactForm!: FormGroup;
+  contactError!: string;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -21,10 +23,21 @@ export class ContactComponent implements OnInit {
   initForm() {
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.email, Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       title: ['', Validators.required],
       note: ['']
     })
+  }
+
+  submitForm() {
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched()
+      this.contactError = "There is an error. Please try again"
+      return
+    }
+
+    this.contactError = ""
+    return
   }
 
 }
