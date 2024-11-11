@@ -1,3 +1,48 @@
-<p>
-  gift-list works!
-</p>
+<div class="gift-list">
+  <div class="nav-textarea">
+    <div class="category-checkbox d-flex">
+      <span class="checkbox-group me-4 p-2">
+        <input type="checkbox" />
+        <label class="ms-2">QUÀ HOT TRONG TUẦN</label>
+      </span>
+      <span class="checkbox-group me-4 p-2">
+        <input type="checkbox" />
+        <label class="ms-2">QUÀ CÓ THỂ ĐỔI</label>
+      </span>
+      <span class="checkbox-group me-4 p-2">
+        <input type="checkbox" />
+        <label class="ms-2">QUÀ GẦN ĐỔI ĐƯỢC</label>
+      </span>
+      <button class="btn-view-all text-light ms-auto p-2">XEM TẤT CẢ</button>
+    </div>
+  </div>
+  <div class="gift-item-list">
+    <div class="category-list">
+      <div class="d-flex">
+        <img
+          src="../../../assets/img/hot.png"
+          class="img-hot p-2 align-self-baseline"
+        />
+        <h4 class="p-2 align-self-center">QUÀ HOT TRONG TUẦN</h4>
+        <hr class="flex-grow-1 align-self-center ms-3" />
+      </div>
+      <app-gift-item></app-gift-item>
+    </div>
+
+    <div class="category-list">
+      <div class="d-flex">
+        <hr class="flex-grow-1 align-self-center me-3" />
+        <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
+      </div>
+      <app-gift-item></app-gift-item>
+    </div>
+
+    <div class="category-list">
+      <div class="d-flex">
+        <h4 class="p-2 align-self-center">QUÀ GẦN ĐỔI ĐƯỢC</h4>
+        <hr class="flex-grow-1 align-self-center ms-3" />
+      </div>
+      <app-gift-item></app-gift-item>
+    </div>
+  </div>
+</div>
