@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
+import { GiftDetailComponent } from '../gift-detail/gift-detail.component';
 
 
 @Component({
@@ -7,9 +8,10 @@ import { CarouselModule } from 'primeng/carousel';
   standalone: true,
   templateUrl: './gift-item.component.html',
   styleUrls: ['./gift-item.component.scss'],
-  imports: [CarouselModule]
+  imports: [CarouselModule, GiftDetailComponent],
 })
 export class GiftItemComponent implements OnInit {
+  @ViewChild('giftDetailModal') modal!: GiftDetailComponent
   @Input() oddList!: boolean
 
   ranges = [1,2,3,4,5,6,7,8,9,10,11,12]

@@ -9,12 +9,17 @@
   >
 
   <!-- [class.justify-content-end]="oddList" -->
-    <ng-template class="d-flex" pTemplate="header">
+    <ng-template pTemplate="header">
       <div class="d-flex" [class.justify-content-end]="oddList">
         <span class="carousel-indicator">{{page.current}}/{{page.total}}</span>
       </div>
 
     </ng-template>
+
+    <!-- <ng-template pTemplate="nexticon">
+      <span>change</span>
+    </ng-template> -->
+
     <ng-template let-range pTemplate="item">
       <div class="border-1 surface-border m-2 p-3 gift-item-individual">
         <div class="mb-3">
@@ -39,4 +44,5 @@
       </div>
     </ng-template>
   </p-carousel>
+  <app-gift-detail #giftDetailModal></app-gift-detail>
 </div>
