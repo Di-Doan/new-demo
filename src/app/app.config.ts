@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbCarouselConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PrimeNGConfig } from 'primeng/api';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), importProvidersFrom(HttpClientModule, NgbModule, ReactiveFormsModule, NgbCarouselConfig, FormBuilder, CommonModule)]
+  providers: [provideRouter(routes), importProvidersFrom(HttpClientModule, NgbModule, ReactiveFormsModule, NgbCarouselConfig, FormBuilder, CommonModule, PrimeNGConfig)]
 };

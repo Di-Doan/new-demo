@@ -18,7 +18,7 @@
   </div>
   <div class="gift-item-list">
     <div class="category-list">
-      <div class="d-flex">
+      <div class="d-flex ms-3 me-5">
         <img
           src="../../../assets/img/hot.png"
           class="img-hot p-2 align-self-baseline"
@@ -26,23 +26,23 @@
         <h4 class="p-2 align-self-center">QUÀ HOT TRONG TUẦN</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
-      <app-gift-item></app-gift-item>
+      <app-gift-item [oddList]="true"></app-gift-item>
     </div>
 
     <div class="category-list">
-      <div class="d-flex">
+      <div class="d-flex mx-5">
         <hr class="flex-grow-1 align-self-center me-3" />
         <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
       </div>
-      <app-gift-item></app-gift-item>
+      <app-gift-item [oddList]="false"></app-gift-item>
     </div>
 
     <div class="category-list">
-      <div class="d-flex">
+      <div class="d-flex mx-5">
         <h4 class="p-2 align-self-center">QUÀ GẦN ĐỔI ĐƯỢC</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
-      <app-gift-item></app-gift-item>
+      <app-gift-item [oddList]="true"></app-gift-item>
     </div>
   </div>
 </div>
