@@ -1,2 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/scss/bootstrap";
+
+.nav-textarea {
+  background-color: rgb(243, 241, 241);
+  padding: 15px 60px;
+
+  h3 {
+    color: #008b43;
+    // padding: 5px 0;
+    margin: 0;
+  }
+}
