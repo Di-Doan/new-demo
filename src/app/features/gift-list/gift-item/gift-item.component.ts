@@ -13,6 +13,7 @@ import { GiftDetailComponent } from '../gift-detail/gift-detail.component';
 export class GiftItemComponent implements OnInit {
   @ViewChild('giftDetailModal') modal!: GiftDetailComponent
   @Input() oddList!: boolean
+  modalVisible = false
 
   ranges = [1,2,3,4,5,6,7,8,9,10,11,12]
   page = {
@@ -26,6 +27,10 @@ export class GiftItemComponent implements OnInit {
 
   pageChange(event: any) {
     this.page.current = event.page + 1
+  }
+
+  openGiftDetail() {
+    this.modal?.open();
   }
 
 }

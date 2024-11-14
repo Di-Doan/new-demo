@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
@@ -6,7 +7,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [CarouselModule]
+  imports: [CarouselModule, CommonModule]
 })
 export class HeaderComponent implements OnInit {
   slides: any[] = [

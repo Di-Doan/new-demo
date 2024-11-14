@@ -20,9 +20,9 @@
       <span>change</span>
     </ng-template> -->
 
-    <ng-template let-range pTemplate="item">
-      <div class="border-1 surface-border m-2 p-3 gift-item-individual">
-        <div class="mb-3">
+    <ng-template let-range pTemplate="item" >
+      <div class="border-1 surface-border m-2 p-3 gift-item-individual clickable-div" (click)="openGiftDetail()" >
+        <div class="mb-3 ">
           <div class="relative mx-auto">
             <img
               src="../../../../assets/img/viettel.png"

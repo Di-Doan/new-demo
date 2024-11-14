@@ -21,12 +21,19 @@
       />
     </slide>
     }
+    <!-- <div class="indicators">
+      <button
+        *ngFor="slide of slides; let i = index"
+        type="button"
+        class="indicator"
+        [class.active]="i === activeSlide"
+        (click)="switchSlide(i)"
+      ></button>
+    </div> -->
   </carousel>
 
-
-
   <div class="header-logo">
-      <img src="../../../assets/img/logo.png"/>
+    <img src="../../../assets/img/logo.png" />
   </div>
 
   <div class="carousel-text">
@@ -38,5 +45,3 @@
     <h4>Giao dịch online, hoàn toàn miễn phí</h4>
   </div>
 </div>
-
-
