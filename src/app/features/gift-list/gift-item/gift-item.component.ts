@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { GiftDetailComponent } from '../gift-detail/gift-detail.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class GiftItemComponent implements OnInit {
 
   openGiftDetail() {
     this.modal?.open();
+
   }
 
 }

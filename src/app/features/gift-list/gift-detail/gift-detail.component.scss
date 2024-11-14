@@ -18,22 +18,43 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
+  padding: 0 30px;
   width: 80%;
-  max-width: 500px;
+  max-width: 800px;
   border-radius: 0;
   border-color: #e39717;
-  border-width: 2px;
+  border-width: 3px;
 }
 
 .modal-header {
-  display: flex;
   justify-content: space-between;
+  padding: 10px 16px 0;
 }
 
-.close-button {
+.modal-close-btn {
   cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1.5em;
+  background-color: #008b43;
+  border-radius: 50%;
+  font-size: 30px;
+  color: white;
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+
+  z-index: 999;
+  position: absolute;
+  top: 16%;
+  left: 79%;
+
 }
+
+.gift-detail-img {
+  height: 120px;
+  width: auto;
+}
+
+
