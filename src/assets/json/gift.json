@@ -1,0 +1,402 @@
+[
+  {
+    "img": "",
+    "name": "Gift 1",
+    "start_date": "01.01.2024",
+    "end_date": "31.12.2024",
+    "point": 150,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 2",
+    "start_date": "01.02.2024",
+    "end_date": "31.12.2024",
+    "point": 200,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 3",
+    "start_date": "01.03.2024",
+    "end_date": "31.12.2024",
+    "point": 250,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 4",
+    "start_date": "01.04.2024",
+    "end_date": "31.12.2024",
+    "point": 300,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 5",
+    "start_date": "01.05.2024",
+    "end_date": "31.12.2024",
+    "point": 350,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 6",
+    "start_date": "01.06.2024",
+    "end_date": "31.12.2024",
+    "point": 400,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 7",
+    "start_date": "01.07.2024",
+    "end_date": "31.12.2024",
+    "point": 450,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 8",
+    "start_date": "01.08.2024",
+    "end_date": "31.12.2024",
+    "point": 500,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 9",
+    "start_date": "01.09.2024",
+    "end_date": "31.12.2024",
+    "point": 550,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 10",
+    "start_date": "01.10.2024",
+    "end_date": "31.12.2024",
+    "point": 600,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 11",
+    "start_date": "01.11.2024",
+    "end_date": "31.12.2024",
+    "point": 650,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 12",
+    "start_date": "01.12.2024",
+    "end_date": "31.12.2024",
+    "point": 700,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 13",
+    "start_date": "01.01.2025",
+    "end_date": "31.12.2025",
+    "point": 750,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 14",
+    "start_date": "01.02.2025",
+    "end_date": "31.12.2025",
+    "point": 800,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 15",
+    "start_date": "01.03.2025",
+    "end_date": "31.12.2025",
+    "point": 850,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 16",
+    "start_date": "01.04.2025",
+    "end_date": "31.12.2025",
+    "point": 900,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 17",
+    "start_date": "01.05.2025",
+    "end_date": "31.12.2025",
+    "point": 950,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 18",
+    "start_date": "01.06.2025",
+    "end_date": "31.12.2025",
+    "point": 1000,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 19",
+    "start_date": "01.07.2025",
+    "end_date": "31.12.2025",
+    "point": 1050,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 20",
+    "start_date": "01.08.2025",
+    "end_date": "31.12.2025",
+    "point": 1100,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 21",
+    "start_date": "01.09.2025",
+    "end_date": "31.12.2025",
+    "point": 1150,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 22",
+    "start_date": "01.10.2025",
+    "end_date": "31.12.2025",
+    "point": 1200,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 23",
+    "start_date": "01.11.2025",
+    "end_date": "31.12.2025",
+    "point": 1250,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 24",
+    "start_date": "01.12.2025",
+    "end_date": "31.12.2025",
+    "point": 1300,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 25",
+    "start_date": "01.01.2026",
+    "end_date": "31.12.2026",
+    "point": 1350,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 26",
+    "start_date": "01.02.2026",
+    "end_date": "31.12.2026",
+    "point": 1400,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 27",
+    "start_date": "01.03.2026",
+    "end_date": "31.12.2026",
+    "point": 1450,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 28",
+    "start_date": "01.04.2026",
+    "end_date": "31.12.2026",
+    "point": 1500,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 29",
+    "start_date": "01.05.2026",
+    "end_date": "31.12.2026",
+    "point": 1550,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 30",
+    "start_date": "01.06.2026",
+    "end_date": "31.12.2026",
+    "point": 1600,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 31",
+    "start_date": "01.07.2026",
+    "end_date": "31.12.2026",
+    "point": 1650,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 32",
+    "start_date": "01.08.2026",
+    "end_date": "31.12.2026",
+    "point": 1700,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 33",
+    "start_date": "01.09.2026",
+    "end_date": "31.12.2026",
+    "point": 1750,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 34",
+    "start_date": "01.10.2026",
+    "end_date": "31.12.2026",
+    "point": 1800,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 35",
+    "start_date": "01.11.2026",
+    "end_date": "31.12.2026",
+    "point": 1850,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 36",
+    "start_date": "01.12.2026",
+    "end_date": "31.12.2026",
+    "point": 1900,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 37",
+    "start_date": "01.01.2027",
+    "end_date": "31.12.2027",
+    "point": 1950,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 38",
+    "start_date": "01.02.2027",
+    "end_date": "31.12.2027",
+    "point": 2000,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 39",
+    "start_date": "01.03.2027",
+    "end_date": "31.12.2027",
+    "point": 2050,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 40",
+    "start_date": "01.04.2027",
+    "end_date": "31.12.2027",
+    "point": 2100,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 41",
+    "start_date": "01.05.2027",
+    "end_date": "31.12.2027",
+    "point": 2150,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 42",
+    "start_date": "01.06.2027",
+    "end_date": "31.12.2027",
+    "point": 2200,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 43",
+    "start_date": "01.07.2027",
+    "end_date": "31.12.2027",
+    "point": 2250,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 44",
+    "start_date": "01.08.2027",
+    "end_date": "31.12.2027",
+    "point": 2300,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 45",
+    "start_date": "01.09.2027",
+    "end_date": "31.12.2027",
+    "point": 2350,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 46",
+    "start_date": "01.10.2027",
+    "end_date": "31.12.2027",
+    "point": 2400,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 47",
+    "start_date": "01.11.2027",
+    "end_date": "31.12.2027",
+    "point": 2450,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 48",
+    "start_date": "01.12.2027",
+    "end_date": "31.12.2027",
+    "point": 2500,
+    "isHot": false
+  },
+  {
+    "img": "",
+    "name": "Gift 49",
+    "start_date": "01.01.2028",
+    "end_date": "31.12.2028",
+    "point": 2550,
+    "isHot": true
+  },
+  {
+    "img": "",
+    "name": "Gift 50",
+    "start_date": "01.02.2028",
+    "end_date": "31.12.2028",
+    "point": 2600,
+    "isHot": false
+  }
+]

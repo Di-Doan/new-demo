@@ -2,18 +2,30 @@
   <div class="nav-textarea">
     <div class="category-checkbox d-flex">
       <span class="checkbox-group me-4 p-2">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          [(ngModel)]="isHotFilter"
+          (change)="filterHotData()"
+        />
         <label class="ms-2">QUÀ HOT TRONG TUẦN</label>
       </span>
       <span class="checkbox-group me-4 p-2">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          [(ngModel)]="canExchangeFilter"
+          (change)="filterCanExchangeData()"
+        />
         <label class="ms-2">QUÀ CÓ THỂ ĐỔI</label>
       </span>
       <span class="checkbox-group me-4 p-2">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          [(ngModel)]="aboutToExchangeFilter"
+          (change)="filterAboutToExchangeData()"
+        />
         <label class="ms-2">QUÀ GẦN ĐỔI ĐƯỢC</label>
       </span>
-      <button class="btn-view-all text-light ms-auto p-2">XEM TẤT CẢ</button>
+      <button class="btn-view-all text-light ms-auto p-2" (click)="filterAll()">XEM TẤT CẢ</button>
     </div>
   </div>
   <div class="gift-item-list">
@@ -26,7 +38,12 @@
         <h4 class="p-2 align-self-center">QUÀ HOT TRONG TUẦN</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
-      <app-gift-item [oddList]="true"></app-gift-item>
+      <div *ngIf="noHotItemsFound; else hotList" class="no-filter-display">
+        <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
+      </div>
+      <ng-template #hotList>
+        <app-gift-item [oddList]="true" [giftList]="hotGift"></app-gift-item>
+      </ng-template>
     </div>
 
     <div class="category-list">
@@ -34,7 +51,15 @@
         <hr class="flex-grow-1 align-self-center me-3" />
         <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
       </div>
-      <app-gift-item [oddList]="false"></app-gift-item>
+      <div *ngIf="noCanExchangItemsFound; else canExchangeList" class="no-filter-display">
+        <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
+      </div>
+      <ng-template #canExchangeList>
+        <app-gift-item
+          [oddList]="false"
+          [giftList]="canExchangeGift"
+        ></app-gift-item>
+      </ng-template>
     </div>
 
     <div class="category-list">
@@ -42,7 +67,12 @@
         <h4 class="p-2 align-self-center">QUÀ GẦN ĐỔI ĐƯỢC</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
-      <app-gift-item [oddList]="true"></app-gift-item>
+      <div *ngIf="noAboutToExchangItemsFound; else aboutToExchangeList" class="no-filter-display">
+        <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
+      </div>
+      <ng-template #aboutToExchangeList>
+        <app-gift-item [oddList]="true" [giftList]="aboutToExchangeGift"></app-gift-item>
+      </ng-template>
     </div>
   </div>
 </div>

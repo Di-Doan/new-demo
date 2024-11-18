@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild , Renderer2} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild , Renderer2, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { GiftModel } from '../../../shared/models';
 
 @Component({
   selector: 'app-gift-detail',
@@ -8,7 +9,8 @@ import { Component, ElementRef, OnInit, ViewChild , Renderer2} from '@angular/co
   styleUrls: ['./gift-detail.component.scss'],
   imports: [CommonModule]
 })
-export class GiftDetailComponent implements OnInit {
+export class GiftDetailComponent implements OnInit, OnChanges {
+  @Input() giftDetail!: GiftModel
   visible = false;
 
   constructor() { }
@@ -16,6 +18,9 @@ export class GiftDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
 
 
   open() {

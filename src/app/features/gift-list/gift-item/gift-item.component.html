@@ -3,26 +3,24 @@
     [numVisible]="4.5"
     [numScroll]="4"
     [circular]="false"
-    [value]="ranges"
+    [value]="giftList"
     [showIndicators]="false"
     (onPage)="pageChange($event)"
   >
-
-  <!-- [class.justify-content-end]="oddList" -->
     <ng-template pTemplate="header">
       <div class="d-flex" [class.justify-content-end]="oddList">
-        <span class="carousel-indicator">{{page.current}}/{{page.total}}</span>
+        <span class="carousel-indicator"
+          >{{ currentPage }}/{{ totalPage }}</span
+        >
       </div>
-
     </ng-template>
 
-    <!-- <ng-template pTemplate="nexticon">
-      <span>change</span>
-    </ng-template> -->
-
-    <ng-template let-range pTemplate="item" >
-      <div class="border-1 surface-border m-2 p-3 gift-item-individual clickable-div" (click)="openGiftDetail()" >
-        <div class="mb-3 ">
+    <ng-template let-gift pTemplate="item">
+      <div
+        class="border-1 surface-border m-2 p-3 gift-item-individual clickable-div"
+        (click)="openGiftDetail(gift)"
+      >
+        <div class="mb-3">
           <div class="relative mx-auto">
             <img
               src="../../../../assets/img/viettel.png"
@@ -31,18 +29,18 @@
           </div>
         </div>
         <div class="d-flex justify-content-between align-items-center">
-          <div class="mt-0 font-semibold text-xl">Test {{ range }}</div>
+          <div class="mt-0 font-semibold text-xl">{{ gift.name }}</div>
 
           <span
             ><img
               class="point-logo"
               src="../../../../assets/img/logo-mini.png"
             />
-            100</span
+            {{ gift.point }}</span
           >
         </div>
       </div>
     </ng-template>
   </p-carousel>
-  <app-gift-detail #giftDetailModal></app-gift-detail>
+  <app-gift-detail #giftDetailModal [giftDetail]="selectedGift"></app-gift-detail>
 </div>

@@ -12,9 +12,9 @@
         src="../../../../assets/img/vnmobile.png"
       />
       <div class="col-8 ps-4 pe-3 pt-3 row">
-        <h4 class="text-success">Gift Name</h4>
-        <h6>Hiệu lực từ ... đến ...</h6>
-        <h6><span class="text-warning">100 điểm</span> để đổi voucher</h6>
+        <h4 class="text-success">{{ giftDetail.name ? giftDetail.name : "Name" }}</h4>
+        <h6><em>Hiệu lực từ {{giftDetail.start_date ? giftDetail.start_date : "..."}} đến {{giftDetail.end_date ? giftDetail.end_date : "..."}}</em></h6>
+        <h6><span class="text-warning">{{giftDetail.point ? giftDetail.point : "100"}} điểm</span> để đổi voucher</h6>
         <h5 class="col align-self-center text-danger">Vui lòng <strong>đăng nhập</strong> để tiếp tục đổi quà</h5>
       </div>
     </div>

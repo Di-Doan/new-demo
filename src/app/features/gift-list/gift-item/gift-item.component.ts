@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { GiftDetailComponent } from '../gift-detail/gift-detail.component';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { GiftModel } from '../../../shared/models';
 
 
 @Component({
@@ -11,26 +11,37 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./gift-item.component.scss'],
   imports: [CarouselModule, GiftDetailComponent],
 })
-export class GiftItemComponent implements OnInit {
+export class GiftItemComponent implements OnInit, OnChanges {
   @ViewChild('giftDetailModal') modal!: GiftDetailComponent
+  @Input() giftList!: GiftModel[]
   @Input() oddList!: boolean
-  modalVisible = false
 
-  ranges = [1,2,3,4,5,6,7,8,9,10,11,12]
-  page = {
-    current: 1,
-    total : Math.ceil(this.ranges.length/5)
-  }
+
+  currentPage = 1
+  totalPage!: number
+
+  selectedGift!: GiftModel
+
   constructor() { }
 
   ngOnInit() {
+    if (this.giftList) {
+      this.totalPage = Math.ceil(this.giftList.length/4)
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.giftList) {
+      this.totalPage = Math.ceil(this.giftList.length/4)
+    }
   }
 
   pageChange(event: any) {
-    this.page.current = event.page + 1
+    this.currentPage = event.page + 1
   }
 
-  openGiftDetail() {
+  openGiftDetail(giftItem: GiftModel) {
+    this.selectedGift = giftItem
     this.modal?.open();
 
   }

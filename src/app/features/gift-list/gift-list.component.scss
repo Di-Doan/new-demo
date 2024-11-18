@@ -10,7 +10,7 @@
   }
 
   .gift-item-list {
-    margin: 40px 70px 70px;
+    margin: 40px 0 70px;
 
     .category-list {
       h4 {
@@ -25,6 +25,14 @@
 
 
     }
+  }
+
+  .no-filter-display {
+    display: flex;
+    justify-content: center;
+    color: #e39717;
+    padding: 70px 0;
+
   }
 
 }
