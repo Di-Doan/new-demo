@@ -16,9 +16,9 @@ export class GiftItemComponent implements OnInit, OnChanges {
   @Input() giftList!: GiftModel[]
   @Input() oddList!: boolean
 
-
   currentPage = 1
   totalPage!: number
+  activeIndex: number = 0;
 
   selectedGift!: GiftModel
 
@@ -35,6 +35,7 @@ export class GiftItemComponent implements OnInit, OnChanges {
       this.totalPage = Math.ceil(this.giftList.length/4)
     }
   }
+
 
   pageChange(event: any) {
     this.currentPage = event.page + 1

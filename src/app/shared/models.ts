@@ -14,8 +14,17 @@ export class UserModel {
 export class GiftModel {
   img: string = '';
   name: string = '';
-  start_date: Date | undefined;
-  end_date: Date | undefined;
+  start_date: string;
+  end_date: string;
   point: number = 0;
   isHot: boolean = false
+
+  constructor(img: string = '', name: string = '', start_date: string = '', end_date: string = '', point: number = 0, isHot: boolean = false) {
+    this.img = img;
+    this.name = name;
+    this.start_date = start_date;
+    this.end_date = end_date;
+    this.point = point;
+    this.isHot = isHot;
+  }
 }

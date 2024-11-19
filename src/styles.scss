@@ -48,3 +48,20 @@
 .carousel-control {
   display: none;
 }
+
+.p-carousel-item {
+  width: calc(100% / 4.5) !important;
+  flex: 0 0 auto !important;
+  overflow: hidden !important;
+
+}
+
+.p-carousel-item {
+  pointer-events: none !important;  /* Disable clicking */
+  opacity: 0.5 !important;  /* Apply blur to the partially visible item */
+}
+
+.p-carousel-item-active {
+  opacity: 1 !important;
+  pointer-events: visible !important;
+}

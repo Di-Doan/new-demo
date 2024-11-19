@@ -5,31 +5,34 @@
         <input
           type="checkbox"
           [(ngModel)]="isHotFilter"
-          (change)="filterHotData()"
+          (change)="filterHotData(isHotFilter)"
+          id="hot-box"
         />
-        <label class="ms-2">QUÀ HOT TRONG TUẦN</label>
+        <label class="ms-2" for="hot-box">QUÀ HOT TRONG TUẦN</label>
       </span>
       <span class="checkbox-group me-4 p-2">
         <input
           type="checkbox"
           [(ngModel)]="canExchangeFilter"
-          (change)="filterCanExchangeData()"
+          (change)="filterCanExchangeData(canExchangeFilter)"
+          id="can-exchange-box"
         />
-        <label class="ms-2">QUÀ CÓ THỂ ĐỔI</label>
+        <label class="ms-2" for="can-exchange-box">QUÀ CÓ THỂ ĐỔI</label>
       </span>
       <span class="checkbox-group me-4 p-2">
         <input
           type="checkbox"
           [(ngModel)]="aboutToExchangeFilter"
-          (change)="filterAboutToExchangeData()"
+          (change)="filterAboutToExchangeData(aboutToExchangeFilter)"
+          id="about-to-exchange-box"
         />
-        <label class="ms-2">QUÀ GẦN ĐỔI ĐƯỢC</label>
+        <label class="ms-2" for="about-to-exchange-box">QUÀ GẦN ĐỔI ĐƯỢC</label>
       </span>
       <button class="btn-view-all text-light ms-auto p-2" (click)="filterAll()">XEM TẤT CẢ</button>
     </div>
   </div>
   <div class="gift-item-list">
-    <div class="category-list">
+    <div *ngIf="showList.hot" class="category-list" >
       <div class="d-flex ms-3 me-5">
         <img
           src="../../../assets/img/hot.png"
@@ -46,7 +49,7 @@
       </ng-template>
     </div>
 
-    <div class="category-list">
+    <div *ngIf="showList.canExchange" class="category-list">
       <div class="d-flex mx-5">
         <hr class="flex-grow-1 align-self-center me-3" />
         <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
@@ -62,7 +65,7 @@
       </ng-template>
     </div>
 
-    <div class="category-list">
+    <div *ngIf="showList.aboutToExchange" class="category-list">
       <div class="d-flex mx-5">
         <h4 class="p-2 align-self-center">QUÀ GẦN ĐỔI ĐƯỢC</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />

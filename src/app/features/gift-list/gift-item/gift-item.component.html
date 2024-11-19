@@ -6,6 +6,7 @@
     [value]="giftList"
     [showIndicators]="false"
     (onPage)="pageChange($event)"
+
   >
     <ng-template pTemplate="header">
       <div class="d-flex" [class.justify-content-end]="oddList">
@@ -23,7 +24,7 @@
         <div class="mb-3">
           <div class="relative mx-auto">
             <img
-              src="../../../../assets/img/viettel.png"
+              [src]="gift.img"
               class="gift-item-img"
             />
           </div>

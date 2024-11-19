@@ -1,5 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild , Renderer2, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  Renderer2,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { GiftModel } from '../../../shared/models';
 
 @Component({
@@ -7,18 +16,17 @@ import { GiftModel } from '../../../shared/models';
   standalone: true,
   templateUrl: './gift-detail.component.html',
   styleUrls: ['./gift-detail.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
-export class GiftDetailComponent implements OnInit, OnChanges {
-  @Input() giftDetail!: GiftModel
+export class GiftDetailComponent implements OnInit {
+  @Input() giftDetail!: GiftModel;
+
+  itemsForCarousel!: GiftModel[][]
   visible = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
 
   }
 
@@ -31,4 +39,3 @@ export class GiftDetailComponent implements OnInit, OnChanges {
     this.visible = false;
   }
 }
-

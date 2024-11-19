@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { GiftItemComponent } from './gift-item/gift-item.component';
 import { GiftDetailComponent } from './gift-detail/gift-detail.component';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./gift-list.component.scss'],
   imports: [GiftItemComponent, GiftDetailComponent, CommonModule, FormsModule],
 })
-export class GiftListComponent implements OnInit, OnDestroy {
+export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
   giftSubcription!: Subscription;
   giftData!: GiftModel[];
 
@@ -30,7 +30,13 @@ export class GiftListComponent implements OnInit, OnDestroy {
   aboutToExchangeFilter!: boolean;
   noAboutToExchangItemsFound: boolean = false;
 
-  userPoint = 50;
+  showList = {
+    hot: false,
+    canExchange: false,
+    aboutToExchange: false
+  }
+
+  userPoint = 550;
 
   constructor(private httpService: GiftService) {}
   ngOnDestroy(): void {
@@ -53,22 +59,27 @@ export class GiftListComponent implements OnInit, OnDestroy {
     );
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+
+  }
+
   filterByHot(isHot: boolean) {
     this.isHotFilter = isHot;
-    this.filterHotData();
+    this.filterHotData(isHot);
   }
 
   filterByCanExchange(isCanExchange: boolean) {
     this.canExchangeFilter = isCanExchange;
-    this.filterCanExchangeData();
+    this.filterCanExchangeData(isCanExchange);
   }
 
   filterByAboutToExchange(isAboutToExchange: boolean) {
     this.aboutToExchangeFilter = isAboutToExchange;
-    this.filterAboutToExchangeData();
+    this.filterAboutToExchangeData(isAboutToExchange);
   }
 
-  filterHotData(): void {
+  filterHotData(change: boolean): void {
+    this.showList.hot = change
     this.hotGift = this.giftData.filter((item) => {
       const matchesHot = this.isHotFilter ? item.isHot : true;
       return matchesHot;
@@ -77,7 +88,8 @@ export class GiftListComponent implements OnInit, OnDestroy {
     this.noHotItemsFound = this.hotGift.length === 0;
   }
 
-  filterCanExchangeData(): void {
+  filterCanExchangeData(change: boolean): void {
+    this.showList.canExchange = change
     this.canExchangeGift = this.giftData.filter((item) => {
       const matchesCanExchange = item.point <= this.userPoint
       return matchesCanExchange
@@ -86,7 +98,8 @@ export class GiftListComponent implements OnInit, OnDestroy {
     this.noCanExchangItemsFound = this.canExchangeGift.length === 0;
   }
 
-  filterAboutToExchangeData(): void {
+  filterAboutToExchangeData(change: boolean): void {
+    this.showList.aboutToExchange = change
     this.aboutToExchangeGift = this.giftData.filter((item) => {
       const matchesAboutToExchange = this.userPoint < item.point && item.point <= this.userPoint*1.2
       return matchesAboutToExchange
@@ -97,10 +110,10 @@ export class GiftListComponent implements OnInit, OnDestroy {
 
   filterAll() {
     this.isHotFilter = true
-    this.filterHotData();
+    this.filterHotData(true);
     this.canExchangeFilter = true;
-    this.filterCanExchangeData();
+    this.filterCanExchangeData(true);
     this.aboutToExchangeFilter = true;
-    this.filterAboutToExchangeData();
+    this.filterAboutToExchangeData(true);
   }
 }
