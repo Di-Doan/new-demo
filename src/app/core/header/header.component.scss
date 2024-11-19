@@ -78,7 +78,9 @@
     .header-login-img {
       height: 20px;
       width: auto;
-      align-self: center
+      align-self: center;
+      pointer-events: none;
+      padding: 0 10px;
     }
   }
 }

@@ -17,11 +17,80 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 999;
   background-color: white;
   padding: 0 30px;
   width: 80%;
-  max-width: 800px;
+  max-width: 1000px;
   border-radius: 0;
-  border-color: #e39717;
+  border-color: #fbd940;
   border-width: 2px;
+}
+
+.modal-body {
+  .login-img-wrapper {
+    display: inline;
+    justify-content: center;
+
+    h4 {
+      color: #008b43;;
+    }
+
+    .login-img {
+      height: 300px;
+      width: auto;
+      align-self: center;
+    }
+
+  }
+
+
+
+  .login-form-wrapper {
+    padding: 30px 60px;
+    .login-btn {
+      background-color: #e39717;
+      border-radius: 0;
+    }
+  }
+
+  .vertical-line {
+    position: relative;
+  }
+
+  .vertical-line::after {
+    content: "";
+    position: absolute;
+    top: 15%; /* Start 15% from the top */
+    left: 100%; /* Align the line to the right of the container */
+    width: 2px; /* Line thickness */
+    height: 82%; /* Height of the line (visible 70%) */
+    background-color: #e8ebea; /* Color of the line */
+  }
+}
+
+.modal-header {
+  padding-bottom: 0;
+
+  .nav {
+    gap: 160px;
+  }
+  .nav-link {
+    color: black !important;
+    border-bottom: none !important;
+  }
+  .nav-link.active {
+    color: #e39717!important;  /* Color of the active link (e.g., blue) */
+    position: relative;
+  }
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0; /* Position the underline at the bottom */
+    left: 50%; /* Start at the center of the link */
+    width: 200%; /* Control the length of the underline */
+    transform: translateX(-50%); /* Center the underline */
+    height: 3px; /* Thickness of the underline */
+    background-color: #e39717; /* Color of the underline */
+  }
 }

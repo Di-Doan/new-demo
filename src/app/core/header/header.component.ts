@@ -27,7 +27,4 @@ export class HeaderComponent implements OnInit {
     this.modal?.open()
   }
 
-  // closeLoginModal() {
-  //   this.modal?.close()
-  // }
 }

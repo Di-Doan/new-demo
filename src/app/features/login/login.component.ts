@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject,  TemplateRef} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -7,12 +8,27 @@ import { Component, OnInit, inject,  TemplateRef} from '@angular/core';
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   visible = false
+  loginPage = false
 
-  constructor() { }
+  loginForm!: FormGroup
+  loginError = ''
+
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit() {
+    this.initForm()
+  }
+
+  initForm() {
+    this.formBuilder.group({
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
 
   open() {
     this.visible = true;
@@ -20,5 +36,24 @@ export class LoginComponent {
 
   close() {
     this.visible = false;
+  }
+
+  forgetPasswordTab() {
+    this.loginPage = true
+  }
+
+  loginTab() {
+    this.loginPage = false
+  }
+
+  submitForm() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched()
+      this.loginError = "Đã có lỗi xảy ra. Vui lòng thử lại."
+
+    }
+
+    this.loginError = ""
+
   }
 }

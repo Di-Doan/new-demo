@@ -32,7 +32,7 @@ export class ContactComponent implements OnInit {
   submitForm() {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched()
-      this.contactError = "There is an error. Please try again"
+      this.contactError = "Đã có lỗi xảy ra. Vui lòng thử lại."
       return
     }
 
