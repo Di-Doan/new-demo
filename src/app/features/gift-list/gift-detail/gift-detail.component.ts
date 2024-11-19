@@ -1,14 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  Renderer2,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GiftModel } from '../../../shared/models';
 
 @Component({
@@ -20,16 +11,13 @@ import { GiftModel } from '../../../shared/models';
 })
 export class GiftDetailComponent implements OnInit {
   @Input() giftDetail!: GiftModel;
-
-  itemsForCarousel!: GiftModel[][]
+  user = true;
   visible = false;
+  alertVisible = false
 
   constructor() {}
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 
   open() {
     this.visible = true;
@@ -38,4 +26,15 @@ export class GiftDetailComponent implements OnInit {
   close() {
     this.visible = false;
   }
+
+  openAlert() {
+    this.alertVisible = true
+  }
+
+  closeAlert() {
+    this.alertVisible = false
+    this.close()
+
+  }
+
 }

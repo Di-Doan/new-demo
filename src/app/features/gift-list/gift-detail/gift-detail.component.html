@@ -6,16 +6,41 @@
 >
   <button (click)="close()" class="close-button modal-close-btn">X</button>
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <div class="modal-header ">
-      <img
-        class="gift-detail-img col-4"
-        [src]="giftDetail.img"
-      />
+    <div class="modal-header">
+      <img class="gift-detail-img col-4" [src]="giftDetail.img" />
       <div class="col-8 ps-4 pe-3 pt-3 row">
-        <h4 class="text-success">{{ giftDetail.name ? giftDetail.name : "Name" }}</h4>
-        <h6><em>Hiệu lực từ {{giftDetail.start_date ? giftDetail.start_date : "..."}} đến {{giftDetail.end_date ? giftDetail.end_date : "..."}}</em></h6>
-        <h6><span class="text-warning">{{giftDetail.point ? giftDetail.point : "100"}} điểm</span> để đổi voucher</h6>
-        <h5 class="col align-self-center text-danger">Vui lòng <strong>đăng nhập</strong> để tiếp tục đổi quà</h5>
+        <h4 class="text-success col-12 align-self-start">
+          {{ giftDetail.name ? giftDetail.name : "Name" }}
+        </h4>
+        <h6 class="col-12 align-self-start">
+          <em
+            >Hiệu lực từ
+            {{ giftDetail.start_date ? giftDetail.start_date : "..." }} đến
+            {{ giftDetail.end_date ? giftDetail.end_date : "..." }}</em
+          >
+        </h6>
+        <h6 class="col-12 align-self-start">
+          <span class="text-warning"
+            >{{ giftDetail.point ? giftDetail.point : "100" }} điểm</span
+          >
+          để đổi voucher
+        </h6>
+        <ng-template #withoutUser>
+          <h5 class="col-12 align-self-center text-danger text-center py-2">
+            Vui lòng <strong>đăng nhập</strong> để tiếp tục đổi quà
+          </h5>
+        </ng-template>
+        <div
+          class="col-12 d-flex justify-content-end"
+          *ngIf="user; else withoutUser"
+        >
+          <button
+            class="btn gift-exchange-btn text-light"
+            (click)="openAlert()"
+          >
+            ĐỔI QUÀ
+          </button>
+        </div>
       </div>
     </div>
     <div class="modal-body">
@@ -39,3 +64,20 @@
   </div>
 </div>
 
+<div
+  class="modal fade"
+  [ngClass]="{ show: visible }"
+  *ngIf="alertVisible"
+  (click)="closeAlert()"
+>
+  <div class="modal-content">
+    <div class="modal-body">
+      <h4>Đây là chức năng demo. Hiện không hỗ trợ đổi quà.</h4>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeAlert()">
+        Close
+      </button>
+    </div>
+  </div>
+</div>

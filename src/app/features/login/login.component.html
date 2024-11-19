@@ -1,42 +1,17 @@
-<div>
-  <ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Login</h4>
-      <button
-        type="button"
-        class="btn-close"
-        aria-label="Close"
-        (click)="modal.dismiss('Cross click')"
-      ></button>
-    </div>
+<div
+  class="modal fade"
+  [ngClass]="{ show: visible }"
+  *ngIf="visible"
+  (click)="close()"
+>
+  <div class="modal-content">
     <div class="modal-body">
-      <form>
-        <div class="row">
-          <label class="col">Name</label>
-          <input class="col" placeholder="Enter"/>
-        </div>
-        <div class="row">
-          <label class="col">Password</label>
-          <input class="col" placeholder="Enter"/>
-        </div>
-      </form>
+      <h4>Login</h4>
     </div>
     <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-outline-secondary"
-        (click)="modal.close('Save click')"
-      >
-        Save
+      <button type="button" class="btn btn-secondary" (click)="close()">
+        Close
       </button>
     </div>
-  </ng-template>
-
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-    Launch demo modal
-  </button>
-
-  <hr />
-
-  <pre>{{ closeResult }}</pre>
+  </div>
 </div>

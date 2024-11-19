@@ -53,15 +53,17 @@
     position: absolute;
     top: 0;
     z-index: 999;
-    right: 3%;
+    right: 5%;
   }
 
   .header-logo {
     position: absolute;
     z-index: 999;
     top: 30px;
-    left: 70px;
-    height: 60px;
+    left: 100px;
+    img {
+      height: 75px;
+    }
   }
 
   nav {
@@ -71,6 +73,12 @@
 
     a:nth-child(2) {
       color: #e39717;
+    }
+
+    .header-login-img {
+      height: 20px;
+      width: auto;
+      align-self: center
     }
   }
 }
