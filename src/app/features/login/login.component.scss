@@ -6,6 +6,27 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
+
+  .modal-close-btn {
+    cursor: pointer;
+    background-color: #008b43;
+    border-radius: 50%;
+    font-size: 30px;
+    color: white;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+
+    z-index: 999;
+    position: absolute;
+    top: 14%;
+    left: 87%;
+
+  }
 }
 
 .modal.show {
@@ -17,7 +38,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
   background-color: white;
   padding: 0 30px;
   width: 80%;
@@ -88,9 +108,10 @@
     position: absolute;
     bottom: 0; /* Position the underline at the bottom */
     left: 50%; /* Start at the center of the link */
-    width: 200%; /* Control the length of the underline */
+    width: 220%; /* Control the length of the underline */
     transform: translateX(-50%); /* Center the underline */
     height: 3px; /* Thickness of the underline */
     background-color: #e39717; /* Color of the underline */
   }
+
 }

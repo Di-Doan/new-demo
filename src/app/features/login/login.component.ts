@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule, F
 })
 export class LoginComponent implements OnInit {
   visible = false
-  loginPage = false
+  loginPage = true
 
   loginForm!: FormGroup
   loginError = ''
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   initForm() {
-    this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
     })
@@ -39,21 +39,22 @@ export class LoginComponent implements OnInit {
   }
 
   forgetPasswordTab() {
-    this.loginPage = true
+    this.loginPage = false
   }
 
   loginTab() {
-    this.loginPage = false
+    this.loginPage = true
   }
 
   submitForm() {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched()
       this.loginError = "Đã có lỗi xảy ra. Vui lòng thử lại."
+      return
 
     }
 
     this.loginError = ""
-
+    return
   }
 }

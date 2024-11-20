@@ -10,7 +10,10 @@
   }
 
   .gift-item-list {
-    margin: 40px 0 70px;
+    margin: 50px 0 ;
+    h5 {
+      color: #e39717;
+    }
 
     .category-list {
       h4 {
@@ -33,6 +36,10 @@
     color: #e39717;
     padding: 70px 0;
 
+  }
+
+  .no-list-chosen {
+    margin: 200px 0;
   }
 
 }

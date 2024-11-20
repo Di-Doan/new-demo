@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, OnChanges, SimpleChanges } from '@
 import { CarouselModule } from 'primeng/carousel';
 import { GiftDetailComponent } from '../gift-detail/gift-detail.component';
 import { GiftModel } from '../../../shared/models';
+import { PointPipe } from '../../../shared/pipes/point.pipe';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { GiftModel } from '../../../shared/models';
   standalone: true,
   templateUrl: './gift-item.component.html',
   styleUrls: ['./gift-item.component.scss'],
-  imports: [CarouselModule, GiftDetailComponent],
+  imports: [CarouselModule, GiftDetailComponent, PointPipe],
 })
 export class GiftItemComponent implements OnInit, OnChanges {
   @ViewChild('giftDetailModal') modal!: GiftDetailComponent

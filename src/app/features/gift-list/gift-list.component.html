@@ -28,11 +28,25 @@
         />
         <label class="ms-2" for="about-to-exchange-box">QUÀ GẦN ĐỔI ĐƯỢC</label>
       </span>
-      <button class="btn-view-all text-light ms-auto p-2" (click)="filterAll()">XEM TẤT CẢ</button>
+      <button class="btn-view-all text-light ms-auto p-2" (click)="filterAll()">
+        XEM TẤT CẢ
+      </button>
     </div>
   </div>
-  <div class="gift-item-list">
-    <div *ngIf="showList.hot" class="category-list" >
+  <div
+    class="gift-item-list"
+    [ngClass]="{ 'no-list-chosen': !(showList.hot || showList.canExchange || showList.aboutToExchange) }"
+  >
+    <div
+      *ngIf="
+        showList.hot == false &&
+        showList.canExchange == false &&
+        showList.aboutToExchange == false
+      "
+    >
+      <h5 class="text-center">KHÔNG CÓ MỤC ĐƯỢC CHỌN</h5>
+    </div>
+    <div *ngIf="showList.hot" class="category-list">
       <div class="d-flex ms-3 me-5">
         <img
           src="../../../assets/img/hot.png"
@@ -54,7 +68,10 @@
         <hr class="flex-grow-1 align-self-center me-3" />
         <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
       </div>
-      <div *ngIf="noCanExchangItemsFound; else canExchangeList" class="no-filter-display">
+      <div
+        *ngIf="noCanExchangItemsFound; else canExchangeList"
+        class="no-filter-display"
+      >
         <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
       </div>
       <ng-template #canExchangeList>
@@ -70,11 +87,17 @@
         <h4 class="p-2 align-self-center">QUÀ GẦN ĐỔI ĐƯỢC</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
-      <div *ngIf="noAboutToExchangItemsFound; else aboutToExchangeList" class="no-filter-display">
+      <div
+        *ngIf="noAboutToExchangItemsFound; else aboutToExchangeList"
+        class="no-filter-display"
+      >
         <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
       </div>
       <ng-template #aboutToExchangeList>
-        <app-gift-item [oddList]="true" [giftList]="aboutToExchangeGift"></app-gift-item>
+        <app-gift-item
+          [oddList]="true"
+          [giftList]="aboutToExchangeGift"
+        ></app-gift-item>
       </ng-template>
     </div>
   </div>

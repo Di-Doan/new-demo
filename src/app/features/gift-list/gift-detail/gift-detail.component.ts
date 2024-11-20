@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { GiftModel } from '../../../shared/models';
+import { PointPipe } from '../../../shared/pipes/point.pipe';
 
 @Component({
   selector: 'app-gift-detail',
   standalone: true,
   templateUrl: './gift-detail.component.html',
   styleUrls: ['./gift-detail.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, PointPipe],
 })
 export class GiftDetailComponent implements OnInit {
   @Input() giftDetail!: GiftModel;

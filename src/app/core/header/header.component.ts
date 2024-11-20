@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LoginComponent } from '../../features/login/login.component';
 
@@ -11,7 +11,7 @@ import { LoginComponent } from '../../features/login/login.component';
   imports: [CarouselModule, CommonModule, LoginComponent]
 })
 export class HeaderComponent implements OnInit {
-  @ViewChild('loginModal') modal!: LoginComponent
+  @ViewChild('loginModal') modal?: LoginComponent
   slides: any[] = [
     '../../../assets/img/banner1.png',
     '../../../assets/img/banner2.png',
