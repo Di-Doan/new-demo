@@ -8,6 +8,7 @@ export class ContactModel {
 export class UserModel {
   username: string = '';
   password: string = '';
+  email: string = '';
   point: number = 0;
 }
 

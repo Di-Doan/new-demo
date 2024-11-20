@@ -49,9 +49,6 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     this.giftSubcription = this.httpService.getPost().subscribe(
       (response) => {
         this.giftData = response.default;
-        // this.hotGift = [...this.giftData];
-        // this.canExchangeGift = [...this.giftData];
-        // this.aboutToExchangeGift = [...this.giftData]
       },
       (error) => {
         console.log(error);
