@@ -1,0 +1,72 @@
+[
+  {
+    "username": "john_doe",
+    "name": "John Doe",
+    "password": "password123",
+    "email": "john.doe@example.com",
+    "point": 120
+  },
+  {
+    "username": "jane_smith",
+    "name": "Jane Smith",
+    "password": "mypassword456",
+    "email": "jane.smith@example.com",
+    "point": 150
+  },
+  {
+    "username": "sam_williams",
+    "name": "Sam Williams",
+    "password": "samsecret789",
+    "email": "sam.williams@example.com",
+    "point": 98
+  },
+  {
+    "username": "lily_jones",
+    "name": "Lily Jones",
+    "password": "lilypassword101",
+    "email": "lily.jones@example.com",
+    "point": 205
+  },
+  {
+    "username": "mike_brown",
+    "name": "Mike Brown",
+    "password": "mikepass2022",
+    "email": "mike.brown@example.com",
+    "point": 250
+  },
+  {
+    "username": "susan_clark",
+    "name": "Susan Clark",
+    "password": "susanpass333",
+    "email": "susan.clark@example.com",
+    "point": 180
+  },
+  {
+    "username": "david_miller",
+    "name": "David Miller",
+    "password": "david2023",
+    "email": "david.miller@example.com",
+    "point": 310
+  },
+  {
+    "username": "emily_taylor",
+    "name": "Emily Taylor",
+    "password": "emilypassword444",
+    "email": "emily.taylor@example.com",
+    "point": 145
+  },
+  {
+    "username": "robert_anderson",
+    "name": "Robert Anderson",
+    "password": "robertpass555",
+    "email": "robert.anderson@example.com",
+    "point": 120
+  },
+  {
+    "username": "chloe_moore",
+    "name": "Chloe Moore",
+    "password": "chloepassword666",
+    "email": "chloe.moore@example.com",
+    "point": 205
+  }
+]

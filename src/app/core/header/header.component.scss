@@ -76,11 +76,27 @@
     }
 
     .header-login-img {
+      height: 25px;
+      width: auto;
+      align-self: center;
+      pointer-events: none;
+      padding: 0 10px;
+    }
+
+    .header-not-login-img {
       height: 20px;
       width: auto;
       align-self: center;
       pointer-events: none;
       padding: 0 10px;
     }
+
+    .nav-link {
+      font-size: 20px;
+    }
+  }
+
+  .display-username {
+    color: #e39717;
   }
 }

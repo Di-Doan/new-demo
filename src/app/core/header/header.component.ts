@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     '../../../assets/img/banner3.png',
     '../../../assets/img/banner4.png',
   ];
+  user = 'Di'
 
   constructor() {}
 
@@ -25,6 +26,10 @@ export class HeaderComponent implements OnInit {
 
   openLoginModal() {
     this.modal?.open()
+  }
+
+  logout() {
+    this.user = ''
   }
 
 }
