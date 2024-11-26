@@ -70,6 +70,7 @@
                   id="password"
                   formControlName="password"
                   placeholder="Mật khẩu từ 6 đến 32 ký tự"
+                  type="password"
                 />
               </div>
               <div class="d-flex align-items-center gap-4 my-4">
@@ -95,7 +96,7 @@
       Vui lòng nhập địa chỉ email của bạn để chúng tôi gửi thông tin mật khẩu
       mới
     </div>
-    <form (ngSubmit)="submitForm()" class="w-100">
+    <form (ngSubmit)="submitForgetPassword()" class="w-100">
       <div class="d-flex align-items-center gap-2 mb-3">
         <label class="mb-0" style="width: 20%" for="username">Email</label>
         <input

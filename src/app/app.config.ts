@@ -8,6 +8,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
 import { GiftDataInterceptor } from './shared/interceptor/gift.interceptor';
+import { UserDataInterceptor } from './shared/interceptor/user.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -25,6 +26,12 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GiftDataInterceptor,
+      multi: true
+    },
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UserDataInterceptor,
       multi: true
     }
   ],

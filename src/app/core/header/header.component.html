@@ -4,12 +4,12 @@
       <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
       <a class="nav-link" href="/policy">Điều khoản</a>
       <a class="nav-link" href="/contact">Liên hệ</a>
-      <img *ngIf="user; else notLoggedInAva" class="header-login-img" src="../../../assets/img/loggedin.png" />
-      <a *ngIf="user; else notLoggedIn" class="nav-link" (click)="logout()"
+      <img *ngIf="user.name; else notLoggedInAva" class="header-login-img" src="../../../assets/img/loggedin.png" />
+      <a *ngIf="user.name; else notLoggedIn" class="nav-link" (click)="logout()"
         >Đăng xuất</a
       >
     </div>
-    <div *ngIf="user" class="text-end display-username nav-link py-0">Xin chào <strong>{{user}}</strong></div>
+    <div *ngIf="user.name" class="text-end display-username nav-link py-0">Xin chào <strong>{{user.name}}</strong></div>
   </nav>
 
   <carousel

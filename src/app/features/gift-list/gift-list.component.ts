@@ -36,7 +36,7 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     aboutToExchange: false
   }
 
-  userPoint = 550;
+  userPoint!: number;
 
   constructor(private httpService: GiftService) {}
   ngOnDestroy(): void {
@@ -54,6 +54,12 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
         console.log(error);
       }
     );
+
+    const userData = localStorage.getItem('user')
+    if (userData) {
+      const user = JSON.parse(userData)
+      this.userPoint = user.point
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
