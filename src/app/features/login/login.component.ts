@@ -25,8 +25,11 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   loginError = '';
 
-  forgetPasswordForm = new FormControl('', [Validators.required, Validators.email])
-  forgetPasswordError = ''
+  forgetPasswordForm = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  forgetPasswordError = '';
 
   userSubcription!: Subscription;
 
@@ -74,7 +77,7 @@ export class LoginComponent implements OnInit {
           this.loginError = response.message;
         } else {
           localStorage.setItem('user', JSON.stringify(response));
-          window.location.reload()
+          window.location.reload();
         }
       });
     return;
@@ -82,9 +85,21 @@ export class LoginComponent implements OnInit {
 
   submitForgetPassword() {
     if (this.forgetPasswordForm.invalid) {
-      this.forgetPasswordForm.markAllAsTouched()
-      this.forgetPasswordError = 'Đã có lỗi xảy ra. Vui lòng thử lại.'
-      return
+      this.forgetPasswordForm.markAllAsTouched();
+      this.forgetPasswordError = 'Đã có lỗi xảy ra. Vui lòng thử lại.';
+      return;
     }
+
+    this.userSubcription = this.http
+      .forgetPassword(String(this.forgetPasswordForm.value))
+      .subscribe(
+        (response) => {
+          if (response.message) {
+            this.forgetPasswordError = response.message
+          } else {
+            window.location.reload();
+          }
+        }
+      );
   }
 }

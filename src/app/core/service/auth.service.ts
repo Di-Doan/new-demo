@@ -20,7 +20,7 @@ export class AuthService {
     window.location.reload()
   }
 
-  forgetPassword(email: string) {
+  forgetPassword(email: string): Observable<any> {
     const url = '/mock-api/user-data/forget-password'
     return this.http.post(url, email)
   }
