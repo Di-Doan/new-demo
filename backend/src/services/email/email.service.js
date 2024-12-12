@@ -13,7 +13,7 @@ const generateOTP = () => {
 
 // Set up Nodemailer transporter (SMTP settings for Gmail)
 const transporter = createTransport({
-  host: "smtp.sendgrid.net",
+  host: "smtp.gmail.com",
   port: 587,
   auth: {
     user: process.env.EMAIL, 
