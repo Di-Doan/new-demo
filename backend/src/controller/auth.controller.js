@@ -108,7 +108,7 @@ const signin = catchAsync(async (req, res) => {
   res.cookie("user_jwt", token, {
     httpOnly: true,
     sameSite: "Strict", // Helps mitigate CSRF attacks
-    maxAge: 3600000, // 1 hour expiration
+    maxAge: process.env.TOKEN_AGE, 
   });
 
   // Optionally, set user-related data (non-HTTPOnly)
@@ -117,9 +117,10 @@ const signin = catchAsync(async (req, res) => {
     JSON.stringify({ name: user.name, point: user.point, role: userRole.role }),
     {
       sameSite: "Strict",
-      maxAge: 3600000, // 1 hour expiration
+      maxAge: process.env.TOKEN_AGE, 
     }
   );
+
   res.status(200).json(_newSuccess());
 });
 
