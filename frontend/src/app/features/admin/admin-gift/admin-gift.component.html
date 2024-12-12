@@ -191,7 +191,7 @@
         *ngIf="gift.img"
       />
       <div class="field">
-        <label for="name">Tên quà</label>
+        <label for="name" class="mb-2">Tên quà</label>
         <input
           type="text"
           pInputText
@@ -206,12 +206,12 @@
       </div>
 
       <div class="field col">
-        <label for="point">Điểm</label>
+        <label for="point" class="my-2" >Điểm</label>
         <p-inputNumber id="point" [(ngModel)]="gift.point" />
       </div>
 
       <div class="field col">
-        <label for="point">Quà hot</label>
+        <label for="point" class="my-2" >Quà hot</label>
         <div class="flex gap-3" style="flex-wrap: nowrap; display: flex">
           <div class="flex align-items-center" style="flex-shrink: 0">
             <p-radioButton
@@ -220,7 +220,7 @@
               [(ngModel)]="gift.isHot"
               inputId="isHotTrue"
             />
-            <label for="isHotTrue" class="ml-2"> Có </label>
+            <label for="isHotTrue" class="ml-2" style="margin-left: 5px;"> Có </label>
           </div>
 
           <div class="flex align-items-center" style="flex-shrink: 0">
@@ -230,7 +230,7 @@
               [(ngModel)]="gift.isHot"
               inputId="isHotFalse"
             />
-            <label for="isHotFalse" class="ml-2"> Không </label>
+            <label for="isHotFalse" class="ml-2" style="margin-left: 5px;"> Không </label>
           </div>
         </div>
       </div>

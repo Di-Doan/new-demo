@@ -171,7 +171,7 @@
   >
     <ng-template pTemplate="content">
       <div class="field">
-        <label for="name">Tên</label>
+        <label for="name" class="mb-2">Tên</label>
         <input
           type="text"
           pInputText
@@ -186,7 +186,7 @@
       </div>
 
       <div class="field" *ngIf="user.password != user.email || user.password == ''">
-        <label for="password">Mật khẩu</label>
+        <label for="password" class="my-2">Mật khẩu</label>
         <input
           type="password"
           pInputText
@@ -200,12 +200,12 @@
       </div>
 
       <div class="field col">
-        <label for="point">Điểm</label>
+        <label for="point" class="my-2">Điểm</label>
         <p-inputNumber id="point" [(ngModel)]="user.point" />
       </div>
 
       <div class="field">
-        <label for="email">Email</label>
+        <label for="email" class="my-2">Email</label>
         <input
           type="email"
           pInputText
@@ -219,7 +219,7 @@
       </div>
 
       <div class="field">
-        <label for="name">Username</label>
+        <label for="name" class="my-2">Username</label>
         <input
           type="text"
           pInputText
@@ -233,7 +233,7 @@
       </div>
 
       <div class="field col">
-        <label for="point">Quyền hạn</label>
+        <label for="point" class="my-2">Quyền hạn</label>
         <div class="flex gap-3" style="flex-wrap: nowrap; display: flex">
           <div class="flex align-items-center" style="flex-shrink: 0">
             <p-radioButton
@@ -242,7 +242,7 @@
               [(ngModel)]="user.role"
               inputId="adminRole"
             />
-            <label for="adminRole" class="ml-2"> Admin </label>
+            <label for="adminRole" class="ml-2" style="margin-left: 5px;"> Admin </label>
           </div>
 
           <div class="flex align-items-center" style="flex-shrink: 0">
@@ -252,7 +252,7 @@
               [(ngModel)]="user.role"
               inputId="userRole"
             />
-            <label for="adminRole" class="ml-2"> User</label>
+            <label for="adminRole" class="ml-2" style="margin-left: 5px;"> User</label>
           </div>
         </div>
       </div>
