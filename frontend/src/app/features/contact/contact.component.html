@@ -1,0 +1,39 @@
+<p-toast />
+<div class="contact">
+  <div class="nav-textarea">
+    <h3>LIÊN HỆ</h3>
+  </div>
+  <div class="contact-wrapper">
+    <div class="contact-form-wrapper">
+      <div class="contact-title col-12">
+        <h5>Liên hệ với chúng tôi qua email</h5>
+        <p>
+          Hãy cho chúng tôi biết bạn đang mong muốn thực hiện dự án nào. <br />
+          Chúng tôi sẽ liên hệ với bạn sớm nhất có thể
+        </p>
+        <p class="text-danger" *ngIf="contactError">{{contactError}}</p>
+      </div>
+      <form
+        class="row px-md-5 form-group contact-form col-12"
+        [formGroup]="contactForm"
+        (ngSubmit)="submitForm()"
+      >
+        <div class="mb-3 col-md-6 col-12 form-group">
+          <input placeholder="Tên của bạn" formControlName="name" type="text"/>
+        </div>
+        <div class="mb-3 col-md-6 col-12 form-group">
+          <input placeholder="Email của bạn" formControlName="email" type="email"/>
+        </div>
+        <div class="mb-3 col-12 form-group">
+          <input placeholder="Chức danh của bạn" formControlName="title" type="text"/>
+        </div>
+        <div class="mb-3 col-12 form-group">
+          <textarea placeholder="Ghi chú của bạn" formControlName="note" type="text"></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn submit-btn mb-3 text-light">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

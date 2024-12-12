@@ -1,0 +1,154 @@
+<div
+  class="modal fade"
+  [ngClass]="{ show: visible }"
+  *ngIf="visible"
+  (click)="close()"
+>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-body row">
+      <div
+        class="col-4 login-img-wrapper p-3 d-flex flex-column justify-content-center align-items-center gap-3 vertical-line"
+      >
+        <h4 class="text-center">ĐĂNG NHẬP</h4>
+        <P class="text-center"
+          >Đăng nhập để xem danh sách quà yêu thích, đổi quà và xem thông tin ưu
+          đãi hấp dẫn.</P
+        >
+        <img class="login-img" src="../../../assets/img/img-login.png" />
+      </div>
+      <div class="col-8 d-flex flex-column">
+        <div class="modal-header d-flex justify-content-center">
+          <ul class="nav nav-underline">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [ngClass]="{ active: loginPage }"
+                (click)="loginTab()"
+                ><h5>Đăng nhập</h5></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [ngClass]="{ active: loginPage == false }"
+                (click)="forgetPasswordTab()"
+                ><h5>Quên mật khẩu</h5></a
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          class="login-form-wrapper d-flex flex-column justify-content-center gap-3"
+        >
+          <div *ngIf="loginPage; else forgetPassword">
+            <div *ngIf="showLoginAlert">
+              <ngb-alert type="success" (close)="showLoginAlert = false">
+                {{ loginAlertMessage }}
+              </ngb-alert>
+            </div>
+            <div class="text-danger text-center mb-4 w-100 mt-3">
+              {{ loginError }}
+            </div>
+            <form
+              [formGroup]="loginForm"
+              (ngSubmit)="submitForm()"
+              class="w-100"
+            >
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <label class="mb-0" style="width: 40%" for="useremail"
+                  >Email đăng nhập</label
+                >
+                <input
+                  class="form-control"
+                  id="useremail"
+                  formControlName="userEmail"
+                  placeholder="Nhập tên đăng nhập của bạn"
+                />
+              </div>
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <label class="mb-0" style="width: 40%" for="password"
+                  >Mật khẩu</label
+                >
+                <input
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  placeholder="Mật khẩu từ 6 đến 32 ký tự"
+                  type="password"
+                />
+              </div>
+              <div class="d-flex align-items-center gap-4 my-4">
+                <div class="mb-0" style="width: 40%"></div>
+                <button type="submit" class="btn login-btn text-light">
+                  ĐĂNG NHẬP
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #forgetPassword>
+  <div>
+    <div *ngIf="showForgotAlert">
+      <ngb-alert type="success" (close)="showForgotAlert = false">
+        {{ forgotAlertMessage }}
+      </ngb-alert>
+    </div>
+    <div class="text-danger text-center mb-2 w-100">
+      {{ forgetPasswordError }}
+    </div>
+    <div class="mb-3 w-100 mt-3">
+      Vui lòng nhập địa chỉ email của bạn để chúng tôi gửi thông tin mật khẩu
+      mới
+    </div>
+    <form class="w-100" [formGroup]="resetPasswordForm">
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <label class="mb-0" style="width: 30%" for="useremail">Email</label>
+        <input
+          class="form-control"
+          id="useremail"
+          placeholder="Địa chỉ email của bạn"
+          [formControl]="forgetPasswordForm"
+        />
+      </div>
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <label class="mb-0" style="width: 40%" for="userotp">OTP</label>
+        <input
+          class="form-control"
+          id="userotp"
+          name="userotp"
+          placeholder="Check email để nhận otp"
+          type="number"
+          formControlName="otp"
+        />
+        <button (click)="submitForgetPassword()" class="btn login-btn text-light px-3" style="width: fit-content;">GỬI OTP</button>
+      </div>
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <label class="mb-0" style="width: 30%" for="newpassword">Mật khẩu mới</label>
+        <input
+          class="form-control"
+          id="newpassword"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <label class="mb-0" style="width: 30%" for="repeatnewpassword">Nhập lại mật khẩu</label>
+        <input
+          class="form-control"
+          id="repeatnewpassword"
+          type="password"
+          formControlName="confirmPassword"
+        />
+      </div>
+      <div class="d-flex align-items-center gap-4 my-4">
+        <div class="mb-0" style="width: 40%"></div>
+        <button (click)="submitOtp()" class="btn login-btn text-light px-4">GỬI</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

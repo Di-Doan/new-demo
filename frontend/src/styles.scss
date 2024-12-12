@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+@import "./assets/css/style.css";
+@import "./assets/vendors/css/vendor.bundle.base.css";
+@import "./assets/vendors/mdi/css/materialdesignicons.min.css";
+
+.nav-textarea {
+  background-color: rgb(243, 241, 241);
+  padding: 15px 60px;
+
+  h3 {
+    color: #008b43;
+    // padding: 5px 0;
+    margin: 0;
+  }
+}
+
+.p-carousel-header {
+  padding: 0 50px !important;
+}
+
+.p-carousel-prev,
+.p-carousel-next {
+  color: #e39717;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.carousel-indicators {
+  position: absolute;
+  left: 63%;
+  z-index: 999 !important;
+  .active {
+    background-color: #e39717 !important;
+  }
+
+}
+
+.carousel-indicators button  {
+  background-color: rgba(129, 126, 126, 0.368) !important;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 50% !important;
+  border-width: 2px !important;
+}
+
+.carousel-indicator-active {
+  background-color: #e39717; /* Active indicator color */
+}
+
+.carousel-control {
+  display: none;
+}
+
+.p-carousel-item {
+  width: calc(100% / 4.5) !important;
+  flex: 0 0 auto !important;
+  overflow: hidden !important;
+
+}
+
+.p-carousel-item {
+  pointer-events: none !important;  /* Disable clicking */
+  opacity: 0.5 !important;  /* Apply blur to the partially visible item */
+}
+
+.p-carousel-item-active {
+  opacity: 1 !important;
+  pointer-events: visible !important;
+}

@@ -1,0 +1,54 @@
+<div class="header">
+  <nav class="nav justify-content-end flex-column">
+    <div class="d-flex">
+      <a class="nav-link active" aria-current="page" routerLink="/gift-list">Trang chủ</a>
+      <a class="nav-link" routerLink="/policy">Điều khoản</a>
+      <a class="nav-link" routerLink="/contact">Liên hệ</a>
+      <img *ngIf="user.name; else notLoggedInAva" class="header-login-img" src="../../../assets/img/loggedin.png" />
+      <a *ngIf="user.name; else notLoggedIn" class="nav-link" (click)="logout()"
+        >Đăng xuất</a
+      >
+    </div>
+    <div *ngIf="user.name" class="text-end display-username nav-link py-0">Xin chào <strong>{{user.name}}</strong></div>
+  </nav>
+
+  <carousel
+    [noWrap]="false"
+    [showIndicators]="true"
+    [interval]="10000"
+    [isAnimated]="true"
+  >
+    @for (slide of slides; track slide) {
+    <slide>
+      <img
+        [src]="slide"
+        alt="Random slide"
+        style="display: block; max-width: 100%"
+      />
+    </slide>
+    }
+  </carousel>
+
+  <div class="header-logo">
+    <img src="../../../assets/img/logo.png" />
+  </div>
+
+  <div class="carousel-text">
+    <h1><span>OCB</span><span>OMNI</span></h1>
+    <h3>
+      <span>Tốc độ</span><span class="o-span">o</span><span>An toàn</span
+      ><span class="o-span">o</span><span>Tiện nghi</span>
+    </h3>
+    <h4>Giao dịch online, hoàn toàn miễn phí</h4>
+  </div>
+</div>
+
+<app-login #loginModal></app-login>
+
+<ng-template #notLoggedInAva>
+  <img class="header-not-login-img" src="../../../assets/img/gray-ava.png" />
+</ng-template>
+
+<ng-template #notLoggedIn>
+  <a class="nav-link" (click)="openLoginModal()">Đăng nhập</a>
+</ng-template>

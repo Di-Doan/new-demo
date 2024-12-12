@@ -1,0 +1,256 @@
+<!-- <div class="col-12 grid-margin ">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Gift Table</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Img</th>
+              <th>Name</th>
+              <th>Point</th>
+              <th>Start date</th>
+              <th>End date</th>
+              <th>Is Hot</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (gift of giftList; track gift.name) {
+            <tr>
+              <td class="py-1">
+                <img [src]="gift.img" alt="image" />
+              </td>
+              <td>{{ gift.name }}</td>
+              <td>
+                {{ gift.point }}
+              </td>
+              <td>{{ gift.start_date }}</td>
+              <td>{{ gift.end_date }}</td>
+              <td><i *ngIf="gift.isHot; else notIsHot" class="mdi mdi-check"></i></td>
+              <td>
+                <button type="button" class="btn btn-outline-secondary btn-icon-text" style="margin-right: 10px;"> Edit <i class="mdi mdi-file-check btn-icon-append"></i>
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete <i class="mdi mdi-delete btn-icon-append"></i>
+                </button>
+              </td>
+            </tr>
+            } @empty {
+            <tr>
+              There are no items
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<ng-template #notIsHot>
+  <i class="mdi mdi-window-close"></i>
+</ng-template>
+
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <p-button
+        label="Tạo mới"
+        icon="pi pi-plus"
+        class="mr-2"
+        (click)="openNew()"
+      />
+      <p-button
+        severity="danger"
+        label="Xoá quà"
+        icon="pi pi-trash"
+        outlined
+        (click)="deleteSelectedGifts()"
+        [disabled]="!selectedGifts || !selectedGifts.length"
+      />
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #dt
+    [value]="giftList"
+    [rows]="10"
+    [paginator]="true"
+    [tableStyle]="{ 'min-width': '55rem' }"
+    [(selection)]="selectedGifts"
+    [rowHover]="true"
+    dataKey="_id"
+    currentPageReportTemplate="Đang hiện từ {first} tới {last} trong tổng số {totalRecords} mục"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="['name', 'point']"
+  >
+    <ng-template pTemplate="caption">
+      <div
+        class="flex align-items-center justify-content-between"
+        style="display: flex; align-items: center"
+      >
+        <h5 class="m-0">Quản Lý Quà Tặng</h5>
+        <span class="p-input-icon-left">
+          <p-iconField>
+            <p-inputIcon>
+              <i class="pi pi-search"></i>
+            </p-inputIcon>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filterGlobal($any($event.target)?.value, 'contains')"
+              placeholder="Tìm kiếm..."
+              aria-label="Global Search"
+            />
+          </p-iconField>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 5rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        <th pSortableColumn="name" style="min-width: 5rem">
+          Tên quà
+          <p-sortIcon field="name" />
+        </th>
+        <th>Ảnh</th>
+        <th pSortableColumn="point" style="min-width: 10rem">
+          Điểm
+          <p-sortIcon field="point" />
+        </th>
+        <th pSortableColumn="start_date" style="min-width: 10rem">
+          Ngày bắt đầu
+          <p-sortIcon field="start_date" />
+        </th>
+        <th pSortableColumn="end_date" style="min-width: 10rem">
+          Ngày hết hạn
+          <p-sortIcon field="end_date" />
+        </th>
+        <th pSortableColumn="isHot" style="min-width: 6rem">
+          Quà Hot
+          <p-sortIcon field="isHot" />
+        </th>
+        <th style="min-width: 12rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-gift>
+      <tr>
+        <td style="width: 3rem">
+          <p-tableCheckbox [value]="gift" />
+        </td>
+        <td style="min-width: 10rem">{{ gift.name }}</td>
+        <td>
+          <img [src]="gift.img" [alt]="gift.name" style="width: 64px" />
+        </td>
+        <td>{{ gift.point }}</td>
+        <td>{{ gift.start_date }}</td>
+        <td>{{ gift.end_date }}</td>
+        <td><i *ngIf="gift.isHot; else notIsHot" class="mdi mdi-check"></i></td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            class="mr-2"
+            severity="success"
+            [outlined]="true"
+            [style]="{ 'margin-right': '10px', 'border-radius': '50%' }"
+            (click)="editGift(gift)"
+          />
+          <p-button
+            icon="pi pi-trash"
+            severity="danger"
+            [outlined]="true"
+            [style]="{ 'border-radius': '50%' }"
+            (click)="deleteGift(gift)"
+          />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">Không có quà nào theo mục tìm kiếm.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog
+    [(visible)]="giftDialog"
+    [style]="{ width: '450px' }"
+    header="Gift Details"
+    [modal]="true"
+    styleClass="p-fluid"
+  >
+    <ng-template pTemplate="content">
+      <img
+        [src]="gift.img"
+        [alt]="gift.name"
+        class="block m-auto pb-3"
+        *ngIf="gift.img"
+      />
+      <div class="field">
+        <label for="name">Tên quà</label>
+        <input
+          type="text"
+          pInputText
+          id="name"
+          [(ngModel)]="gift.name"
+          required
+          autofocus
+        />
+        <small class="p-error" *ngIf="submitted && !gift.name">
+          Tên quà không được để trống.
+        </small>
+      </div>
+
+      <div class="field col">
+        <label for="point">Điểm</label>
+        <p-inputNumber id="point" [(ngModel)]="gift.point" />
+      </div>
+
+      <div class="field col">
+        <label for="point">Quà hot</label>
+        <div class="flex gap-3" style="flex-wrap: nowrap; display: flex">
+          <div class="flex align-items-center" style="flex-shrink: 0">
+            <p-radioButton
+              name="isHot"
+              [value]="true"
+              [(ngModel)]="gift.isHot"
+              inputId="isHotTrue"
+            />
+            <label for="isHotTrue" class="ml-2"> Có </label>
+          </div>
+
+          <div class="flex align-items-center" style="flex-shrink: 0">
+            <p-radioButton
+              name="isHot"
+              [value]="false"
+              [(ngModel)]="gift.isHot"
+              inputId="isHotFalse"
+            />
+            <label for="isHotFalse" class="ml-2"> Không </label>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        [text]="true"
+        (click)="hideDialog()"
+      />
+      <p-button
+        label="Save"
+        icon="pi pi-check"
+        [text]="true"
+        (click)="saveGift()"
+      />
+    </ng-template>
+  </p-dialog>
+
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>

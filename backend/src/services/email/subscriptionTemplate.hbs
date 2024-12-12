@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Confirmation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      text-align: center;
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .content {
+      padding: 20px;
+      text-align: center;
+    }
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 20px;
+    }
+    .button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: center;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h2>Hi,</h2>
+      <p>Thank you for subscribing to our newsletter! We are excited to have you on board.</p>
+      <p>You’ll start receiving updates and offers from us. If you have any questions, feel free to reply to this email.</p>
+    </div>
+    <div class="footer">
+      <p>If you did not subscribe to this service, please ignore this email or <a href="{{unsubscribeUrl}}">unsubscribe here</a>.</p>
+    </div>
+  </div>
+</body>
+</html>

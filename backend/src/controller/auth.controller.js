@@ -1,0 +1,171 @@
+import userService from "../services/function/user.service.js";
+import Error from "../config/Error.js";
+import responseService from "../services/response/response.service.js";
+import catchAsync from "../utils/catchAsync.js";
+import emailService from "../services/email/email.service.js";
+import otpService from "../services/function/otp.service.js";
+import authService from "../services/function/auth.service.js";
+import { genSaltSync, hash } from "bcrypt";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+
+const {
+  createUser: _createUser,
+  getAllUser: _getAllUser,
+  getUserById: _getUserById,
+  getUserByEmail: _getUserByEmai,
+  updateUserById: _updateUserById,
+  updateUserByEmail: _updateUserByEmail,
+  deleteUserById: _deleteUserById,
+} = userService;
+
+const {
+  sendOTPEmail: _sendOTPEmail,
+  generateOTP: _generateOTP,
+  sendSubscriptionEmail: _sendSubscriptionEmail,
+} = emailService;
+
+const { newSuccess: _newSuccess, newError: _newError } = responseService;
+
+const {
+  createOtp: _createOtp,
+  getOtpByEmail: _getOtpByEmail,
+  deleteOtpByEmail: _deleteOtpByEmail,
+} = otpService;
+
+const { getRoleByEmail: _getRoleByEmail } = authService;
+
+// send reset password email
+const resetPasswordEmail = catchAsync(async (req, res) => {
+  const { userEmail } = req.body;
+  const user = await _getUserByEmai(userEmail);
+  if (!user) {
+    res.status(400).json({
+      errCode: Error.UserNotFound.errCode,
+      errMessage: Error.UserNotFound.errMessage,
+    });
+    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
+  }
+  const userOtp = await _getOtpByEmail(userEmail);
+  if (userOtp) {
+    res.status(400).json({
+      errCode: Error.OtpExisted.errCode,
+      errMessage: Error.OtpExisted.errMessage,
+    });
+    throw _newError(Error.OtpExisted.errCode, Error.OtpExisted.errMessage);
+  }
+  const otp = _generateOTP();
+  await _sendOTPEmail(user.email, user.name, otp);
+  await _createOtp(user.email, otp);
+  res.status(200).json(_newSuccess({ userEmail: userEmail }));
+});
+
+// send subscription email
+const sendSubscriptionEmail = catchAsync(async (req, res) => {
+  const { userEmail } = req.body;
+  const result = await _sendSubscriptionEmail(userEmail);
+  res.status(200).json(_newSuccess({ result }));
+});
+
+// signin
+const signin = catchAsync(async (req, res) => {
+  const { userEmail, password } = req.body;
+  const user = await _getUserByEmai(userEmail);
+  if (!user) {
+    res.status(400).json({
+      errCode: Error.UserNotFound.errCode,
+      errMessage: Error.UserNotFound.errMessage,
+    });
+    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
+  }
+
+  const isMatch = await bcrypt.compare(password, user.hashedPassword);
+
+  if (!isMatch) {
+    res.status(400).json({
+      errCode: Error.PasswordInvalid.errCode,
+      errMessage: Error.PasswordInvalid.errMessage,
+    });
+    throw _newError(
+      Error.PasswordInvalid.errCode,
+      Error.PasswordInvalid.errMessage
+    );
+  }
+  const userRole = await _getRoleByEmail(userEmail);
+
+  const token = jwt.sign(
+    {
+      email: user.email,
+      role: userRole.role,
+    },
+    process.env.JWT_SECRET, // Secret key for signing the token
+    { expiresIn: process.env.TOKEN_EXPIRED }
+  );
+
+  // Set the JWT token as an HttpOnly and Secure cookie
+  res.cookie("user_jwt", token, {
+    httpOnly: true,
+    sameSite: "Strict", // Helps mitigate CSRF attacks
+    maxAge: 3600000, // 1 hour expiration
+  });
+
+  // Optionally, set user-related data (non-HTTPOnly)
+  res.cookie(
+    "user_data",
+    JSON.stringify({ name: user.name, point: user.point, role: userRole.role }),
+    {
+      sameSite: "Strict",
+      maxAge: 3600000, // 1 hour expiration
+    }
+  );
+  res.status(200).json(_newSuccess());
+});
+
+// logout by deleting jwt cookie
+const logout = catchAsync(async (req, res) => {
+  res.clearCookie("user_jwt", { httpOnly: true, sameSite: "Strict" });
+  res.status(200).json(_newSuccess());
+});
+
+// reset password
+const resetPassword = catchAsync(async (req, res) => {
+  const { userEmail, otp, password } = req.body;
+  const userOtp = await _getOtpByEmail(userEmail);
+  if (userOtp && userOtp.otp == otp) {
+    const salt = genSaltSync(10);
+    const hashedPassword = await hash(password, salt);
+    await _updateUserByEmail(userEmail, { hashedPassword: hashedPassword });
+    await _deleteOtpByEmail(userEmail);
+    res.status(200).json(_newSuccess());
+  } else {
+    res.status(400).json({
+      errCode: Error.OtpInvalid.errCode,
+      errMessage: Error.OtpInvalid.errMessage,
+    });
+    throw _newError(Error.OtpInvalid.errCode, Error.OtpInvalid.errMessage);
+  }
+});
+
+const adminAuth = catchAsync(async (req, res) => {
+  const { userEmail, role } = req.user;
+  if (role == "admin") {
+    res.status(200).json(_newSuccess());
+  } else {
+    res.status(400).json({
+      errCode: Error.OtpInvalid.errCode,
+      errMessage: Error.OtpInvalid.errMessage,
+    });
+    throw _newError(Error.OtpInvalid.errCode, Error.OtpInvalid.errMessage);
+  }
+});
+
+export default {
+  resetPasswordEmail,
+  sendSubscriptionEmail,
+  signin,
+  logout,
+  resetPassword,
+  adminAuth,
+};

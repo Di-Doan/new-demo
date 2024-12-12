@@ -1,0 +1,84 @@
+<div class="footer">
+  <div class="footer-top row text-center pe-4">
+    <div class="col-5 offset-7 align-self-center text-box px-4">
+      <span class="text-light fs-4">Ngân Hàng Phương Đông</span>
+      <p class="text-light">
+        Orient Commercial Joint Stock Bank (OCB) được thành lập từ ngày
+        10/06/1996, qua 23 năm hoạt động và phát triển, OCB luôn duy trì phương
+        châm: khách hàng là trọng tâm, nghiên cứu và phát triển những sản phẩm
+        dịch vụ tài chính phù hợp.
+      </p>
+    </div>
+  </div>
+  <div class="footer-mid d-flex flex-row py-2 px-5">
+    <span class="social text-light fs-6"> Theo dõi chúng tôi </span>
+    <a
+      type="button"
+      class="ms-3 facebook text-light center"
+      href="https://www.facebook.com/phuongdongbank/"
+      ><i class="fa fa-facebook"></i
+    ></a>
+    <a
+      type="button"
+      class="ms-3 twitter text-light center"
+      href="https://twitter.com/ocbbank?lang=en"
+      ><i class="fa fa-twitter"></i
+    ></a>
+    <a
+      type="button"
+      class="ms-3 youtube text-light center"
+      href="https://www.youtube.com/channel/UCUWi0zTAFa7WTIAQlf65M2w"
+      ><i class="fa fa-youtube-play"></i
+    ></a>
+  </div>
+  <div class="footer-bot row py-3 px-5">
+    <div class="col-md-4 col-12 me-2 pe-3 pb-4">
+      <p class="text-light fs-5 me-2">Khối Công Nghệ - NH TMCP Phương Đông</p>
+      <p class="text-light fs-6 mb-0">
+        &copy; 2024 NH TMCP Phương Đông. Toàn quyền được giữ.
+      </p>
+    </div>
+    <div class="col-md-4 col-12 mx-2 pe-3 pb-4">
+      <p class="text-light fs-5 me-2">Liên hệ</p>
+      <p class="text-light fs-6 mb-0">
+        Hội sở chính: 41 & 45 Lê Duẫn, Quận 1, Tp. Hồ Chí Minh
+      </p>
+      <p class="text-light fs-6 mb-0">Tel: (84-28) 38 220 960 - 38 220 961</p>
+      <p class="text-light fs-6 mb-0">Fax: (84-28) 38 220 963</p>
+    </div>
+    <div class="col-md-4 col-12 row pe-3 pb-4">
+      <p class="col-12 text-light fs-5 me-2">Đăng ký nhận thông tin từ OCB</p>
+      <form (ngSubmit)="submitForm()" class="form-inline my-lg-0">
+        <div class="input-group">
+          <input
+            class="form-control mr-3"
+            type="email"
+            id="subscriptionForm"
+            name="subscriptionForm"
+            required
+            placeholder="example@example.com"
+            [(ngModel)]="subscriptionForm"
+            [pattern]="emailPattern"
+            #emailInput="ngModel"
+          />
+          <div class="my-2 my-sm-0">
+            <button class="btn text-light bg-warning" type="submit">
+              Gửi
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <div *ngIf="subscriptionFormError" class="col-12 text-light">
+        {{ subscriptionFormError }}
+      </div>
+      <div
+        *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+        class="error"
+      >
+        <div class="text-light" *ngIf="emailInput.errors?.['required']">Email là bắt buộc</div>
+        <div class="text-light" *ngIf="emailInput.errors?.['pattern']">Email không hợp lệ</div>
+      </div>
+    </div>
+  </div>
+</div>
