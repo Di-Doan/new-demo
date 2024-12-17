@@ -1,4 +1,5 @@
 .header {
+
   .carousel-caption {
     right: 1%;
     bottom: 43rem;
@@ -14,7 +15,7 @@
       color: #008b43;
     }
   }
-
+  position: relative;
   .carousel-text {
     position: absolute;
     right: 100px;
@@ -50,49 +51,46 @@
   }
 
   nav {
-    position: absolute;
     top: 0;
     z-index: 999;
-    right: 5%;
-  }
-
-  .header-logo {
-    position: absolute;
-    z-index: 999;
-    top: 30px;
-    left: 100px;
-    img {
-      height: 75px;
-    }
   }
 
   nav {
     a {
       color: #008b43;
+      margin: 0 20px;
+      padding-bottom: 0;
+      cursor: pointer;
+      img {
+        height: 75px;
+      }
+
+      .header-login-img {
+        height: 30px;
+        width: auto;
+        align-self: center;
+        pointer-events: none;
+      }
+
+      .header-not-login-img {
+        height: 25px;
+        width: auto;
+        align-self: center;
+        pointer-events: none;
+      }
     }
 
-    a:nth-child(2) {
+    .active-link {
       color: #e39717;
     }
 
-    .header-login-img {
-      height: 25px;
-      width: auto;
-      align-self: center;
-      pointer-events: none;
-      padding: 0 10px;
-    }
-
-    .header-not-login-img {
-      height: 20px;
-      width: auto;
-      align-self: center;
-      pointer-events: none;
-      padding: 0 10px;
+    a:nth-child(1) {
+      min-width: 500px;
     }
 
     .nav-link {
       font-size: 20px;
+  
     }
   }
 
@@ -101,69 +99,66 @@
   }
 
   @media (max-width: 576px) {
-    .header-logo {
-      position: absolute;
-      z-index: 999;
-      top: 15px;
-      left: 20px;
-      img {
-        height: 20px;
-      }
-    }
 
-    .nav {
+    nav {
+      padding-top: 0;
       .nav-link {
         font-size: 12px;
-        padding: 4px 8px ;
-      }
+        margin: 0; 
+
+        .header-login-img {
+          height: 20px;
+          width: auto;
+          align-self: center;
+          pointer-events: none;
+        }
   
-      .header-login-img {
-        height: 20px;
-        width: auto;
-        align-self: center;
-        pointer-events: none;
-        padding: 0 10px;
+        .header-not-login-img {
+          height: 15px;
+          width: auto;
+          align-self: center;
+          pointer-events: none;
+        }
       }
-  
-      .header-not-login-img {
-        height: 15px;
-        width: auto;
-        align-self: center;
-        pointer-events: none;
-        padding: 0 10px;
+
+      .navbar-brand {
+        margin: 0 ;
+        min-width: 0 !important;
+        img {
+          height: 25px;
+        }
       }
+
+      
     }
-  
+
     .carousel-text {
       position: absolute;
       right: 15px;
-      top: 57px;
-  
-      
+      top: 97px;
+
       h1 {
         font-size: 17px;
         margin-bottom: 5px;
-  
+
         span:nth-child(2) {
           margin-left: 5px;
         }
       }
-  
+
       h3 {
         font-size: 12px;
         margin-bottom: 5px;
-  
+
         span:nth-child(even) {
           margin: 0 3px;
           color: #e39717;
         }
       }
-  
+
       h4 {
         font-size: 9px;
       }
     }
   }
-
-  
 }

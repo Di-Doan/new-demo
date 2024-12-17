@@ -39,11 +39,9 @@ export class FooterComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   submitForm() {
-    // if (this.subscriptionForm.invalid) {
-    //   this.subscriptionForm.markAllAsTouched()
-    //   this.subscriptionFormError = "Đã có lỗi xảy ra. Vui lòng thử lại.";
-    //   return
-    // }
+    if (!this.subscriptionForm.match(this.emailPattern)) {
+      return
+    }
     
     this.authService
       .sendSubscriptionEmail(this.subscriptionForm)

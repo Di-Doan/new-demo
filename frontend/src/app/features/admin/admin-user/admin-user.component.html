@@ -165,9 +165,10 @@
   <p-dialog
     [(visible)]="userDialog"
     [style]="{ width: '450px' }"
-    header="User Details"
+    header="Thông tin người dùng"
     [modal]="true"
     styleClass="p-fluid"
+    [dismissableMask]="true"
   >
     <ng-template pTemplate="content">
       <div class="field">

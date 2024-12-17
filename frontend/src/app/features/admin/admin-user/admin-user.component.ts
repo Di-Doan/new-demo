@@ -161,6 +161,15 @@ export class AdminUserComponent implements OnInit, OnChanges {
   }
 
   saveUser() {
+    if (Object.values(this.user).some((value) => value === '')) {
+      this.messageService.add({
+        severity: "error",
+        summary: "Thất bại",
+        detail: "Vui lòng điền đủ thông tin",
+        life: 1500,
+      });
+      return
+    }
     this.submitted = true;
     if (this.user._id) {
       this.authService

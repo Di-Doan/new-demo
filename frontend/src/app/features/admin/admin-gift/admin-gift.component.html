@@ -178,9 +178,10 @@
   <p-dialog
     [(visible)]="giftDialog"
     [style]="{ width: '450px' }"
-    header="Gift Details"
+    header="Thông tin quà tặng"
     [modal]="true"
     styleClass="p-fluid"
+    [dismissableMask]="true"
   >
     <ng-template pTemplate="content">
       <img

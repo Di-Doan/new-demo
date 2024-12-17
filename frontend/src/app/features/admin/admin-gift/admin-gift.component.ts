@@ -175,6 +175,16 @@ export class AdminGiftComponent implements OnInit, OnChanges {
   }
 
   saveGift() {
+    if (this.gift.name == '') {
+      this.messageService.add({
+        severity: "error",
+        summary: "Thất bại",
+        detail: "Vui lòng điền đủ thông tin",
+        life: 1500,
+      });
+
+      return
+    }
     this.submitted = true;
     // call update info
     if (this.gift._id) {
@@ -201,6 +211,7 @@ export class AdminGiftComponent implements OnInit, OnChanges {
           },
         });
     } else {
+
       this.giftService
         .createNewGift(
           this.getRandomGiftImg(),
