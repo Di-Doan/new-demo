@@ -7,9 +7,9 @@
 >
 
   <div class="modal-content" (click)="$event.stopPropagation()">
-    <div class="modal-header">
-      <img class="gift-detail-img col-4" [src]="giftDetail.img" />
-      <div class="col-8 ps-4 pe-3 pt-3 row">
+    <div class="modal-header row d-flex align-items-center">
+      <img class="gift-detail-img col-md-4 col-12 mx-auto" [src]="giftDetail.img" />
+      <div class="col-md-8 col-12 ps-4 pe-3 pt-3 row">
         <h4 class="text-success col-12 align-self-start">
           {{ giftDetail.name ? giftDetail.name : "Name" }}
         </h4>

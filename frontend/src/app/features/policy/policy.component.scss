@@ -1,3 +1,7 @@
 .policy-content {
     margin: 40px 70px 70px;
+
+    @media (max-width: 576px){
+        margin: 20px 30px 35px;
+    }
 }

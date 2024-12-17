@@ -58,12 +58,11 @@
       <p-button
         label="Tạo mới"
         icon="pi pi-plus"
-        class="mr-2"
         (click)="openNew()"
       />
       <p-button
         severity="danger"
-        label="Xoá quà"
+        label="Xoá"
         icon="pi pi-trash"
         outlined
         (click)="deleteSelectedGifts()"
@@ -87,7 +86,7 @@
   >
     <ng-template pTemplate="caption">
       <div
-        class="flex align-items-center justify-content-between"
+      class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
         style="display: flex; align-items: center"
       >
         <h5 class="m-0">Quản Lý Quà Tặng</h5>
@@ -112,7 +111,7 @@
         <th style="width: 5rem">
           <p-tableHeaderCheckbox />
         </th>
-        <th pSortableColumn="name" style="min-width: 5rem">
+        <th pSortableColumn="name" style="min-width: 9rem">
           Tên quà
           <p-sortIcon field="name" />
         </th>

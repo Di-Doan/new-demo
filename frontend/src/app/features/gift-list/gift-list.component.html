@@ -1,7 +1,7 @@
 <div class="gift-list">
   <div class="nav-textarea">
-    <div class="category-checkbox d-flex">
-      <span class="checkbox-group me-4 p-2">
+    <div class="category-checkbox d-flex justify-content-center align-items-center">
+      <span class="checkbox-group me-md-4 p-md-2 p-2 d-flex">
         <input
           type="checkbox"
           [(ngModel)]="isHotFilter"
@@ -10,7 +10,7 @@
         />
         <label class="ms-2" for="hot-box">QUÀ HOT TRONG TUẦN</label>
       </span>
-      <span class="checkbox-group me-4 p-2">
+      <span class="checkbox-group me-md-4 p-md-2 px-2 d-flex">
         <input
           type="checkbox"
           [(ngModel)]="canExchangeFilter"
@@ -19,7 +19,7 @@
         />
         <label class="ms-2" for="can-exchange-box">QUÀ CÓ THỂ ĐỔI</label>
       </span>
-      <span class="checkbox-group me-4 p-2">
+      <span class="checkbox-group me-md-4 p-md-2 px-2 d-flex">
         <input
           type="checkbox"
           [(ngModel)]="aboutToExchangeFilter"
@@ -28,7 +28,7 @@
         />
         <label class="ms-2" for="about-to-exchange-box">QUÀ GẦN ĐỔI ĐƯỢC</label>
       </span>
-      <button class="btn-view-all text-light ms-auto p-2" (click)="filterAll()">
+      <button class="btn-view-all text-light ms-auto p-md-2 p-1" (click)="filterAll()">
         XEM TẤT CẢ
       </button>
     </div>
@@ -47,7 +47,7 @@
       <h5 class="text-center">KHÔNG CÓ MỤC ĐƯỢC CHỌN</h5>
     </div>
     <div *ngIf="showList.hot" class="category-list">
-      <div class="d-flex ms-3 me-5">
+      <div class="d-flex ms-md-3 me-md-5">
         <img
           src="../../../assets/img/hot.png"
           class="img-hot p-2 align-self-baseline"

@@ -1,5 +1,4 @@
 .contact {
-
   .contact-wrapper {
     display: flex;
     justify-content: center;
@@ -14,10 +13,8 @@
     padding: 50px 50px 20px;
     margin: 100px 270px;
 
-
     .contact-form {
       padding: 2% 30px;
-
     }
 
     input,
@@ -29,5 +26,12 @@
       align-self: center;
       background-color: #e6bd5e;
     }
+  }
+}
+
+@media (max-width: 576px) {
+  .contact .contact-form-wrapper {
+    padding: 50px 10px 0px;
+    margin: 100px 10px;
   }
 }

@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   initResetPasswordForm() {
     this.resetPasswordForm = this.formBuilder.group(
       {
-        userEmail: ["", Validators.required],
+        userEmail: [window.localStorage.getItem("userEmail"), Validators.required],
         otp: [Number, Validators.required],
         password: ["", Validators.required],
         confirmPassword: ["", Validators.required],
@@ -93,9 +93,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       // If password and confirmPassword don't match
       if (passwordControl?.value !== confirmPasswordControl?.value) {
         confirmPasswordControl?.setErrors({ passwordsMismatch: true });
-        this.forgetPasswordError = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+        this.forgetPasswordError = "Mật khẩu không khớp. Vui lòng thử lại.";
       } else {
         confirmPasswordControl?.setErrors(null); // Clear errors
+        this.forgetPasswordError = ''
       }
 
       return null;
@@ -151,11 +152,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   submitForgetPassword() {
+
     if (this.forgetPasswordForm.invalid) {
       this.forgetPasswordForm.markAllAsTouched();
       this.forgetPasswordError = "Đã có lỗi xảy ra. Vui lòng thử lại.";
       return;
     }
+
+    window.localStorage.setItem('userEmail', String(this.forgetPasswordForm.value))
 
     this.authService
       .forgetPassword(String(this.forgetPasswordForm.value))
@@ -195,6 +199,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.forgotAlertMessage = "Đổi mật khẩu thành công!";
+          window.localStorage.removeItem('userEmail')
           this.showForgotAlert = true;
           setTimeout(() => (this.showForgotAlert = false), 2000);
           this.forgetPasswordError = "";

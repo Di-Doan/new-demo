@@ -25,7 +25,6 @@
     position: absolute;
     top: 14%;
     left: 87%;
-
   }
 }
 
@@ -45,6 +44,11 @@
   border-radius: 0;
   border-color: #fbd940;
   border-width: 2px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    padding: 0 10px;
+  }
 }
 
 .modal-body {
@@ -53,7 +57,7 @@
     justify-content: center;
 
     h4 {
-      color: #008b43;;
+      color: #008b43;
     }
 
     .login-img {
@@ -61,16 +65,17 @@
       width: auto;
       align-self: center;
     }
-
   }
-
-
 
   .login-form-wrapper {
     padding: 30px 60px;
     .login-btn {
       background-color: #e39717;
       border-radius: 0;
+    }
+
+    @media (max-width: 576px) {
+      padding: 30px 0px;
     }
   }
 
@@ -100,7 +105,7 @@
     border-bottom: none !important;
   }
   .nav-link.active {
-    color: #e39717!important;  /* Color of the active link (e.g., blue) */
+    color: #e39717 !important; /* Color of the active link (e.g., blue) */
     position: relative;
   }
   .nav-link.active::after {
@@ -114,4 +119,13 @@
     background-color: #e39717; /* Color of the underline */
   }
 
+  @media (max-width: 576px) {
+    .nav {
+      gap: 80px;
+
+      .nav-link.active::after {
+        width: 150%;
+      }
+    }
+  }
 }

@@ -18,7 +18,7 @@
   .carousel-text {
     position: absolute;
     right: 100px;
-    top: 200px;
+    top: 150px;
     text-align: center;
     h1 {
       span:nth-child(1) {
@@ -99,4 +99,71 @@
   .display-username {
     color: #e39717;
   }
+
+  @media (max-width: 576px) {
+    .header-logo {
+      position: absolute;
+      z-index: 999;
+      top: 15px;
+      left: 20px;
+      img {
+        height: 20px;
+      }
+    }
+
+    .nav {
+      .nav-link {
+        font-size: 12px;
+        padding: 4px 8px ;
+      }
+  
+      .header-login-img {
+        height: 20px;
+        width: auto;
+        align-self: center;
+        pointer-events: none;
+        padding: 0 10px;
+      }
+  
+      .header-not-login-img {
+        height: 15px;
+        width: auto;
+        align-self: center;
+        pointer-events: none;
+        padding: 0 10px;
+      }
+    }
+  
+    .carousel-text {
+      position: absolute;
+      right: 15px;
+      top: 57px;
+  
+      
+      h1 {
+        font-size: 17px;
+        margin-bottom: 5px;
+  
+        span:nth-child(2) {
+          margin-left: 5px;
+        }
+      }
+  
+      h3 {
+        font-size: 12px;
+        margin-bottom: 5px;
+  
+        span:nth-child(even) {
+          margin: 0 3px;
+          color: #e39717;
+        }
+      }
+  
+      h4 {
+        font-size: 9px;
+      }
+    }
+  }
+
+  
 }

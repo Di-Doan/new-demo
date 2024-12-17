@@ -13,6 +13,13 @@
     // padding: 5px 0;
     margin: 0;
   }
+
+  @media (max-width: 576px) {
+    padding: 7px 15px;
+    h3 {
+      font-size: 17px;
+    }
+  }
 }
 
 .p-carousel-header {
@@ -28,12 +35,14 @@
 
 .carousel-indicators {
   position: absolute;
-  left: 63%;
+  left: 63% !important;
   z-index: 999 !important;
   .active {
     background-color: #e39717 !important;
   }
-
+  @media (max-width: 576px) {
+    left: 52% !important;
+  }
 }
 
 .carousel-indicators button  {
@@ -42,6 +51,11 @@
   height: 15px !important;
   border-radius: 50% !important;
   border-width: 2px !important;
+
+  @media (max-width: 576px) {
+    width: 10px !important;
+  height: 10px !important;
+  }
 }
 
 .carousel-indicator-active {
@@ -49,7 +63,7 @@
 }
 
 .carousel-control {
-  display: none;
+  display: none !important;
 }
 
 .p-carousel-item {
@@ -67,4 +81,8 @@
 .p-carousel-item-active {
   opacity: 1 !important;
   pointer-events: visible !important;
+}
+
+@media (max-width: 576px) {
+  
 }

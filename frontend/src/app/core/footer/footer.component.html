@@ -1,14 +1,16 @@
 <p-toast />
 <div class="footer">
-  <div class="footer-top row text-center pe-4">
-    <div class="col-5 offset-7 align-self-center text-box px-4">
-      <span class="text-light fs-4">Ngân Hàng Phương Đông</span>
-      <p class="text-light">
-        Orient Commercial Joint Stock Bank (OCB) được thành lập từ ngày
-        10/06/1996, qua 23 năm hoạt động và phát triển, OCB luôn duy trì phương
-        châm: khách hàng là trọng tâm, nghiên cứu và phát triển những sản phẩm
-        dịch vụ tài chính phù hợp.
-      </p>
+  <div class="footer-top row text-center pe-md-4">
+    <div class="col-md-5 offset-md-7 align-self-center text-box px-md-4">
+      <div class="text-box-wrapper">
+        <span class="text-light fs-4">Ngân Hàng Phương Đông</span>
+        <p class="text-light">
+          Orient Commercial Joint Stock Bank (OCB) được thành lập từ ngày
+          10/06/1996, qua 23 năm hoạt động và phát triển, OCB luôn duy trì
+          phương châm: khách hàng là trọng tâm, nghiên cứu và phát triển những
+          sản phẩm dịch vụ tài chính phù hợp.
+        </p>
+      </div>
     </div>
   </div>
   <div class="footer-mid d-flex flex-row py-2 px-5">
@@ -32,7 +34,7 @@
       ><i class="fa fa-youtube-play"></i
     ></a>
   </div>
-  <div class="footer-bot row py-3 px-5">
+  <div class="footer-bot row py-3 px-md-5 px-3">
     <div class="col-md-4 col-12 me-2 pe-3 pb-4">
       <p class="text-light fs-5 me-2">Khối Công Nghệ - NH TMCP Phương Đông</p>
       <p class="text-light fs-6 mb-0">
@@ -48,7 +50,7 @@
       <p class="text-light fs-6 mb-0">Fax: (84-28) 38 220 963</p>
     </div>
     <div class="col-md-4 col-12 row pe-3 pb-4">
-      <p class="col-12 text-light fs-5 me-2">Đăng ký nhận thông tin từ OCB</p>
+      <p class="col-12 text-light fs-5">Đăng ký nhận thông tin từ OCB</p>
       <form (ngSubmit)="submitForm()" class="form-inline my-lg-0">
         <div class="input-group">
           <input
@@ -62,10 +64,8 @@
             [pattern]="emailPattern"
             #emailInput="ngModel"
           />
-          <div class="my-2 my-sm-0">
-            <button class="btn text-light bg-warning" type="submit">
-              Gửi
-            </button>
+          <div class="my-0">
+            <button class="btn text-light bg-warning" type="submit">Gửi</button>
           </div>
         </div>
       </form>
@@ -77,8 +77,12 @@
         *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
         class="error"
       >
-        <div class="text-light" *ngIf="emailInput.errors?.['required']">Email là bắt buộc</div>
-        <div class="text-light" *ngIf="emailInput.errors?.['pattern']">Email không hợp lệ</div>
+        <div class="text-light" *ngIf="emailInput.errors?.['required']">
+          Email là bắt buộc
+        </div>
+        <div class="text-light" *ngIf="emailInput.errors?.['pattern']">
+          Email không hợp lệ
+        </div>
       </div>
     </div>
   </div>

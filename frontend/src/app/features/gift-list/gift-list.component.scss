@@ -42,4 +42,23 @@
     margin: 200px 0;
   }
 
+  @media (max-width: 576px) {
+    .nav-textarea .category-checkbox {
+      .checkbox-group {
+        label {
+          font-size: 10px;
+          
+        }
+
+        padding: 0;
+      } 
+
+      button {
+        font-size: 10px;
+        padding: 0;
+        width: 90px;
+      }
+    }
+  }
+
 }

@@ -7,7 +7,7 @@
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="modal-body row">
       <div
-        class="col-4 login-img-wrapper p-3 d-flex flex-column justify-content-center align-items-center gap-3 vertical-line"
+        class="col-4 login-img-wrapper p-3 d-none d-md-flex flex-column justify-content-center align-items-center gap-3 vertical-line"
       >
         <h4 class="text-center">ĐĂNG NHẬP</h4>
         <P class="text-center"
@@ -16,7 +16,7 @@
         >
         <img class="login-img" src="../../../assets/img/img-login.png" />
       </div>
-      <div class="col-8 d-flex flex-column">
+      <div class="col-md-8 col-12 d-flex flex-column px-0">
         <div class="modal-header d-flex justify-content-center">
           <ul class="nav nav-underline">
             <li class="nav-item">
@@ -38,7 +38,7 @@
           </ul>
         </div>
         <div
-          class="login-form-wrapper d-flex flex-column justify-content-center gap-3"
+          class="login-form-wrapper d-flex flex-column justify-content-center gap-md-3"
         >
           <div *ngIf="loginPage; else forgetPassword">
             <div *ngIf="showLoginAlert">
@@ -116,12 +116,12 @@
         />
       </div>
       <div class="d-flex align-items-center gap-2 mb-3">
-        <label class="mb-0" style="width: 40%" for="userotp">OTP</label>
+        <label class="mb-0" style="width: 42%" for="userotp">OTP</label>
         <input
           class="form-control"
           id="userotp"
           name="userotp"
-          placeholder="Check email để nhận otp"
+          placeholder="Kiểm tra email để nhận otp"
           type="number"
           formControlName="otp"
         />
