@@ -71,6 +71,10 @@
   flex: 0 0 auto !important;
   overflow: hidden !important;
 
+  @media (max-width: 576px) {
+    width: calc(100% / 1.5) !important;
+}
+
 }
 
 .p-carousel-item {
@@ -83,6 +87,4 @@
   pointer-events: visible !important;
 }
 
-@media (max-width: 576px) {
-  
-}
+

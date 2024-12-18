@@ -16,7 +16,7 @@ export class AuthService {
   private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>({
     email: "",
     point: null,
-    role: "user",
+    role: "",
   });
 
   user$ = this.userSubject.asObservable();

@@ -132,4 +132,14 @@
       }
     }
   }
+
+  @media (max-width: 380px) {
+    .nav {
+      gap: 60px;
+
+      .nav-link.active::after {
+        width: 120%;
+      }
+    }
+  }
 }

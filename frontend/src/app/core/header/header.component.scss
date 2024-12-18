@@ -18,8 +18,8 @@
   position: relative;
   .carousel-text {
     position: absolute;
-    right: 100px;
-    top: 150px;
+    right: 60px;
+    top: 250px;
     text-align: center;
     h1 {
       span:nth-child(1) {
@@ -62,7 +62,7 @@
       padding-bottom: 0;
       cursor: pointer;
       img {
-        height: 75px;
+        height: 55px;
       }
 
       .header-login-img {
@@ -96,6 +96,7 @@
 
   .display-username {
     color: #e39717;
+    padding-right: 20px;
   }
 
   @media (max-width: 576px) {
@@ -124,12 +125,16 @@
       .navbar-brand {
         margin: 0 ;
         min-width: 0 !important;
+        max-width: 80px;
         img {
           height: 25px;
+          
         }
       }
 
-      
+      .display-username {
+        padding-right: 0;
+      }
     }
 
     .carousel-text {

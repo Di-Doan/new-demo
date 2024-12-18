@@ -161,6 +161,8 @@ export class AdminUserComponent implements OnInit, OnChanges {
   }
 
   saveUser() {
+    this.submitted = true;
+
     if (Object.values(this.user).some((value) => value === '')) {
       this.messageService.add({
         severity: "error",
@@ -170,7 +172,6 @@ export class AdminUserComponent implements OnInit, OnChanges {
       });
       return
     }
-    this.submitted = true;
     if (this.user._id) {
       this.authService
         .updateUserInfo(this.user._id, this.user)

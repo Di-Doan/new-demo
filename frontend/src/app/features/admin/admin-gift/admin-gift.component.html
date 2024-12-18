@@ -205,9 +205,12 @@
         </small>
       </div>
 
-      <div class="field col">
+      <div class="field">
         <label for="point" class="my-2" >Điểm</label>
-        <p-inputNumber id="point" [(ngModel)]="gift.point" />
+        <p-inputNumber id="point" [(ngModel)]="gift.point" required/>
+        <small class="p-error" *ngIf="submitted && !gift.point">
+          Điểm đổi quà không được để trống.
+        </small>
       </div>
 
       <div class="field col">

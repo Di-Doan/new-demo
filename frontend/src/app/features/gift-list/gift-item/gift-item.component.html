@@ -1,12 +1,11 @@
 <div class="gift-item mb-3">
   <p-carousel
-    [numVisible]="4.5"
-    [numScroll]="4"
+    [numVisible]="mobileViewport ? 1.5 : 4.5"
+    [numScroll]="mobileViewport ? 1 : 4"
     [circular]="false"
     [value]="giftList"
     [showIndicators]="false"
     (onPage)="pageChange($event)"
-
   >
     <ng-template pTemplate="header">
       <div class="d-flex" [class.justify-content-end]="oddList">
@@ -21,13 +20,11 @@
         class="border-1 surface-border m-2 p-3 gift-item-individual clickable-div"
         (click)="openGiftDetail(gift)"
       >
-        <div class="mb-3">
-          <div class="relative mx-auto">
-            <img
-              [src]="gift.img"
-              class="gift-item-img"
-            />
-          </div>
+        <div class="mb-3" style="display: flex; justify-content: center;">
+          <img
+            [src]="gift.img"
+            class="gift-item-img mx-auto border border-blue-500"
+          />
         </div>
         <div class="d-flex justify-content-between align-items-center">
           <div class="mt-0 font-semibold text-xl">{{ gift.name }}</div>
@@ -43,5 +40,8 @@
       </div>
     </ng-template>
   </p-carousel>
-  <app-gift-detail #giftDetailModal [giftDetail]="selectedGift"></app-gift-detail>
+  <app-gift-detail
+    #giftDetailModal
+    [giftDetail]="selectedGift"
+  ></app-gift-detail>
 </div>

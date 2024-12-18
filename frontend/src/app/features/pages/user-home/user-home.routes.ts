@@ -18,5 +18,12 @@ export const userRoutes: Routes = [
         (m) => m.GiftListComponent
       ),
   },
+  {
+    path: "user",
+    loadComponent: () =>
+      import("../../user-gift/user-gift.component").then(
+        (m) => m.UserGiftComponent
+      ),
+  },
   { path: "", redirectTo: "/gift-list", pathMatch: "full" }
 ];
