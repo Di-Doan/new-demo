@@ -7,7 +7,6 @@ import { NgbCarouselConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PrimeNGConfig } from 'primeng/api';
-import { TokenInterceptor } from './shared/interceptor/token.interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations' 
 
 export const appConfig: ApplicationConfig = {
@@ -22,12 +21,6 @@ export const appConfig: ApplicationConfig = {
       CommonModule,
       PrimeNGConfig, 
     ),
-    provideHttpClient(withInterceptorsFromDi()),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    },
     provideAnimations()
   ],
 };

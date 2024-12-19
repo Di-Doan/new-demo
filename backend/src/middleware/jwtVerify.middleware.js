@@ -17,8 +17,9 @@ const verifyToken = async (req, res, next) => {
       // Attach the decoded payload to req.user (or req.body)
 
       req.user = {
-        userEmail: decoded.email, // Assuming the token has `useremail`
-        role: decoded.role, // Assuming the token has `role`
+        userId: decoded.userId, 
+        role: decoded.role, 
+        point: decoded.point
       };
     }
 
@@ -45,7 +46,24 @@ const verifyAdmin = async (req, res, next) => {
   }
 };
 
+const verifyUser = async (req, res, next) => {
+  let role = "";
+  if (req.user) {
+    role = req.user.role;
+  }
+
+  if (role == "admin" || role == "user") {
+    next();
+  } else {
+    res.status(400).json({
+      errCode: Error.RoleInvalid.errCode,
+      errMessage: Error.RoleInvalid.errMessage,
+    });
+  }
+};
+
 export default {
   verifyToken,
   verifyAdmin,
+  verifyUser
 };

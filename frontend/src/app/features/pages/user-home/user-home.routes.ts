@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { userGuard } from "../../../shared/guard/user.guard";
 
 export const userRoutes: Routes = [
   {
@@ -24,6 +25,7 @@ export const userRoutes: Routes = [
       import("../../user-gift/user-gift.component").then(
         (m) => m.UserGiftComponent
       ),
+      canActivate: [userGuard]
   },
   { path: "", redirectTo: "/gift-list", pathMatch: "full" }
 ];

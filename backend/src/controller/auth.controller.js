@@ -97,8 +97,9 @@ const signin = catchAsync(async (req, res) => {
 
   const token = jwt.sign(
     {
-      email: user.email,
+      userId: user._id,
       role: userRole.role,
+      point: user.point
     },
     process.env.JWT_SECRET, // Secret key for signing the token
     { expiresIn: process.env.TOKEN_EXPIRED }
@@ -150,7 +151,7 @@ const resetPassword = catchAsync(async (req, res) => {
 });
 
 const adminAuth = catchAsync(async (req, res) => {
-  const { userEmail, role } = req.user;
+  const { role } = req.user;
   if (role == "admin") {
     res.status(200).json(_newSuccess());
   } else {

@@ -7,7 +7,7 @@
       <a class="nav-link" aria-current="page" routerLink="/gift-list" routerLinkActive="active-link">Trang chủ</a>
       <a class="nav-link" routerLink="/policy" routerLinkActive="active-link">Điều khoản</a>
       <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">Liên hệ</a>
-      <a class="nav-link"><img *ngIf="user.name; else notLoggedInAva" class="header-login-img" src="../../../assets/img/loggedin.png" /></a>
+      <a class="nav-link" routerLink="/user"><img *ngIf="user.name; else notLoggedInAva" class="header-login-img" src="../../../assets/img/loggedin.png" /></a>
       <a *ngIf="user.name; else notLoggedIn" class="nav-link" (click)="logout() " routerLinkActive="active-link"
         >Đăng xuất</a
       >

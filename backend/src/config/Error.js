@@ -77,6 +77,26 @@ const Error = {
     errCode: 117,
     errMessage: "Không được cấp quyền",
   },
+  GiftListEmpty: {
+    errCode: 118,
+    errMessage: "Không có mục nào được chọn",
+  },
+  GiftNotFound: {
+    errCode: 119,
+    errMessage: "Không tìm thấy thông tin quà tặng",
+  },
+  ExchangeGiftError: {
+    errCode: 120,
+    errMessage: "Đã có lỗi xảy ra khi đổi quà",
+  },
+  AlreadyExchangeGift: {
+    errCode: 121,
+    errMessage: "Quà đã được đổi",
+  },
+  InsufficientPoint: {
+    errCode: 122,
+    errMessage: "Điểm hiện tại không đủ để đổi quà tặng này",
+  },
 
   // 200++ Error from Db
   CastError: {

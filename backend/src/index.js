@@ -6,6 +6,7 @@ import UserRouter from "./router/user.router.js";
 import GiftRouter from "./router/gift.router.js";
 import AuthRouter from "./router/auth.router.js";
 import ContactRouter from "./router/contact.router.js"
+import UserGiftRouter from "./router/userGift.router.js"
 import "./config/mongo.config.js";
 
 // Import 3rd party libraries
@@ -40,6 +41,7 @@ app.use("/api/user", UserRouter);
 app.use("/api/gift", GiftRouter);
 app.use("/api/auth", AuthRouter);
 app.use("/api/contact", ContactRouter)
+app.use("/api/userGift", UserGiftRouter)
 app.use("/api/*", (req, res) => res.status(404).json({ message: "API not found" }));
 
 app.listen(port, () => {

@@ -1,33 +1,47 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, Input } from '@angular/core';
-import { GiftModel } from '../../../shared/models';
-import { PointPipe } from '../../../shared/pipes/point.pipe';
-import { AuthService } from '../../../core/service/auth.service';
-import { MessageService } from "primeng/api";
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { GiftModel } from "../../../shared/models";
+import { PointPipe } from "../../../shared/pipes/point.pipe";
+import { AuthService } from "../../../core/service/auth.service";
+import { MessageService, ConfirmationService } from "primeng/api";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ToastModule } from "primeng/toast";
+import { Subject, takeUntil } from "rxjs";
+import { UserGiftService } from "../../../core/service/userGift.service";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-  selector: 'app-gift-detail',
+  selector: "app-gift-detail",
   standalone: true,
-  templateUrl: './gift-detail.component.html',
-  styleUrls: ['./gift-detail.component.scss'],
-  imports: [CommonModule, PointPipe, ToastModule],
-  providers: [MessageService]
+  templateUrl: "./gift-detail.component.html",
+  styleUrls: ["./gift-detail.component.scss"],
+  imports: [CommonModule, PointPipe, ToastModule, ConfirmDialogModule],
+  providers: [MessageService, ConfirmationService],
 })
-export class GiftDetailComponent implements OnInit {
+export class GiftDetailComponent implements OnInit, OnDestroy {
   @Input() giftDetail!: GiftModel;
-  user = {name: ''};
+  user = { name: "" };
   visible = false;
-  alertVisible = false
+  alertVisible = false;
 
-  constructor(private authService: AuthService, private messageService: MessageService) {}
+  destroyed$ = new Subject<void>();
+
+  constructor(
+    private authService: AuthService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService,
+    private userGiftService: UserGiftService
+  ) {}
 
   ngOnInit() {
-    this.authService.user$.subscribe(
-      (value) => {
-        this.user.name = value.name
-      }
-    )
+    this.authService.user$.subscribe((value) => {
+      this.user.name = value.name;
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   open() {
@@ -38,15 +52,35 @@ export class GiftDetailComponent implements OnInit {
     this.visible = false;
   }
 
-  openAlert() {
-    this.close()
-    this.messageService.add({
-      severity: "info",
-      summary: "Lưu ý",
-      detail: "Đây là chức năng demo. Hiện không hỗ trợ đổi quà.",
-      life: 3000,
+  exchangeGift() {
+    this.confirmationService.confirm({
+      message: "Xác nhận đổi quà tặng?",
+      header: "Xác nhận",
+      icon: "pi pi-exclamation-triangle",
+      accept: () => {
+        this.userGiftService
+          .exchangeGift(this.giftDetail._id)
+          .pipe(takeUntil(this.destroyed$))
+          .subscribe({
+            next: (res) => {
+              this.close();
+              this.messageService.add({
+                severity: "success",
+                summary: "Thành công",
+                detail: "Đổi quà thành công",
+                life: 3000,
+              });
+            },
+            error: (error: HttpErrorResponse)=> {
+              this.messageService.add({
+                severity: "error",
+                summary: "Lỗi",
+                detail: error.error.errMessage,
+                life: 3000,
+              });
+            }
+          });
+      },
     });
   }
-
-
 }

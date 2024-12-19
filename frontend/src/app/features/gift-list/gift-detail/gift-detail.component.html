@@ -5,10 +5,12 @@
   *ngIf="visible"
   (click)="close()"
 >
-
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="modal-header row d-flex align-items-center">
-      <img class="gift-detail-img col-md-4 col-12 mx-auto" [src]="giftDetail.img" />
+      <img
+        class="gift-detail-img col-md-4 col-12 mx-auto"
+        [src]="giftDetail.img"
+      />
       <div class="col-md-8 col-12 ps-4 pe-3 pt-3 row">
         <h4 class="text-success col-12 align-self-start">
           {{ giftDetail.name ? giftDetail.name : "Name" }}
@@ -21,9 +23,7 @@
           >
         </h6>
         <h6 class="col-12 align-self-start">
-          <span class="text-warning"
-            >{{ giftDetail.point | point }} điểm</span
-          >
+          <span class="text-warning">{{ giftDetail.point | point }} điểm</span>
           để đổi voucher
         </h6>
         <ng-template #withoutUser>
@@ -37,7 +37,7 @@
         >
           <button
             class="btn gift-exchange-btn text-light"
-            (click)="openAlert()"
+            (click)="exchangeGift()"
           >
             ĐỔI QUÀ
           </button>
@@ -63,5 +63,6 @@
       </p>
     </div>
   </div>
-</div>
 
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>
