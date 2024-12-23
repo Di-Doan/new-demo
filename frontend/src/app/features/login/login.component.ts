@@ -137,8 +137,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.loginError = "";
           this.authService.setAuthState(this.TokenHelper.fetchUserDataCookie());
           setTimeout(() => {
-            window.location.reload();
-          }, 1010);
+            this.close();
+          }, 500);
         },
         error: (error: HttpErrorResponse) => {
           if (error.error && error.error.errMessage) {

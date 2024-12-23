@@ -13,9 +13,14 @@
       >
     </div>
     <div class="container-fluid">
-      <div class="w-100 d-flex justify-content-end">
+      <div class="w-100 d-flex justify-content-end align-items-center">
         <div *ngIf="user.name" class="display-username nav-link py-0">
           Xin chào <strong>{{ user.name }}</strong>
+          <span><img
+            class="ms-3 me-2"
+            src="../../../../assets/img/logo-mini.png"
+            style="width: 20px;"
+          />{{ user.point }}</span>
         </div>
       </div>
     </div>

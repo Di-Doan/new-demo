@@ -1,3 +1,14 @@
-<p>
-  user-gift works!
-</p>
+<div class="container py-5">
+  <p-toast />
+  <div class="row" *ngIf="emptyList == false; else noGiftOnDisplay">
+    @for (gift of giftList; track gift._id) {
+    <div class="col-md-4 mb-4">
+      <app-gift-card [giftDetail]="gift"></app-gift-card>
+    </div>
+    }
+  </div>
+</div>
+
+<ng-template #noGiftOnDisplay>
+  <h2>Không có quà tặng</h2>
+</ng-template>

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit, Input, OnDestroy } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from "@angular/core";
 import { GiftModel } from "../../../shared/models";
 import { PointPipe } from "../../../shared/pipes/point.pipe";
 import { AuthService } from "../../../core/service/auth.service";
@@ -9,6 +9,7 @@ import { ToastModule } from "primeng/toast";
 import { Subject, takeUntil } from "rxjs";
 import { UserGiftService } from "../../../core/service/userGift.service";
 import { HttpErrorResponse } from "@angular/common/http";
+import { TokenHelper } from "../../../shared/helper/token.helper";
 
 @Component({
   selector: "app-gift-detail",
@@ -18,9 +19,9 @@ import { HttpErrorResponse } from "@angular/common/http";
   imports: [CommonModule, PointPipe, ToastModule, ConfirmDialogModule],
   providers: [MessageService, ConfirmationService],
 })
-export class GiftDetailComponent implements OnInit, OnDestroy {
+export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
   @Input() giftDetail!: GiftModel;
-  user = { name: "" };
+  user = { name: "", point: '', role: "" };
   visible = false;
   alertVisible = false;
 
@@ -30,18 +31,29 @@ export class GiftDetailComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
-    private userGiftService: UserGiftService
+    private userGiftService: UserGiftService,
+    private tokenHelper: TokenHelper
   ) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.updateUserInfo();
+  }
+
   ngOnInit() {
-    this.authService.user$.subscribe((value) => {
-      this.user.name = value.name;
-    });
+    this.updateUserInfo();
   }
 
   ngOnDestroy() {
     this.destroyed$.next();
     this.destroyed$.complete();
+  }
+
+  updateUserInfo() {
+    this.authService.user$.subscribe((userData) => {
+      if (userData) {
+        this.user = userData;
+      }
+    });
   }
 
   open() {
@@ -64,6 +76,7 @@ export class GiftDetailComponent implements OnInit, OnDestroy {
           .subscribe({
             next: (res) => {
               this.close();
+              this.authService.updateUserData(this.tokenHelper.fetchUserDataCookie())
               this.messageService.add({
                 severity: "success",
                 summary: "Thành công",

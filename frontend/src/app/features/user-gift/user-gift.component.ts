@@ -3,18 +3,30 @@ import { UserGiftService } from "../../core/service/userGift.service";
 import { Subject, takeUntil } from "rxjs";
 import { GiftModel } from "../../shared/models";
 import { HttpErrorResponse } from "@angular/common/http";
+import { GiftCardComponent } from "./gift-card/gift-card.component";
+
+import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: "app-user-gift",
   standalone: true,
   templateUrl: "./user-gift.component.html",
   styleUrls: ["./user-gift.component.scss"],
+  imports: [GiftCardComponent, ToastModule, CommonModule],
+  providers: [MessageService],
 })
 export class UserGiftComponent implements OnInit, OnDestroy {
-  giftlist!: GiftModel[];
+  giftList!: GiftModel[];
   destroyed$ = new Subject<void>();
 
-  constructor(private userGiftService: UserGiftService) {}
+  emptyList = false;
+
+  constructor(
+    private userGiftService: UserGiftService,
+    private messageService: MessageService
+  ) {}
 
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -22,18 +34,28 @@ export class UserGiftComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getGiftList()
+    this.getGiftList();
   }
 
   getGiftList() {
-    this.userGiftService.getAllUserGift().pipe(takeUntil(this.destroyed$))
+    this.userGiftService
+      .getAllUserGift()
+      .pipe(takeUntil(this.destroyed$))
       .subscribe({
         next: (res) => {
-          console.log(res)
+          this.giftList = res.data.list;
         },
         error: (error: HttpErrorResponse) => {
-          console.log(error)
-        }
+          this.emptyList = true;
+          if (error.error.errCode != 118) {
+            this.messageService.add({
+              severity: "error",
+              summary: "Lỗi",
+              detail: error.error.errMessage,
+              life: 3000,
+            });
+          }
+        },
       });
   }
 }

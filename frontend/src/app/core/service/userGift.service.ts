@@ -11,7 +11,7 @@ export class UserGiftService {
 
   constructor(private http: HttpClient) {}
 
-  getAllUserGift() {
+  getAllUserGift(): Observable<any> {
     const url = `${this.apiUrl}/getAllUserGift`;
     return this.http.get(url, { withCredentials: true });
   }

@@ -43,8 +43,8 @@ import {
   ɵɵtemplate,
   ɵɵtext
 } from "./chunk-SF7Q7RME.js";
-import "./chunk-SDQMWN4J.js";
 import "./chunk-6UHCRHZ7.js";
+import "./chunk-SDQMWN4J.js";
 import "./chunk-DSK7TZNG.js";
 
 // node_modules/ngx-bootstrap/utils/fesm2022/ngx-bootstrap-utils.mjs

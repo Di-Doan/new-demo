@@ -15,7 +15,7 @@ export class AuthService {
   // Define subjects to manage authentication state
   private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>({
     email: "",
-    point: null,
+    point: 0,
     role: "",
   });
 
@@ -43,7 +43,7 @@ export class AuthService {
 
   logout() {
     this.TokenHelper.deleteCookie("user_data");
-    this.userSubject.next(null);
+    this.userSubject.next({name: "", point: '', role: "" });
     const url = `${this.apiUrl}/auth/logout`;
     return this.http.get(url, { withCredentials: true });
   }
@@ -110,4 +110,10 @@ export class AuthService {
     const url = `${this.apiUrl}/user/deleteMultipleUsers`
     return this.http.post(url, userList, { withCredentials: true })
   }
+
+  updateUserData(newData: any) {
+    this.userSubject.next(newData)
+  }
 }
+
+
