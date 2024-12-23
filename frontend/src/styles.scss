@@ -4,6 +4,53 @@
 @import "./assets/vendors/css/vendor.bundle.base.css";
 @import "./assets/vendors/mdi/css/materialdesignicons.min.css";
 
+@font-face {
+  font-family: "Quicksand";
+  src: url("./assets/font/Quicksand/Quicksand-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900;
+}
+
+.quicksand-bold {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+}
+
+.quicksand-bold-2 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.quicksand-normal {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 100;
+}
+
+.quicksand-normal-2 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.quicksand-normal-3 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.quicksand-italic {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.quicksand-italic-bold {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
 .nav-textarea {
   background-color: rgb(243, 241, 241);
   padding: 15px 60px;
@@ -12,6 +59,8 @@
     color: #008b43;
     // padding: 5px 0;
     margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
   }
 
   @media (max-width: 576px) {
@@ -45,7 +94,7 @@
   }
 }
 
-.carousel-indicators button  {
+.carousel-indicators button {
   background-color: rgba(129, 126, 126, 0.368) !important;
   width: 15px !important;
   height: 15px !important;
@@ -54,7 +103,7 @@
 
   @media (max-width: 576px) {
     width: 10px !important;
-  height: 10px !important;
+    height: 10px !important;
   }
 }
 
@@ -73,18 +122,15 @@
 
   @media (max-width: 576px) {
     width: calc(100% / 1.5) !important;
-}
-
+  }
 }
 
 .p-carousel-item {
-  pointer-events: none !important;  /* Disable clicking */
-  opacity: 0.5 !important;  /* Apply blur to the partially visible item */
+  pointer-events: none !important; /* Disable clicking */
+  opacity: 0.5 !important; /* Apply blur to the partially visible item */
 }
 
 .p-carousel-item-active {
   opacity: 1 !important;
   pointer-events: visible !important;
 }
-
-

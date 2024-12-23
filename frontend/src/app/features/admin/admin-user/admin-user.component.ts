@@ -67,7 +67,7 @@ export class AdminUserComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.fetchUserList()
+    this.fetchUserList();
   }
 
   fetchUserList() {
@@ -163,14 +163,14 @@ export class AdminUserComponent implements OnInit, OnChanges {
   saveUser() {
     this.submitted = true;
 
-    if (Object.values(this.user).some((value) => value === '')) {
+    if (Object.values(this.user).some((value) => value === "")) {
       this.messageService.add({
         severity: "error",
         summary: "Thất bại",
         detail: "Vui lòng điền đủ thông tin",
         life: 1500,
       });
-      return
+      return;
     }
     if (this.user._id) {
       this.authService
@@ -196,14 +196,7 @@ export class AdminUserComponent implements OnInit, OnChanges {
         });
     } else {
       this.authService
-        .createNewUser(
-          this.user.username,
-          this.user.name,
-          this.user.password,
-          this.user.email,
-          this.user.point,
-          this.user.role
-        )
+        .createNewUser(this.user)
         .pipe(takeUntil(this.destroyed$))
         .subscribe({
           next: () => {

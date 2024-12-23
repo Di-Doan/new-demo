@@ -1,26 +1,55 @@
 <div class="header">
-  <nav class="navbar ">
+  <nav class="navbar">
     <div class="container-fluid">
       <a class="navbar-brand">
         <img src="../../../assets/img/logo.png" />
       </a>
-      <a class="nav-link" aria-current="page" routerLink="/gift-list" routerLinkActive="active-link">Trang chủ</a>
-      <a class="nav-link" routerLink="/policy" routerLinkActive="active-link">Điều khoản</a>
-      <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">Liên hệ</a>
-      <a class="nav-link" routerLink="/user"><img *ngIf="user.name; else notLoggedInAva" class="header-login-img" src="../../../assets/img/loggedin.png" /></a>
-      <a *ngIf="user.name; else notLoggedIn" class="nav-link" (click)="logout() " routerLinkActive="active-link"
-        >Đăng xuất</a
+      <a
+        class="nav-link quicksand-normal"
+        aria-current="page"
+        routerLink="/gift-list"
+        routerLinkActive="active-link"
+        >Trang chủ</a
       >
+      <a
+        class="nav-link quicksand-normal"
+        routerLink="/policy"
+        routerLinkActive="active-link"
+        >Điều khoản</a
+      >
+      <a
+        class="nav-link quicksand-normal"
+        routerLink="/contact"
+        routerLinkActive="active-link"
+        >Liên hệ</a
+      >
+      <div class="nav-link d-flex align-items-center">
+        <a class="" routerLink="/user" *ngIf="user.name; else notLoggedInAva"
+          ><i class="mdi mdi-account" style="font-size: 35px; color: #e39717"></i
+        ></a>
+        <a
+          *ngIf="user.name; else notLoggedIn"
+          class="quicksand-normal"
+          style="margin-left: 0"
+          (click)="logout()"
+          routerLinkActive="active-link"
+          >Đăng xuất</a
+        >
+      </div>
     </div>
     <div class="container-fluid">
       <div class="w-100 d-flex justify-content-end align-items-center">
-        <div *ngIf="user.name" class="display-username nav-link py-0">
+        <div
+          *ngIf="user.name"
+          class="display-username nav-link py-0 quicksand-normal"
+        >
           Xin chào <strong>{{ user.name }}</strong>
-          <span><img
-            class="ms-3 me-2"
-            src="../../../../assets/img/logo-mini.png"
-            style="width: 20px;"
-          />{{ user.point }}</span>
+          <span
+            ><img
+              class="ms-4 me-2 header-point-logo"
+              src="../../../../assets/img/logo-mini.png"
+            />{{ user.point }}</span
+          >
         </div>
       </div>
     </div>
@@ -43,24 +72,30 @@
     }
   </carousel>
 
-
-
   <div class="carousel-text">
-    <h1><span>OCB</span><span>OMNI</span></h1>
-    <h3>
+    <h1 class="quicksand-bold"><span>OCB</span><span>OMNI</span></h1>
+    <h3 class="quicksand-bold">
       <span>Tốc độ</span><span class="o-span">o</span><span>An toàn</span
       ><span class="o-span">o</span><span>Tiện nghi</span>
     </h3>
-    <h4>Giao dịch online, hoàn toàn miễn phí</h4>
+    <h4 class="quicksand-bold">Giao dịch online, hoàn toàn miễn phí</h4>
   </div>
 </div>
 
 <app-login #loginModal></app-login>
 
 <ng-template #notLoggedInAva>
-  <img class="header-not-login-img" src="../../../assets/img/gray-ava.png" />
+  <a class=""
+    ><i class="mdi mdi-account" style="font-size: 35px; color: gray"></i
+  ></a>
 </ng-template>
 
 <ng-template #notLoggedIn>
-  <a class="nav-link" (click)="openLoginModal()" routerLinkActive="active-link">Đăng nhập</a>
+  <a
+    class="quicksand-normal"
+    (click)="openLoginModal()"
+    routerLinkActive="active-link"
+    style="margin-left: 0"
+    >Đăng nhập</a
+  >
 </ng-template>

@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from "../../environment";
 
 @Injectable({
@@ -8,6 +8,10 @@ import { environment } from "../../environment";
 })
 export class UserGiftService {
   apiUrl = `${environment.apiUrl}/userGift`;
+
+  private giftListSubject: BehaviorSubject<any> = new BehaviorSubject<any>([])
+
+  userGifList$ = this.giftListSubject.asObservable()
 
   constructor(private http: HttpClient) {}
 
@@ -24,5 +28,9 @@ export class UserGiftService {
   getUserGiftList(): Observable<any> {
     const url = `${this.apiUrl}/getUserGiftList`;
     return this.http.get(url, { withCredentials: true })
+  }
+
+  updateUserGiftList(newList: any) {
+    this.giftListSubject.next(newList)
   }
 }

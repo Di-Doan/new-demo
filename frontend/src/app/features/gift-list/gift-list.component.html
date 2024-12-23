@@ -1,7 +1,7 @@
 <div class="gift-list">
   <div class="nav-textarea">
-    <div class="category-checkbox d-flex justify-content-center align-items-center">
-      <span class="checkbox-group me-md-4 p-md-2 p-2 d-flex">
+    <div class="category-checkbox d-flex justify-content-center align-items-center quicksand-bold-2">
+      <span class="checkbox-group me-md-4 p-md-2 p-2 d-flex ">
         <input
           type="checkbox"
           [(ngModel)]="isHotFilter"
@@ -28,7 +28,7 @@
         />
         <label class="ms-2" for="about-to-exchange-box">QUÀ GẦN ĐỔI ĐƯỢC</label>
       </span>
-      <button class="btn-view-all text-light ms-auto p-md-2 p-1" (click)="filterAll()">
+      <button class="btn-view-all text-light ms-auto p-md-2 p-1 quicksand-normal-3" (click)="filterAll()">
         XEM TẤT CẢ
       </button>
     </div>
@@ -44,7 +44,7 @@
         showList.aboutToExchange == false
       "
     >
-      <h5 class="text-center">KHÔNG CÓ MỤC ĐƯỢC CHỌN</h5>
+      <h5 class="text-center quicksand-bold">KHÔNG CÓ MỤC ĐƯỢC CHỌN</h5>
     </div>
     <div *ngIf="showList.hot" class="category-list">
       <div class="d-flex ms-md-3 me-md-5">
@@ -52,11 +52,11 @@
           src="../../../assets/img/hot.png"
           class="img-hot p-2 align-self-baseline"
         />
-        <h4 class="p-2 align-self-center">QUÀ HOT TRONG TUẦN</h4>
+        <h4 class="p-2 align-self-center quicksand-bold">QUÀ HOT TRONG TUẦN</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
       <div *ngIf="noHotItemsFound; else hotList" class="no-filter-display">
-        <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
+        <h5 class="quicksand-bold">KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
       </div>
       <ng-template #hotList>
         <app-gift-item [oddList]="true" [giftList]="hotGift"></app-gift-item>
@@ -66,13 +66,13 @@
     <div *ngIf="showList.canExchange" class="category-list">
       <div class="d-flex mx-5">
         <hr class="flex-grow-1 align-self-center me-3" />
-        <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
+        <h4 class="p-2 align-self-center quicksand-bold">QUÀ CÓ THỂ ĐỔI</h4>
       </div>
       <div
         *ngIf="noCanExchangItemsFound || user.name == ''; else canExchangeList"
         class="no-filter-display"
       >
-        <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
+        <h5 class="quicksand-bold">KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
       </div>
       <ng-template #canExchangeList>
         <app-gift-item
@@ -84,14 +84,14 @@
 
     <div *ngIf="showList.aboutToExchange" class="category-list">
       <div class="d-flex mx-5">
-        <h4 class="p-2 align-self-center">QUÀ GẦN ĐỔI ĐƯỢC</h4>
+        <h4 class="p-2 align-self-center quicksand-bold">QUÀ GẦN ĐỔI ĐƯỢC</h4>
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
       <div
         *ngIf="noAboutToExchangItemsFound || user.name == ''; else aboutToExchangeList"
         class="no-filter-display"
       >
-        <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
+        <h5 class="quicksand-bold">KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
       </div>
       <ng-template #aboutToExchangeList>
         <app-gift-item

@@ -88,21 +88,11 @@ export class AuthService {
   }
 
   createNewUser(
-    username: string,
-    name: string,
-    password: string,
-    email: string,
-    point: number,
-    role: string
+    newUser: UserModel
   ): Observable<any> {
     const url = `${this.apiUrl}/user/createUser`;
     return this.http.post(url, {
-      username,
-      name,
-      password,
-      email,
-      point,
-      role,
+      newUser
     }, { withCredentials: true });
   }
 
@@ -114,6 +104,7 @@ export class AuthService {
   updateUserData(newData: any) {
     this.userSubject.next(newData)
   }
+
 }
 
 

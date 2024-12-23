@@ -15,6 +15,8 @@ import { Subject, Subscription, takeUntil } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { NgbAlertModule } from "@ng-bootstrap/ng-bootstrap";
 import { Router } from "@angular/router";
+import { UserGiftService } from "../../core/service/userGift.service";
+import { MessageService } from "primeng/api";
 
 @Component({
   selector: "app-login",
@@ -22,6 +24,7 @@ import { Router } from "@angular/router";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.scss"],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, NgbAlertModule],
+  providers: [MessageService],
 })
 export class LoginComponent implements OnInit, OnDestroy {
   visible = false;
@@ -50,6 +53,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private TokenHelper: TokenHelper,
+    private userGiftService: UserGiftService,
+    private messageService: MessageService,
   ) {}
 
   ngOnInit() {
@@ -222,6 +227,25 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.forgetPasswordError = "Đã có lỗi xảy ra";
           }
         },
+      });
+  }
+
+  fetchUserGiftList() {
+    this.userGiftService
+      .getUserGiftList()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe({
+        next: (res) => {
+          this.userGiftService.updateUserGiftList(res.data.userGiftList.giftList)  
+        },
+        error: (error: HttpErrorResponse) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Lỗi",
+            detail: error.error.errMessage,
+            life: 3000,
+          });
+        }
       });
   }
 }

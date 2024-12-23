@@ -3,8 +3,10 @@
   <div class="footer-top row text-center pe-md-4">
     <div class="col-md-5 offset-md-7 align-self-center text-box px-md-4">
       <div class="text-box-wrapper">
-        <span class="text-light fs-4">Ngân Hàng Phương Đông</span>
-        <p class="text-light">
+        <span class="text-light fs-4 quicksand-bold"
+          >Ngân Hàng Phương Đông</span
+        >
+        <p class="text-light quicksand-normal-2">
           Orient Commercial Joint Stock Bank (OCB) được thành lập từ ngày
           10/06/1996, qua 23 năm hoạt động và phát triển, OCB luôn duy trì
           phương châm: khách hàng là trọng tâm, nghiên cứu và phát triển những
@@ -14,46 +16,59 @@
     </div>
   </div>
   <div class="footer-mid d-flex flex-row py-2 px-5">
-    <span class="social text-light fs-6"> Theo dõi chúng tôi </span>
+    <span class="social text-light fs-6 quicksand-bold">
+      Theo dõi chúng tôi
+    </span>
     <a
       type="button"
       class="ms-3 facebook text-light d-flex justify-content-center align-items-center"
-      style="text-decoration: none;"
+      style="text-decoration: none"
       href="https://www.facebook.com/phuongdongbank/"
       ><i class="fa fa-facebook"></i
     ></a>
     <a
       type="button"
       class="ms-3 twitter text-light d-flex justify-content-center align-items-center"
-      style="text-decoration: none;"
+      style="text-decoration: none"
       href="https://twitter.com/ocbbank?lang=en"
       ><i class="fa fa-twitter"></i
     ></a>
     <a
       type="button"
       class="ms-3 youtube text-light d-flex justify-content-center align-items-center"
-      style="text-decoration: none;"
+      style="text-decoration: none"
       href="https://www.youtube.com/channel/UCUWi0zTAFa7WTIAQlf65M2w"
       ><i class="fa fa-youtube-play"></i
     ></a>
   </div>
   <div class="footer-bot row py-3 px-md-5 px-3">
     <div class="col-md-4 col-12 me-2 pe-3 pb-4">
-      <p class="text-light fs-5 me-2">Khối Công Nghệ - NH TMCP Phương Đông</p>
-      <p class="text-light fs-6 mb-0">
+      <p class="text-light fs-5 me-2 quicksand-bold">
+        Khối Công Nghệ - NH TMCP Phương Đông
+      </p>
+      <p class="text-light fs-6 mb-0 quicksand-normal-2">
         &copy; 2024 NH TMCP Phương Đông. Toàn quyền được giữ.
       </p>
     </div>
     <div class="col-md-4 col-12 mx-2 pe-3 pb-4">
-      <p class="text-light fs-5 me-2">Liên hệ</p>
-      <p class="text-light fs-6 mb-0">
+      <p class="text-light fs-5 me-2 quicksand-bold">Liên hệ</p>
+      <p class="text-light fs-6 mb-0 quicksand-normal-2">
         Hội sở chính: 41 & 45 Lê Duẫn, Quận 1, Tp. Hồ Chí Minh
       </p>
-      <p class="text-light fs-6 mb-0">Tel: (84-28) 38 220 960 - 38 220 961</p>
-      <p class="text-light fs-6 mb-0">Fax: (84-28) 38 220 963</p>
+      <p class="text-light fs-6 mb-0 quicksand-normal-2">
+        Tel: (84-28) 38 220 960 - 38 220 961
+      </p>
+      <p class="text-light fs-6 mb-0 quicksand-normal-2">
+        Fax: (84-28) 38 220 963
+      </p>
     </div>
     <div class="col-md-4 col-12 row pe-3 pb-4">
-      <p class="col-12 text-light fs-5">Đăng ký nhận thông tin từ OCB</p>
+      <p
+        class="col-12 text-light fs-5 quicksand-bold"
+        style="padding-right: 0; margin-bottom: 0"
+      >
+        Đăng ký nhận thông tin từ OCB
+      </p>
       <form (ngSubmit)="submitForm()" class="form-inline my-lg-0">
         <div class="input-group">
           <input
@@ -80,10 +95,16 @@
         *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
         class="error"
       >
-        <div class="text-light" *ngIf="emailInput.errors?.['required']">
+        <div
+          class="text-light quicksand-normal-2"
+          *ngIf="emailInput.errors?.['required']"
+        >
           Email là bắt buộc
         </div>
-        <div class="text-light" *ngIf="emailInput.errors?.['pattern']">
+        <div
+          class="text-light quicksand-normal-2"
+          *ngIf="emailInput.errors?.['pattern']"
+        >
           Email không hợp lệ
         </div>
       </div>

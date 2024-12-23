@@ -24,7 +24,7 @@ const {createRole: _createRole, updateRoleByEmail:_updateRoleByEmail, deleteRole
 
 // create new user
 const createUser = catchAsync(async (req, res) => {
-  const { username, name, password, email, point, role } = req.body;
+  const { username, name, password, email, point, role } = req.body.newUser;
   const existUser = await _getUserByEmai(email);
   if (existUser) {
     return res.status(400).json({

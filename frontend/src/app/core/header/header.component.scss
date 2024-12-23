@@ -56,10 +56,14 @@
   }
 
   nav {
+    .navbar-brand {
+      min-width: 450px;
+    }
     a {
       color: #008b43;
-      margin: 0 20px;
+      margin: 0 15px;
       padding-bottom: 0;
+      text-decoration: none;
       cursor: pointer;
       img {
         height: 55px;
@@ -84,10 +88,6 @@
       color: #e39717;
     }
 
-    a:nth-child(1) {
-      min-width: 500px;
-    }
-
     .nav-link {
       font-size: 20px;
   
@@ -97,6 +97,14 @@
   .display-username {
     color: #e39717;
     padding-right: 20px;
+
+    .header-point-logo {
+      width: 20px;
+
+      @media (max-width: 576px) {
+        width: 13px;
+      }
+    }
   }
 
   @media (max-width: 576px) {
@@ -143,7 +151,10 @@
       top: 97px;
 
       h1 {
+        font-family: 'QuicksandBold', sans-serif;
+        font-weight: 700;
         font-size: 17px;
+
         margin-bottom: 5px;
 
         span:nth-child(2) {
