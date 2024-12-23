@@ -27,25 +27,21 @@ const createUser = catchAsync(async (req, res) => {
   const { username, name, password, email, point, role } = req.body;
   const existUser = await _getUserByEmai(email);
   if (existUser) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.EmailDuplicate.errCode,
       errMessage: Error.EmailDuplicate.errMessage,
     });
-    throw _newError(
-      Error.EmailDuplicate.errCode,
-      Error.EmailDuplicate.errMessage
-    );
   }
 
   const result = await _createUser(username, name, password, email, point);
   await _createRole(email, role)
-  res.status(200).json(_newSuccess(result));
+  return res.status(200).json(_newSuccess(result));
 });
 
 // get all user
 const getAllUser = catchAsync(async (req, res) => {
   const result = await _getAllUser();
-  res.status(200).json(_newSuccess(result));
+  return res.status(200).json(_newSuccess(result));
 });
 
 // get user by id
@@ -53,13 +49,12 @@ const getUserById = catchAsync(async (req, res) => {
   const { userId } = req.query;
   const result = await _getUserById(userId);
   if (!result) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
       errMessage: Error.UserNotFound.errMessage,
     });
-    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
   }
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // get user by email
@@ -67,13 +62,12 @@ const getUserByEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
   const result = await _getUserByEmai(userEmail);
   if (!result) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
       errMessage: Error.UserNotFound.errMessage,
     });
-    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
   }
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 //update user by id
@@ -82,14 +76,13 @@ const updateUserById = catchAsync(async (req, res) => {
   const { role, password, ...rest} = updatedInfo
   const result = await _updateUserById(userId, rest);
   if (!result) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
       errMessage: Error.UserNotFound.errMessage,
     });
-    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
   }
   await _updateRoleByEmail({email: updatedInfo.email}, {email: updatedInfo.email, role: role})
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 //delete user by id
@@ -97,13 +90,12 @@ const deleteUserById = catchAsync(async (req, res) => {
   const { userId } = req.params;
   const result = await _deleteUserById(userId);
   if (!result) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
       errMessage: Error.UserNotFound.errMessage,
     });
-    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
   }
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // delete multiple user
@@ -114,7 +106,7 @@ const deleteMultipleUser = catchAsync(async (req, res) => {
     await _deleteUserById(user._id)
     await _deleteRoleByEmail(user.email)
   }
-  res.status(200).json(_newSuccess());
+  return res.status(200).json(_newSuccess());
 })
 
 

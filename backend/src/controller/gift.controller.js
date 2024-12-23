@@ -26,34 +26,34 @@ const createGift = catchAsync(async (req, res) => {
     point,
     isHot
   );
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // get all gift
 const getAllGift = catchAsync(async (req, res) => {
   const result = await _getAllGift();
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // get gift by id
 const getGiftById = catchAsync(async (req, res) => {
   const { giftId } = req.params;
   const result = await _getGiftById(giftId);
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // update gift
 const updateGiftById = catchAsync(async (req, res) => {
   const { giftId, updatedInfo } = req.body;
   const result = await _updateGiftById(giftId, updatedInfo);
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // delete gift by id
 const deleteGiftById = catchAsync(async (req, res) => {
   const {giftId} = req.params
   const result = await _deleteGiftById(giftId);
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // delete multiple gift
@@ -63,7 +63,7 @@ const deleteMultipleGift = catchAsync(async(req, res)=> {
   for (const gift of giftList) {
     await _deleteGiftById(gift._id)
   }
-  res.status(200).json(_newSuccess());
+  return res.status(200).json(_newSuccess());
 })
 
 export default {

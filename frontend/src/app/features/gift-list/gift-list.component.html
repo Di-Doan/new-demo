@@ -69,7 +69,7 @@
         <h4 class="p-2 align-self-center">QUÀ CÓ THỂ ĐỔI</h4>
       </div>
       <div
-        *ngIf="noCanExchangItemsFound; else canExchangeList"
+        *ngIf="noCanExchangItemsFound || user.name == ''; else canExchangeList"
         class="no-filter-display"
       >
         <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>
@@ -88,7 +88,7 @@
         <hr class="flex-grow-1 align-self-center ms-3" />
       </div>
       <div
-        *ngIf="noAboutToExchangItemsFound; else aboutToExchangeList"
+        *ngIf="noAboutToExchangItemsFound || user.name == ''; else aboutToExchangeList"
         class="no-filter-display"
       >
         <h5>KHÔNG CÓ MÓN QUÀ NÀO THEO ĐIỀU KIỆN TÌM KIẾM</h5>

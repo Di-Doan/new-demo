@@ -14,7 +14,7 @@ export class AuthService {
 
   // Define subjects to manage authentication state
   private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>({
-    email: "",
+    name: "",
     point: 0,
     role: "",
   });

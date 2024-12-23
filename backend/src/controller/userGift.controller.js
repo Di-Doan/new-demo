@@ -23,6 +23,20 @@ const { updateUserById: _updateUserById } = userService;
 const { updateInfoToken: _updateInfoToken, updateJwtToken: _updateJwtToken } =
   UpdateToken;
 
+const getUserGiftList = catchAsync(async (req, res)=> {
+  const { userId } = req.user;
+  const userGiftList = await _getAllUserGift(userId);
+  if (!userGiftList) {
+    await _createUserGiftList(userId);
+    return res.status(400).json({
+      errCode: Error.GiftListEmpty.errCode,
+      errMessage: Error.GiftListEmpty.errMessage,
+    });
+  }
+
+  return res.status(200).json(_newSuccess({userGiftList}));
+})
+
 const getAllUserGift = catchAsync(async (req, res) => {
   const { userId } = req.user;
   const userGiftList = await _getAllUserGift(userId);
@@ -55,7 +69,7 @@ const getAllUserGift = catchAsync(async (req, res) => {
     }
   }
 
-  res.status(200).json(_newSuccess({ list }));
+  return res.status(200).json(_newSuccess({ list }));
 });
 
 const exchangeGift = catchAsync(async (req, res) => {
@@ -118,4 +132,5 @@ const exchangeGift = catchAsync(async (req, res) => {
 export default {
   getAllUserGift,
   exchangeGift,
+  getUserGiftList
 };

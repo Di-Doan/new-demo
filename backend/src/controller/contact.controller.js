@@ -14,17 +14,13 @@ const createContact = catchAsync(async (req, res)=> {
     const { name, email, title, note} = req.body
     const contact = await _findContactByEmail(email)
     if (contact) {
-        res.status(400).json({
+        return res.status(400).json({
             errCode: Error.EmailDuplicate.errCode,
             errMessage: Error.EmailDuplicate.errMessage,
           });
-          throw _newError(
-            Error.EmailDuplicate.errCode,
-            Error.EmailDuplicate.errMessage
-          );
     }
     const result = await _createContact(name, email, title, note)
-    res.status(200).json(_newSuccess({ result }))
+    return res.status(200).json(_newSuccess({ result }))
 })
 
 export default {

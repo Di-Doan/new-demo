@@ -61,7 +61,8 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.user = { name: "", point: "", role: "" };
     this.authService.logout().subscribe({
       next: (res) => {
-        this.router.navigate(["/gift-list"]);
+        this.router.navigate(["/"]);
+        // window.location.reload()
       },
       error: (error: HttpErrorResponse) => {
         console.log(error);

@@ -1,5 +1,12 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit, Input, OnDestroy, OnChanges, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  OnChanges,
+  SimpleChanges,
+} from "@angular/core";
 import { GiftModel } from "../../../shared/models";
 import { PointPipe } from "../../../shared/pipes/point.pipe";
 import { AuthService } from "../../../core/service/auth.service";
@@ -21,9 +28,11 @@ import { TokenHelper } from "../../../shared/helper/token.helper";
 })
 export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
   @Input() giftDetail!: GiftModel;
-  user = { name: "", point: '', role: "" };
+  user = { name: "", point: "", role: "" };
   visible = false;
   alertVisible = false;
+
+  userGiftList!: String[];
 
   destroyed$ = new Subject<void>();
 
@@ -37,15 +46,36 @@ export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.updateUserInfo();
+    this.fetchUserGiftList()
   }
 
   ngOnInit() {
     this.updateUserInfo();
+    this.fetchUserGiftList()
   }
 
   ngOnDestroy() {
     this.destroyed$.next();
     this.destroyed$.complete();
+  }
+
+  fetchUserGiftList() {
+    this.userGiftService
+      .getUserGiftList()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe({
+        next: (res) => {
+          this.userGiftList = res.data.userGiftList.giftList
+        },
+        error: (error: HttpErrorResponse) => {
+          this.messageService.add({
+            severity: "error",
+            summary: "Lỗi",
+            detail: error.error.errMessage,
+            life: 3000,
+          });
+        }
+      });
   }
 
   updateUserInfo() {
@@ -64,6 +94,10 @@ export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
     this.visible = false;
   }
 
+  alreadyExchanged(item: string): boolean{
+    return this.userGiftList.includes(item)
+  }
+
   exchangeGift() {
     this.confirmationService.confirm({
       message: "Xác nhận đổi quà tặng?",
@@ -76,7 +110,10 @@ export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
           .subscribe({
             next: (res) => {
               this.close();
-              this.authService.updateUserData(this.tokenHelper.fetchUserDataCookie())
+              this.authService.updateUserData(
+                this.tokenHelper.fetchUserDataCookie()
+              );
+              this.fetchUserGiftList()
               this.messageService.add({
                 severity: "success",
                 summary: "Thành công",
@@ -84,14 +121,14 @@ export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
                 life: 3000,
               });
             },
-            error: (error: HttpErrorResponse)=> {
+            error: (error: HttpErrorResponse) => {
               this.messageService.add({
                 severity: "error",
                 summary: "Lỗi",
                 detail: error.error.errMessage,
                 life: 3000,
               });
-            }
+            },
           });
       },
     });

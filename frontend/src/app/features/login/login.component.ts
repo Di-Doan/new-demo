@@ -15,7 +15,6 @@ import { Subject, Subscription, takeUntil } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { NgbAlertModule } from "@ng-bootstrap/ng-bootstrap";
 import { Router } from "@angular/router";
-import { Token } from "@angular/compiler";
 
 @Component({
   selector: "app-login",
@@ -51,7 +50,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private TokenHelper: TokenHelper,
-    private router: Router
   ) {}
 
   ngOnInit() {
@@ -66,7 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   initForm() {
     this.loginForm = this.formBuilder.group({
-      userEmail: ["", Validators.required],
+      userEmail: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
     });
   }
@@ -83,6 +81,13 @@ export class LoginComponent implements OnInit, OnDestroy {
         validator: this.passwordsMatch("password", "confirmPassword"),
       }
     );
+  }
+
+  initForgetPasswordForm() {
+    this.forgetPasswordForm = new FormControl("", [
+      Validators.required,
+      Validators.email,
+    ]);
   }
 
   passwordsMatch(password: string, confirmPassword: string) {
@@ -109,14 +114,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   close() {
     this.visible = false;
+    this.initForm()
+    this.loginTab()
   }
 
   forgetPasswordTab() {
     this.loginPage = false;
+    this.initForm()
   }
 
   loginTab() {
     this.loginPage = true;
+    this.initResetPasswordForm()
+    this.initForgetPasswordForm()
   }
 
   submitForm() {

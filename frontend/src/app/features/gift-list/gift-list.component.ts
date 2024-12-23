@@ -13,6 +13,7 @@ import { GiftService } from "../../core/service/gift.service";
 import { GiftModel } from "../../shared/models";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
+import { AuthService } from '../../core/service/auth.service';
 
 @Component({
   selector: "app-gift-list",
@@ -43,27 +44,33 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     aboutToExchange: false,
   };
 
-  userPoint!: number;
+  user = { name: "", point: "", role: "" };
 
-  constructor(private httpService: GiftService, private TokenHelper: TokenHelper) {}
+  constructor(private httpService: GiftService, private TokenHelper: TokenHelper, private authService: AuthService) {}
   ngOnChanges(changes: SimpleChanges) {
-    if (this.TokenHelper.fetchUserDataCookie()) {
-      this.userPoint = this.TokenHelper.fetchUserDataCookie().point
-    }
+    this.updateUserInfo();
+
   }
   ngOnDestroy(): void {
     if (this.giftSubcription) {
       this.giftSubcription.unsubscribe();
     }
+    
   }
 
   ngOnInit() {
     this.fetchData();
 
-    if (this.TokenHelper.fetchUserDataCookie()) {
-      this.userPoint = this.TokenHelper.fetchUserDataCookie().point
-    }
+    this.updateUserInfo();
     
+  }
+
+  updateUserInfo() {
+    this.authService.user$.subscribe((userData) => {
+      if (userData) {
+        this.user = userData;
+      }
+    });
   }
 
   fetchData() {
@@ -106,7 +113,7 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
   filterCanExchangeData(change: boolean): void {
     this.showList.canExchange = change;
     this.canExchangeGift = this.giftData.filter((item) => {
-      const matchesCanExchange = item.point <= this.userPoint;
+      const matchesCanExchange = item.point <= Number(this.user.point);
       return matchesCanExchange;
     });
 
@@ -117,7 +124,7 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     this.showList.aboutToExchange = change;
     this.aboutToExchangeGift = this.giftData.filter((item) => {
       const matchesAboutToExchange =
-        this.userPoint < item.point && item.point <= this.userPoint * 1.2;
+      Number(this.user.point) < item.point && item.point <= Number(this.user.point) * 1.2;
       return matchesAboutToExchange;
     });
 

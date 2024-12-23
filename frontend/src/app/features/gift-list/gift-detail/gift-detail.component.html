@@ -26,22 +26,12 @@
           <span class="text-warning">{{ giftDetail.point | point }} điểm</span>
           để đổi voucher
         </h6>
-        <ng-template #withoutUser>
-          <h6 class="col-12 align-self-center text-danger text-center py-2">
-            Vui lòng <strong>đăng nhập</strong> để tiếp tục đổi quà
-          </h6>
-        </ng-template>
-        <div
-          class="col-12 d-flex justify-content-end"
-          *ngIf="user.name; else withoutUser"
+        <h6
+          *ngIf="user.name == ''; else withUserTemplate"
+          class="col-12 align-self-center text-danger text-center py-2"
         >
-          <button
-            class="btn gift-exchange-btn text-light"
-            (click)="exchangeGift()"
-          >
-            ĐỔI QUÀ
-          </button>
-        </div>
+          Vui lòng <strong>đăng nhập</strong> để tiếp tục đổi quà
+        </h6>
       </div>
     </div>
     <div class="modal-body">
@@ -52,17 +42,32 @@
         explorer of the truth, the master-builder of human happiness. No one
         rejects, dislikes, or avoids pleasure itself, because it is pleasure,
         but because those who do not know how to pursue pleasure rationally
-        encounter consequences that are extremely painful. Nor again is there
-        anyone who loves or pursues or desires to obtain pain of itself, because
-        it is pain, but because occasionally circumstances occur in which toil
-        and pain can procure him some great pleasure. To take a trivial example,
-        which of us ever undertakes laborious physical exercise, except to
-        obtain some advantage from it? But who has any right to find fault with
-        a man who chooses to enjoy a pleasure that has no annoying consequences,
-        or one who avoids a pain that produces no resultant pleasure?"
+        encounter consequences that are extremely painful.
       </p>
     </div>
   </div>
 
   <p-confirmDialog [style]="{ width: '450px' }" />
 </div>
+
+<ng-template #withUserTemplate>
+  <div
+    class="col-12 d-flex justify-content-end"
+    *ngIf="
+      alreadyExchanged(giftDetail._id) == false;
+      else alreadyExchangedTemplate
+    "
+  >
+    <button class="btn gift-exchange-btn text-light" (click)="exchangeGift()">
+      ĐỔI QUÀ
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #alreadyExchangedTemplate>
+  <h6
+    class="col-12 align-self-center text-danger text-center py-2"
+  >
+    Quà đã được đổi
+  </h6>
+</ng-template>

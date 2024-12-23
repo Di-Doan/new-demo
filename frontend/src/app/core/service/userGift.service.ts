@@ -20,4 +20,9 @@ export class UserGiftService {
     const url = `${this.apiUrl}/exchangeGift`;
     return this.http.post(url, {giftId: giftId}, { withCredentials: true });
   }
+
+  getUserGiftList(): Observable<any> {
+    const url = `${this.apiUrl}/getUserGiftList`;
+    return this.http.get(url, { withCredentials: true })
+  }
 }

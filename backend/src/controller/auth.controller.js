@@ -42,31 +42,29 @@ const resetPasswordEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
   const user = await _getUserByEmai(userEmail);
   if (!user) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
       errMessage: Error.UserNotFound.errMessage,
     });
-    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
   }
   const userOtp = await _getOtpByEmail(userEmail);
   if (userOtp) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.OtpExisted.errCode,
       errMessage: Error.OtpExisted.errMessage,
     });
-    throw _newError(Error.OtpExisted.errCode, Error.OtpExisted.errMessage);
   }
   const otp = _generateOTP();
   await _sendOTPEmail(user.email, user.name, otp);
   await _createOtp(user.email, otp);
-  res.status(200).json(_newSuccess({ userEmail: userEmail }));
+  return res.status(200).json(_newSuccess({ userEmail: userEmail }));
 });
 
 // send subscription email
 const sendSubscriptionEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
   const result = await _sendSubscriptionEmail(userEmail);
-  res.status(200).json(_newSuccess({ result }));
+  return res.status(200).json(_newSuccess({ result }));
 });
 
 // signin
@@ -74,24 +72,19 @@ const signin = catchAsync(async (req, res) => {
   const { userEmail, password } = req.body;
   const user = await _getUserByEmai(userEmail);
   if (!user) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
       errMessage: Error.UserNotFound.errMessage,
     });
-    throw _newError(Error.UserNotFound.errCode, Error.UserNotFound.errMessage);
   }
 
   const isMatch = await bcrypt.compare(password, user.hashedPassword);
 
   if (!isMatch) {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.PasswordInvalid.errCode,
       errMessage: Error.PasswordInvalid.errMessage,
     });
-    throw _newError(
-      Error.PasswordInvalid.errCode,
-      Error.PasswordInvalid.errMessage
-    );
   }
   const userRole = await _getRoleByEmail(userEmail);
 
@@ -122,13 +115,13 @@ const signin = catchAsync(async (req, res) => {
     }
   );
 
-  res.status(200).json(_newSuccess());
+  return res.status(200).json(_newSuccess());
 });
 
 // logout by deleting jwt cookie
 const logout = catchAsync(async (req, res) => {
   res.clearCookie("user_jwt", { httpOnly: true, sameSite: "Strict" });
-  res.status(200).json(_newSuccess());
+  return res.status(200).json(_newSuccess());
 });
 
 // reset password
@@ -140,26 +133,24 @@ const resetPassword = catchAsync(async (req, res) => {
     const hashedPassword = await hash(password, salt);
     await _updateUserByEmail(userEmail, { hashedPassword: hashedPassword });
     await _deleteOtpByEmail(userEmail);
-    res.status(200).json(_newSuccess());
+    return res.status(200).json(_newSuccess());
   } else {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.OtpInvalid.errCode,
       errMessage: Error.OtpInvalid.errMessage,
     });
-    throw _newError(Error.OtpInvalid.errCode, Error.OtpInvalid.errMessage);
   }
 });
 
 const adminAuth = catchAsync(async (req, res) => {
   const { role } = req.user;
   if (role == "admin") {
-    res.status(200).json(_newSuccess());
+    return res.status(200).json(_newSuccess());
   } else {
-    res.status(400).json({
+    return res.status(400).json({
       errCode: Error.OtpInvalid.errCode,
       errMessage: Error.OtpInvalid.errMessage,
     });
-    throw _newError(Error.OtpInvalid.errCode, Error.OtpInvalid.errMessage);
   }
 });
 
