@@ -46,7 +46,7 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
 
   user = { name: "", point: "", role: "" };
 
-  constructor(private httpService: GiftService, private TokenHelper: TokenHelper, private authService: AuthService) {}
+  constructor(private httpService: GiftService, private authService: AuthService) {}
   ngOnChanges(changes: SimpleChanges) {
     this.updateUserInfo();
 

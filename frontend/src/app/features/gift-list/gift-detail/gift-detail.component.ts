@@ -45,16 +45,16 @@ export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.updateUserInfo();
-    if (this.tokenHelper.fetchTokenCookie()) {
-      this.fetchUserGiftList()
-    }
+    // this.updateUserInfo();
+    // if (this.tokenHelper.fetchUserDataCookie()) {
+    //   this.fetchUserGiftList()
+    // }
     
   }
 
   ngOnInit() {
     this.updateUserInfo();
-    if (this.tokenHelper.fetchTokenCookie()) {
+    if (this.tokenHelper.fetchUserDataCookie()) {
       this.fetchUserGiftList()
     }
   }

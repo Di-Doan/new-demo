@@ -25,7 +25,7 @@
       >
       <div class="nav-link d-flex align-items-center">
         <a class="" routerLink="/user" *ngIf="user.name; else notLoggedInAva"
-          ><i class="mdi mdi-account" style="font-size: 35px; color: #e39717"></i
+          ><i class="mdi mdi-account ava" style="color: #e39717"></i
         ></a>
         <a
           *ngIf="user.name; else notLoggedIn"
@@ -86,7 +86,7 @@
 
 <ng-template #notLoggedInAva>
   <a class=""
-    ><i class="mdi mdi-account" style="font-size: 35px; color: gray"></i
+    ><i class="mdi mdi-account ava" style="color: gray"></i
   ></a>
 </ng-template>
 

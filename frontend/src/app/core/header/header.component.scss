@@ -90,7 +90,10 @@
 
     .nav-link {
       font-size: 20px;
-  
+      
+      .ava {
+        font-size: 25px;
+      }
     }
   }
 
@@ -109,25 +112,25 @@
 
   @media (max-width: 576px) {
 
+    
+
     nav {
+
+
       padding-top: 0;
       .nav-link {
         font-size: 12px;
         margin: 0; 
 
-        .header-login-img {
-          height: 20px;
-          width: auto;
-          align-self: center;
-          pointer-events: none;
+        .ava {
+          display: flex;
+          font-size: 20px;
         }
-  
-        .header-not-login-img {
-          height: 15px;
-          width: auto;
-          align-self: center;
-          pointer-events: none;
+
+        .ng-star-inserted {
+          margin: 0 7px;
         }
+        
       }
 
       .navbar-brand {
@@ -141,7 +144,7 @@
       }
 
       .display-username {
-        padding-right: 0;
+        padding-right: 7px;
       }
     }
 

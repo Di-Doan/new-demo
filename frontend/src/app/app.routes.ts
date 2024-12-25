@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { adminGuard } from "./shared/guard/admin.guard";
 import { userRoutes } from "./features/pages/user-home/user-home.routes";
 import { adminRoutes } from "./features/pages/admin-home/admin-home.routes";
+import { loadingMatch } from "./shared/guard/loading.guard";
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
       { path: "", redirectTo: "/admin/gift-list", pathMatch: "full" },
     ],
     canActivate: [adminGuard],
+    canMatch: [loadingMatch]
   },
   {
     path: "",
@@ -28,6 +30,7 @@ export const routes: Routes = [
 
       { path: "", redirectTo: "gift-list", pathMatch: "full" }, // Redirect empty path to /user/gift-list
     ],
+    canMatch: [loadingMatch]
   },
   {
     path: "**",

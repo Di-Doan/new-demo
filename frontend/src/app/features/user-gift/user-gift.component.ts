@@ -8,6 +8,7 @@ import { GiftCardComponent } from "./gift-card/gift-card.component";
 import { ToastModule } from "primeng/toast";
 import { MessageService } from "primeng/api";
 import { CommonModule } from "@angular/common";
+import { SpinnerService } from "../../core/service/spinner.service";
 
 @Component({
   selector: "app-user-gift",
@@ -25,7 +26,8 @@ export class UserGiftComponent implements OnInit, OnDestroy {
 
   constructor(
     private userGiftService: UserGiftService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private spinnerService: SpinnerService,
   ) {}
 
   ngOnDestroy(): void {
@@ -44,6 +46,7 @@ export class UserGiftComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.giftList = res.data.list;
+          console.log("fetch complete")
         },
         error: (error: HttpErrorResponse) => {
           this.emptyList = true;
@@ -55,7 +58,9 @@ export class UserGiftComponent implements OnInit, OnDestroy {
               life: 3000,
             });
           }
+
         },
       });
+      
   }
 }
