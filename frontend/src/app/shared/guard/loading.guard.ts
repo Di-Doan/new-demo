@@ -11,7 +11,7 @@ export const loadingMatch: CanMatchFn = () => {
   
     // Simulate a delay (e.g., for fetching lazy-loaded module)
     return of(true).pipe(
-      delay(500), // Simulated network delay
+      delay(10), // Simulated network delay
       finalize(() => {
         // Hide the spinner when loading ends
         spinnerService.hide();

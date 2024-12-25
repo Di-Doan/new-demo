@@ -46,7 +46,6 @@ export class UserGiftComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.giftList = res.data.list;
-          console.log("fetch complete")
         },
         error: (error: HttpErrorResponse) => {
           this.emptyList = true;
