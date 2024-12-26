@@ -9,7 +9,7 @@ const Error = {
 
   UserNameInvalid: {
     errCode: 101,
-    errMessage: "Username is invalid", 
+    errMessage: "Username is invalid",
   },
   PasswordInvalid: {
     errCode: 102,
@@ -97,6 +97,10 @@ const Error = {
     errCode: 122,
     errMessage: "Điểm hiện tại không đủ để đổi quà tặng này",
   },
+  SubcriptionUnsuccessful: {
+    errCode: 123,
+    errMessage: "Đăng ký không thành công",
+  },
 
   // 200++ Error from Db
   CastError: {
@@ -123,7 +127,6 @@ const Error = {
     errCode: 400,
     errMessage: "Something wrong happened.",
   },
-
 };
 
 export default Error;

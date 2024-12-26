@@ -43,21 +43,24 @@
 
 <div class="card">
   <p-toast />
-  <p-toolbar styleClass="mb-4 gap-2">
+  <p-toolbar styleClass="mb-4 toolbar">
     <ng-template pTemplate="left">
-      <p-button
-        label="Tạo mới"
-        icon="pi pi-plus"
-        (click)="openNew()"
-      />
-      <p-button
-        severity="danger"
-        label="Xoá "
-        icon="pi pi-trash"
-        outlined
-        (click)="deleteSelectedUsers()"
-        [disabled]="!selectedUsers || !selectedUsers.length"
-      />
+      <div>
+        <p-button
+          label="Tạo mới"
+          icon="pi pi-plus"
+          (click)="openNew()"
+          [ngStyle]="{ 'margin-right': '20px' }"
+        />
+        <p-button
+          severity="danger"
+          label="Xoá "
+          icon="pi pi-trash"
+          outlined
+          (click)="deleteSelectedUsers()"
+          [disabled]="!selectedUsers || !selectedUsers.length"
+        />
+      </div>
     </ng-template>
   </p-toolbar>
 
@@ -76,10 +79,10 @@
   >
     <ng-template pTemplate="caption">
       <div
-      class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
+        class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
         style="display: flex; align-items: center"
       >
-        <h5 class="m-0 mr-3">Quản Lý Người Dùng</h5>
+        <h5 class="m-0 mr-3 quicksand-bold">Quản Lý Người Dùng</h5>
         <span class="p-input-icon-left">
           <p-iconField>
             <p-inputIcon>
@@ -89,7 +92,7 @@
               pInputText
               type="text"
               (input)="dt.filterGlobal($any($event.target)?.value, 'contains')"
-              placeholder="TÌm kiếm..."
+              placeholder="Tìm kiếm..."
               aria-label="Global Search"
             />
           </p-iconField>
@@ -98,7 +101,7 @@
     </ng-template>
 
     <ng-template pTemplate="header">
-      <tr>
+      <tr class="quicksand-bold">
         <th style="width: 5rem">
           <p-tableHeaderCheckbox />
         </th>
@@ -126,7 +129,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
-      <tr>
+      <tr class="quicksand-normal">
         <td style="width: 3rem">
           <p-tableCheckbox [value]="user" />
         </td>
@@ -167,12 +170,12 @@
     [style]="{ width: '450px' }"
     header="Thông tin người dùng"
     [modal]="true"
-    styleClass="p-fluid"
+    styleClass="p-fluid quicksand-bold"
     [dismissableMask]="true"
   >
     <ng-template pTemplate="content">
       <div class="field">
-        <label for="name" class="mb-2">Tên</label>
+        <label for="name" class="my-2">Tên</label>
         <input
           type="text"
           pInputText
@@ -186,7 +189,10 @@
         </small>
       </div>
 
-      <div class="field" *ngIf="user.password != user.email || user.password == ''">
+      <div
+        class="field"
+        *ngIf="user.password != user.email || user.password == ''"
+      >
         <label for="password" class="my-2">Mật khẩu</label>
         <input
           type="password"
@@ -214,7 +220,7 @@
           [(ngModel)]="user.email"
           required
         />
-        <small class="p-error" *ngIf="submitted && !user.name">
+        <small class="p-error" *ngIf="submitted && !user.email">
           Emai không được để trống.
         </small>
       </div>
@@ -243,7 +249,9 @@
               [(ngModel)]="user.role"
               inputId="adminRole"
             />
-            <label for="adminRole" class="ml-2" style="margin-left: 5px;"> Admin </label>
+            <label for="adminRole" class="ml-2" style="margin-left: 5px">
+              Admin
+            </label>
           </div>
 
           <div class="flex align-items-center" style="flex-shrink: 0">
@@ -253,15 +261,27 @@
               [(ngModel)]="user.role"
               inputId="userRole"
             />
-            <label for="adminRole" class="ml-2" style="margin-left: 5px;"> User</label>
+            <label for="adminRole" class="ml-2" style="margin-left: 5px">
+              User</label
+            >
           </div>
         </div>
       </div>
     </ng-template>
 
     <ng-template pTemplate="footer">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" (click)="hideDialog()"/>
-      <p-button label="Save" icon="pi pi-check" [text]="true" (click)="saveUser()"/>
+      <p-button
+        label="Hủy"
+        icon="pi pi-times"
+        [text]="true"
+        (click)="hideDialog()"
+      />
+      <p-button
+        label="Lưu"
+        icon="pi pi-check"
+        [text]="true"
+        (click)="saveUser()"
+      />
     </ng-template>
   </p-dialog>
 

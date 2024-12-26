@@ -5,6 +5,7 @@ import catchAsync from "../utils/catchAsync.js";
 import emailService from "../services/email/email.service.js";
 import otpService from "../services/function/otp.service.js";
 import authService from "../services/function/auth.service.js";
+import subscriptionService from "../services/function/subscription.service.js";
 import { genSaltSync, hash } from "bcrypt";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -37,6 +38,10 @@ const {
 
 const { getRoleByEmail: _getRoleByEmail } = authService;
 
+const { createNewSubscription: _createNewSubscription } = subscriptionService;
+
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 // send reset password email
 const resetPasswordEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
@@ -63,8 +68,17 @@ const resetPasswordEmail = catchAsync(async (req, res) => {
 // send subscription email
 const sendSubscriptionEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
-  const result = await _sendSubscriptionEmail(userEmail);
-  return res.status(200).json(_newSuccess({ result }));
+
+  try {
+    const result = await _sendSubscriptionEmail(userEmail);
+    await _createNewSubscription(userEmail);
+    return res.status(200).json(_newSuccess({ result }));
+  } catch (error) {
+    return res.status(400).json({
+      errCode: Error.SubcriptionUnsuccessful.errCode,
+      errMessage: Error.SubcriptionUnsuccessful.errMessage,
+    });
+  }
 });
 
 // signin
@@ -92,7 +106,7 @@ const signin = catchAsync(async (req, res) => {
     {
       userId: user._id,
       role: userRole.role,
-      point: user.point
+      point: user.point,
     },
     process.env.JWT_SECRET, // Secret key for signing the token
     { expiresIn: process.env.TOKEN_EXPIRED }
@@ -102,7 +116,7 @@ const signin = catchAsync(async (req, res) => {
   res.cookie("user_jwt", token, {
     httpOnly: true,
     sameSite: "Strict", // Helps mitigate CSRF attacks
-    maxAge: process.env.TOKEN_AGE, 
+    maxAge: process.env.TOKEN_AGE,
   });
 
   // Optionally, set user-related data (non-HTTPOnly)
@@ -111,7 +125,7 @@ const signin = catchAsync(async (req, res) => {
     JSON.stringify({ name: user.name, point: user.point, role: userRole.role }),
     {
       sameSite: "Strict",
-      maxAge: process.env.TOKEN_AGE, 
+      maxAge: process.env.TOKEN_AGE,
     }
   );
 

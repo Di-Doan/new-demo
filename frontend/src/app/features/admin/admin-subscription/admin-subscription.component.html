@@ -1,0 +1,89 @@
+<div class="card">
+  <p-toast />
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <p-button
+        severity="danger"
+        label="Xoá"
+        icon="pi pi-trash"
+        outlined
+        (click)="deleteSelectedSubscriptions()"
+        [disabled]="!selectedSubscriptions || !selectedSubscriptions.length"
+      />
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #dt
+    [value]="subscriptionList"
+    [rows]="10"
+    [paginator]="true"
+    [tableStyle]="{ 'min-width': '55rem' }"
+    [(selection)]="selectedSubscriptions"
+    [rowHover]="true"
+    dataKey="_id"
+    currentPageReportTemplate="Đang hiện từ {first} tới {last} trong tổng số {totalRecords} mục"
+    [showCurrentPageReport]="true"
+    [globalFilterFields]="['email']"
+  >
+    <ng-template pTemplate="caption">
+      <div
+      class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
+        style="display: flex; align-items: center"
+      >
+        <h5 class="m-0 quicksand-bold">Quản Lý Đăng Ký</h5>
+        <span class="p-input-icon-left">
+          <p-iconField>
+            <p-inputIcon>
+              <i class="pi pi-search"></i>
+            </p-inputIcon>
+            <input
+              pInputText
+              type="text"
+              (input)="dt.filterGlobal($any($event.target)?.value, 'contains')"
+              placeholder="Tìm kiếm..."
+              aria-label="Global Search"
+            />
+          </p-iconField>
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr class="quicksand-bold">
+        <th style="width: 5rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        <th pSortableColumn="email" style="min-width: 10rem">
+          Email 
+          <p-sortIcon field="email" />
+        </th>
+        <th style="min-width: 12rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-subscription>
+      <tr class="quicksand-normal">
+        <td style="width: 3rem">
+          <p-tableCheckbox [value]="subscription" />
+        </td>
+        <td>{{ subscription.userEmail }}</td>
+        <td>
+          <p-button
+            icon="pi pi-trash"
+            severity="danger"
+            [outlined]="true"
+            [style]="{ 'border-radius': '50%' }"
+            (click)="deleteSubscription(subscription)"
+          />
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">Không có đăng ký nào theo mục tìm kiếm.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-confirmDialog [style]="{ width: '450px' }" />
+</div>

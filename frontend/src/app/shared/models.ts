@@ -1,8 +1,15 @@
+import { Subscription } from 'rxjs';
 export class ContactModel {
+  _id: string = '';
   name: string = '';
   email: string = '';
   title: string = '';
   note: string = '';
+}
+
+export class SubscriptionModel {
+  _id: string = "";
+  userEmail: string = "";
 }
 
 export class UserModel {

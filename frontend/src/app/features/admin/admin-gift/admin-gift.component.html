@@ -59,6 +59,7 @@
         label="Tạo mới"
         icon="pi pi-plus"
         (click)="openNew()"
+        [ngStyle]="{ 'margin-right': '20px' }"
       />
       <p-button
         severity="danger"
@@ -89,7 +90,7 @@
       class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
         style="display: flex; align-items: center"
       >
-        <h5 class="m-0">Quản Lý Quà Tặng</h5>
+        <h5 class="m-0 quicksand-bold">Quản Lý Quà Tặng</h5>
         <span class="p-input-icon-left">
           <p-iconField>
             <p-inputIcon>
@@ -107,7 +108,7 @@
       </div>
     </ng-template>
     <ng-template pTemplate="header">
-      <tr>
+      <tr class="quicksand-bold">
         <th style="width: 5rem">
           <p-tableHeaderCheckbox />
         </th>
@@ -128,7 +129,7 @@
           Ngày hết hạn
           <p-sortIcon field="end_date" />
         </th>
-        <th pSortableColumn="isHot" style="min-width: 6rem">
+        <th pSortableColumn="isHot" style="min-width: 7rem">
           Quà Hot
           <p-sortIcon field="isHot" />
         </th>
@@ -136,7 +137,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-gift>
-      <tr>
+      <tr class="quicksand-normal">
         <td style="width: 3rem">
           <p-tableCheckbox [value]="gift" />
         </td>
@@ -180,7 +181,7 @@
     [style]="{ width: '450px' }"
     header="Thông tin quà tặng"
     [modal]="true"
-    styleClass="p-fluid"
+    styleClass="p-fluid quicksand-bold"
     [dismissableMask]="true"
   >
     <ng-template pTemplate="content">
@@ -191,7 +192,7 @@
         *ngIf="gift.img"
       />
       <div class="field">
-        <label for="name" class="mb-2">Tên quà</label>
+        <label for="name" class="my-2">Tên quà</label>
         <input
           type="text"
           pInputText
@@ -241,13 +242,13 @@
 
     <ng-template pTemplate="footer">
       <p-button
-        label="Cancel"
+        label="Hủy"
         icon="pi pi-times"
         [text]="true"
         (click)="hideDialog()"
       />
       <p-button
-        label="Save"
+        label="Lưu"
         icon="pi pi-check"
         [text]="true"
         (click)="saveGift()"

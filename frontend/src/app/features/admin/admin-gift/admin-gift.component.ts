@@ -4,7 +4,6 @@ import { GiftService } from "../../../core/service/gift.service";
 import { GiftModel } from "../../../shared/models";
 import { Subject, takeUntil } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
-import { AdminSidebarComponent } from "../admin-sidebar/admin-sidebar.component";
 
 import { ConfirmationService, MessageService } from "primeng/api";
 import { TableModule } from "primeng/table";
@@ -28,7 +27,6 @@ import { InputTextModule } from "primeng/inputtext";
   styleUrls: ["./admin-gift.component.scss"],
   imports: [
     CommonModule,
-    AdminSidebarComponent,
     TableModule,
     DialogModule,
     RippleModule,
@@ -91,7 +89,12 @@ export class AdminGiftComponent implements OnInit, OnChanges {
           this.giftList = res.data.result;
         },
         error: (error: HttpErrorResponse) => {
-          console.log(error);
+          this.messageService.add({
+            severity: "error",
+            summary: "Lỗi",
+            detail: error.error.errMessage,
+            life: 3000,
+          });
         },
       });
   }
@@ -126,7 +129,12 @@ export class AdminGiftComponent implements OnInit, OnChanges {
               }, 1500);
             },
             error: (error: HttpErrorResponse) => {
-              console.log(error);
+              this.messageService.add({
+                severity: "error",
+                summary: "Lỗi",
+                detail: error.error.errMessage,
+                life: 3000,
+              });
             },
           });
       },
@@ -162,7 +170,12 @@ export class AdminGiftComponent implements OnInit, OnChanges {
               }, 1500);
             },
             error: (error: HttpErrorResponse) => {
-              console.log(error);
+              this.messageService.add({
+                severity: "error",
+                summary: "Lỗi",
+                detail: error.error.errMessage,
+                life: 3000,
+              });
             },
           });
       },
@@ -208,7 +221,12 @@ export class AdminGiftComponent implements OnInit, OnChanges {
             }, 1500);
           },
           error: (error: HttpErrorResponse) => {
-            console.log(error);
+            this.messageService.add({
+              severity: "error",
+              summary: "Lỗi",
+              detail: error.error.errMessage,
+              life: 3000,
+            });
           },
         });
     } else {
@@ -238,7 +256,12 @@ export class AdminGiftComponent implements OnInit, OnChanges {
             }, 1500);
           },
           error: (error: HttpErrorResponse) => {
-            console.log(error);
+            this.messageService.add({
+              severity: "error",
+              summary: "Lỗi",
+              detail: error.error.errMessage,
+              life: 3000,
+            });
           },
         });
     }

@@ -8,32 +8,37 @@
           <!--change to offline or busy as needed-->
         </div>
         <div class="nav-profile-text d-flex flex-column">
-          <span class="font-weight-bold mb-2">{{admin.name}}</span>
-          <span class="text-secondary text-small">Project Manager</span>
+          <span class="font-weight-bold mb-2 quicksand-bold">{{
+            admin.name
+          }}</span>
+          <span class="text-secondary text-small quicksand-bold"
+            >Admin</span
+          >
         </div>
         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <span class="menu-title">Dashboard</span>
-        <i class="mdi mdi-home menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item">
-      <a
-        class="nav-link"
-        routerLink="/admin/user-list"
-        aria-expanded="false"
-        aria-controls="ui-basic"
-      >
+    <li class="nav-item" routerLinkActive="active-link">
+      <a class="nav-link" routerLink="/admin/user-list">
         <span class="menu-title">Quản lý nguời dùng</span>
         <i class="mdi mdi-account-multiple menu-icon"></i>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" routerLinkActive="active-link">
       <a class="nav-link" routerLink="/admin/gift-list">
         <span class="menu-title">Quản lý quà tặng</span>
+        <i class="mdi mdi-gift menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active-link">
+      <a class="nav-link" routerLink="/admin/contact-list">
+        <span class="menu-title">Quản lý liên hệ</span>
+        <i class="mdi mdi-gift menu-icon"></i>
+      </a>
+    </li>
+    <li class="nav-item" routerLinkActive="active-link">
+      <a class="nav-link" routerLink="/admin/subscription-list">
+        <span class="menu-title">Quản lý đăng ký</span>
         <i class="mdi mdi-gift menu-icon"></i>
       </a>
     </li>

@@ -17,7 +17,27 @@ const findContactByEmail = async(email) => {
     return result
 }
 
-export default {
-    createContact,
-    findContactByEmail
+const getAllContact = async()=> {
+    const result = await ContactModel.find({}) 
+    return result
 }
+
+// update contact
+const updateContactById = async(contactId, updatedInfo) => {
+    const result = await ContactModel.findOneAndUpdate({_id: contactId}, updatedInfo)
+    return result
+}
+
+// delete contact
+const deleteContactById = async(contactId) => {
+    const result = await ContactModel.findByIdAndDelete(contactId)
+    return result
+}
+
+export default {
+  createContact,
+  findContactByEmail,
+  getAllContact,
+  updateContactById,
+  deleteContactById,
+};

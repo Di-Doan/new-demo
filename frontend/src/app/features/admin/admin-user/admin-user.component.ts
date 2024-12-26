@@ -79,7 +79,12 @@ export class AdminUserComponent implements OnInit, OnChanges {
           this.userList = res.data;
         },
         error: (error: HttpErrorResponse) => {
-          console.log(error);
+          this.messageService.add({
+            severity: "error",
+            summary: "Lỗi",
+            detail: error.error.errMessage,
+            life: 3000,
+          });
         },
       });
   }
@@ -113,7 +118,12 @@ export class AdminUserComponent implements OnInit, OnChanges {
               }, 1500);
             },
             error: (error: HttpErrorResponse) => {
-              console.log(error);
+              this.messageService.add({
+                severity: "error",
+                summary: "Lỗi",
+                detail: error.error.errMessage,
+                life: 3000,
+              });
             },
           });
       },
@@ -148,7 +158,12 @@ export class AdminUserComponent implements OnInit, OnChanges {
               }, 1500);
             },
             error: (error: HttpErrorResponse) => {
-              console.log(error);
+              this.messageService.add({
+                severity: "error",
+                summary: "Lỗi",
+                detail: error.error.errMessage,
+                life: 3000,
+              });
             },
           });
       },
@@ -191,7 +206,12 @@ export class AdminUserComponent implements OnInit, OnChanges {
             }, 1500);
           },
           error: (error: HttpErrorResponse) => {
-            console.log(error);
+            this.messageService.add({
+              severity: "error",
+              summary: "Lỗi",
+              detail: error.error.errMessage,
+              life: 3000,
+            });
           },
         });
     } else {
@@ -213,7 +233,12 @@ export class AdminUserComponent implements OnInit, OnChanges {
             }, 1500);
           },
           error: (error: HttpErrorResponse) => {
-            console.log(error);
+            this.messageService.add({
+              severity: "error",
+              summary: "Lỗi",
+              detail: error.error.errMessage,
+              life: 3000,
+            });
           },
         });
     }
