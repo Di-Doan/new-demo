@@ -1,14 +1,20 @@
+<div class="nav-textarea">
+  <h3>TÚI QUÀ CÁ NHÂN</h3>
+</div>
+
 <div class="container py-5">
   <p-toast />
   <div class="row" *ngIf="emptyList == false; else noGiftOnDisplay">
     @for (gift of giftList; track gift._id) {
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-5">
       <app-gift-card [giftDetail]="gift"></app-gift-card>
     </div>
-    } 
+    }
   </div>
 </div>
 
 <ng-template #noGiftOnDisplay>
-  <h2>Không có quà tặng</h2>
+  <h2 class="text-center quicksand-bold" style="color: #e39717">
+    Không có quà tặng
+  </h2>
 </ng-template>

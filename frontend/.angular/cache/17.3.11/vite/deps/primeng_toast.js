@@ -5,15 +5,6 @@ import {
   TimesIcon
 } from "./chunk-FFGDN4TK.js";
 import {
-  animate,
-  animateChild,
-  query,
-  state,
-  style,
-  transition,
-  trigger
-} from "./chunk-KBGL3CLD.js";
-import {
   BaseIcon
 } from "./chunk-YZGHS5BL.js";
 import {
@@ -23,6 +14,15 @@ import {
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
+import {
+  animate,
+  animateChild,
+  query,
+  state,
+  style,
+  transition,
+  trigger
+} from "./chunk-KBGL3CLD.js";
 import {
   CommonModule,
   DOCUMENT,
