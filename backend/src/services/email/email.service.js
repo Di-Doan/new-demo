@@ -76,10 +76,8 @@ const sendSubscriptionEmail = async (to) => {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log("Subscription email sent:", info.response);
     return info.response
   } catch (error) {
-    console.error("Error sending subscription email:", error);
     return error
   }
 };

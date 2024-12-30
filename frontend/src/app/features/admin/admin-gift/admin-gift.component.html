@@ -1,52 +1,3 @@
-<!-- <div class="col-12 grid-margin ">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">Gift Table</h4>
-      <div class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Img</th>
-              <th>Name</th>
-              <th>Point</th>
-              <th>Start date</th>
-              <th>End date</th>
-              <th>Is Hot</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (gift of giftList; track gift.name) {
-            <tr>
-              <td class="py-1">
-                <img [src]="gift.img" alt="image" />
-              </td>
-              <td>{{ gift.name }}</td>
-              <td>
-                {{ gift.point }}
-              </td>
-              <td>{{ gift.start_date }}</td>
-              <td>{{ gift.end_date }}</td>
-              <td><i *ngIf="gift.isHot; else notIsHot" class="mdi mdi-check"></i></td>
-              <td>
-                <button type="button" class="btn btn-outline-secondary btn-icon-text" style="margin-right: 10px;"> Edit <i class="mdi mdi-file-check btn-icon-append"></i>
-                </button>
-                <button type="button" class="btn btn-outline-danger btn-icon-text"> Delete <i class="mdi mdi-delete btn-icon-append"></i>
-                </button>
-              </td>
-            </tr>
-            } @empty {
-            <tr>
-              There are no items
-            </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>-->
-
 <ng-template #notIsHot>
   <i class="mdi mdi-window-close"></i>
 </ng-template>
@@ -90,7 +41,7 @@
       class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
         style="display: flex; align-items: center"
       >
-        <h5 class="m-0 quicksand-bold">Quản Lý Quà Tặng</h5>
+        <h5 class="m-0 quicksand-bold">Quản Lý Thông Tin Quà Tặng</h5>
         <span class="p-input-icon-left">
           <p-iconField>
             <p-inputIcon>

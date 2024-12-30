@@ -31,7 +31,13 @@
           "
           >Quản Lý</span
         >
-        <i class="menu-arrow"></i>
+        <i
+          class="menu-arrow"
+          [class.active-menu]="
+            isActiveRoute('/admin/user-list') ||
+            isActiveRoute('/admin/gift-list')
+          "
+        ></i>
       </a>
       <div class="collapse" id="crud-pages">
         <ul class="nav flex-column sub-menu">
@@ -70,7 +76,13 @@
           "
           >Tra Soát</span
         >
-        <i class="menu-arrow"></i>
+        <i
+          class="menu-arrow"
+          [class.active-menu]="
+            isActiveRoute('/admin/contact-list') ||
+            isActiveRoute('/admin/subscription-list')
+          "
+        ></i>
       </a>
       <div class="collapse" id="read-pages">
         <ul class="nav flex-column sub-menu">
