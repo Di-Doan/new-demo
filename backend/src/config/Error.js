@@ -79,7 +79,7 @@ const Error = {
   },
   GiftListEmpty: {
     errCode: 118,
-    errMessage: "Không có mục nào được chọn",
+    errMessage: "Không có quà tặng",
   },
   GiftNotFound: {
     errCode: 119,
