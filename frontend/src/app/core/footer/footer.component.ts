@@ -1,10 +1,8 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import {
-  FormControl,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
 import { Subject, takeUntil } from "rxjs";

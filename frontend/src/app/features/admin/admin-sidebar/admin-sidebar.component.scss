@@ -3,6 +3,7 @@
     font-family: "Quicksand", sans-serif;
 }
 .sidebar .nav .nav-item .active-link {
+    transition: none; 
     color: #e39717 !important;
     font-weight: bold ;
 }
