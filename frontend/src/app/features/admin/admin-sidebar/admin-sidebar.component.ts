@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
@@ -12,12 +12,16 @@ import { AuthService } from '../../../core/service/auth.service';
 })
 export class AdminSidebarComponent implements OnInit {
   admin = {name: ''}
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.user$.subscribe((value) => {
       this.admin.name = value.name;
     });
+  }
+
+  isActiveRoute(route: string): boolean {
+    return this.router.url.startsWith(route);
   }
 
   

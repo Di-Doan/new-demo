@@ -2,7 +2,16 @@
 .nav-item {
     font-family: "Quicksand", sans-serif;
 }
-.sidebar .nav .active-link {
-    background-color: #e3f2ea;
+.sidebar .nav .nav-item .active-link {
+    color: #e39717 !important;
+    font-weight: bold ;
+}
+
+// .sidebar .nav.sub-menu .nav-item .nav-link:hover {
+//     color: #e39717 !important;
+// }
+
+.sidebar .nav .active-menu {
+    color: #e39717 !important;
     font-weight: bold ;
 }

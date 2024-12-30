@@ -2,7 +2,6 @@ import { createTransport } from "nodemailer";
 import expressHandlebars from "nodemailer-express-handlebars";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
-import SubscriptionModel from "../../models/subscription.model.js";
 import dotenv from 'dotenv';
 dotenv.config(); 
 

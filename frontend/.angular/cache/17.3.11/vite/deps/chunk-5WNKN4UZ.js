@@ -1,12 +1,12 @@
 import {
+  AutoFocus
+} from "./chunk-MUHW5UNS.js";
+import {
   BaseIcon
 } from "./chunk-YZGHS5BL.js";
 import {
   Ripple
 } from "./chunk-37GUKZ5I.js";
-import {
-  AutoFocus
-} from "./chunk-MUHW5UNS.js";
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
@@ -1082,4 +1082,4 @@ export {
   Button,
   ButtonModule
 };
-//# sourceMappingURL=chunk-EY6YCSXY.js.map
+//# sourceMappingURL=chunk-5WNKN4UZ.js.map

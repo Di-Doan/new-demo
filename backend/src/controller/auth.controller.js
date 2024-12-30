@@ -40,7 +40,6 @@ const { getRoleByEmail: _getRoleByEmail } = authService;
 
 const { createNewSubscription: _createNewSubscription } = subscriptionService;
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 // send reset password email
 const resetPasswordEmail = catchAsync(async (req, res) => {

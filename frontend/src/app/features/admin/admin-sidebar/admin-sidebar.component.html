@@ -11,36 +11,87 @@
           <span class="font-weight-bold mb-2 quicksand-bold">{{
             admin.name
           }}</span>
-          <span class="text-secondary text-small quicksand-bold"
-            >Admin</span
-          >
+          <span class="text-secondary text-small quicksand-bold">Admin</span>
         </div>
         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
       </a>
     </li>
-    <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link" routerLink="/admin/user-list">
-        <span class="menu-title">Quản lý nguời dùng</span>
-        <i class="mdi mdi-account-multiple menu-icon"></i>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        data-bs-toggle="collapse"
+        href="#crud-pages"
+        aria-controls="crud-pages"
+      >
+        <span
+          class="menu-title"
+          [class.active-menu]="
+            isActiveRoute('/admin/user-list') ||
+            isActiveRoute('/admin/gift-list')
+          "
+          >Quản Lý</span
+        >
+        <i class="menu-arrow"></i>
       </a>
+      <div class="collapse" id="crud-pages">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item" routerLinkActive="active-link">
+            <a
+              class="nav-link"
+              routerLink="/admin/user-list"
+              routerLinkActive="active-link"
+              >Thông Tin Người Dùng
+            </a>
+          </li>
+          <li class="nav-item" routerLinkActive="active-link">
+            <a
+              class="nav-link"
+              routerLink="/admin/gift-list"
+              routerLinkActive="active-link"
+              >Thông Tin Quà Tặng
+            </a>
+          </li>
+        </ul>
+      </div>
     </li>
-    <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link" routerLink="/admin/gift-list">
-        <span class="menu-title">Quản lý quà tặng</span>
-        <i class="mdi mdi-gift menu-icon"></i>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        data-bs-toggle="collapse"
+        href="#read-pages"
+        aria-controls="read-pages"
+        routerLinkActive="active-link"
+      >
+        <span
+          class="menu-title"
+          [class.active-menu]="
+            isActiveRoute('/admin/contact-list') ||
+            isActiveRoute('/admin/subscription-list')
+          "
+          >Tra Soát</span
+        >
+        <i class="menu-arrow"></i>
       </a>
-    </li>
-    <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link" routerLink="/admin/contact-list">
-        <span class="menu-title">Quản lý liên hệ</span>
-        <i class="mdi mdi-gift menu-icon"></i>
-      </a>
-    </li>
-    <li class="nav-item" routerLinkActive="active-link">
-      <a class="nav-link" routerLink="/admin/subscription-list">
-        <span class="menu-title">Quản lý đăng ký</span>
-        <i class="mdi mdi-gift menu-icon"></i>
-      </a>
+      <div class="collapse" id="read-pages">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/admin/contact-list"
+              routerLinkActive="active-link"
+              >Thông Tin Liên Hệ</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="/admin/subscription-list"
+              routerLinkActive="active-link"
+              >Thông Tin Đăng Ký</a
+            >
+          </li>
+        </ul>
+      </div>
     </li>
   </ul>
 </nav>

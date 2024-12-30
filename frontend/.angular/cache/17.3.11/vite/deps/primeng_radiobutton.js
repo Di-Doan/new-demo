@@ -1,12 +1,12 @@
 import {
+  NG_VALUE_ACCESSOR,
+  NgControl
+} from "./chunk-AV57QNQI.js";
+import {
   AutoFocus,
   AutoFocusModule
 } from "./chunk-MUHW5UNS.js";
 import "./chunk-JZQAVOZS.js";
-import {
-  NG_VALUE_ACCESSOR,
-  NgControl
-} from "./chunk-AV57QNQI.js";
 import {
   CommonModule,
   NgClass,

@@ -2,6 +2,15 @@ import {
   CheckIcon
 } from "./chunk-GBU2BPVC.js";
 import {
+  animate,
+  animateChild,
+  query,
+  state,
+  style,
+  transition,
+  trigger
+} from "./chunk-KBGL3CLD.js";
+import {
   TimesIcon
 } from "./chunk-FFGDN4TK.js";
 import {
@@ -14,15 +23,6 @@ import {
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
-import {
-  animate,
-  animateChild,
-  query,
-  state,
-  style,
-  transition,
-  trigger
-} from "./chunk-KBGL3CLD.js";
 import {
   CommonModule,
   DOCUMENT,
