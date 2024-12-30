@@ -1,11 +1,8 @@
-import { TokenHelper } from "./../../shared/helper/token.helper";
 import { CommonModule } from "@angular/common";
 import {
   Component,
-  EventEmitter,
   OnChanges,
   OnInit,
-  Output,
   SimpleChanges,
   ViewChild,
 } from "@angular/core";

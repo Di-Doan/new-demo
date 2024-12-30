@@ -56,11 +56,13 @@ export class FooterComponent implements OnInit, OnDestroy {
           });
         },
         error: (error: HttpErrorResponse) => {
-          if (error.error && error.error.errMessage) {
-            this.subscriptionFormError = error.error.errMessage;
-          } else {
-            this.subscriptionFormError= "Unexpected Error";
-          }
+          this.subscriptionForm = ''
+          this.messageService.add({
+            severity: "error",
+            summary: "Lỗi",
+            detail: error.error.errMessage,
+            life: 3000,
+          });
         }
       }
       );

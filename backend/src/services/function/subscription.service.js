@@ -18,9 +18,15 @@ const deleteSubscriptionById = async(subscriptionId) => {
     return result
 }
 
+const getSubscriptionByEmail = async(userEmail) => {
+    const result = await SubscriptionModel.findOne({userEmail: userEmail})
+    return result
+}
+
 export default {
     createNewSubscription,
     getAllSubscription,
-    deleteSubscriptionById
+    deleteSubscriptionById,
+    getSubscriptionByEmail
 }
  

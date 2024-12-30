@@ -44,7 +44,7 @@ app.use("/api/auth", AuthRouter);
 app.use("/api/contact", ContactRouter)
 app.use("/api/userGift", UserGiftRouter)
 app.use("/api/subscription", SubscriptionRouter);
-app.use("/api/*", (req, res) => res.status(404).json({ message: "API not found" }));
+app.use("/api/*", (req, res) => res.status(404).json({ message: "API không tồn tại" }));
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}.`);

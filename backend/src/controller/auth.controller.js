@@ -38,7 +38,7 @@ const {
 
 const { getRoleByEmail: _getRoleByEmail } = authService;
 
-const { createNewSubscription: _createNewSubscription } = subscriptionService;
+const { createNewSubscription: _createNewSubscription, getSubscriptionByEmail: _getSubscriptionByEmail } = subscriptionService;
 
 
 // send reset password email
@@ -67,6 +67,15 @@ const resetPasswordEmail = catchAsync(async (req, res) => {
 // send subscription email
 const sendSubscriptionEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
+
+  const user = await _getSubscriptionByEmail(userEmail)
+
+  if (user) {
+    return res.status(400).json({
+      errCode: Error.ExistedSubcription.errCode,
+      errMessage: Error.ExistedSubcription.errMessage,
+    });
+  }
 
   try {
     const result = await _sendSubscriptionEmail(userEmail);

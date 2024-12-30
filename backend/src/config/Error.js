@@ -101,6 +101,10 @@ const Error = {
     errCode: 123,
     errMessage: "Đăng ký không thành công",
   },
+  ExistedSubcription: {
+    errCode: 124,
+    errMessage: "Email đã được đăng ký",
+  },
 
   // 200++ Error from Db
   CastError: {
