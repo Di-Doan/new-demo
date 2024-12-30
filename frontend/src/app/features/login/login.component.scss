@@ -7,6 +7,10 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
 
+  .otp-label {
+    width: 38%
+  }
+
   .modal-close-btn {
     cursor: pointer;
     background-color: #008b43;
@@ -131,6 +135,9 @@
       .nav-link.active::after {
         width: 150%;
       }
+    }
+    .otp-label {
+      width: 42%
     }
   }
 
