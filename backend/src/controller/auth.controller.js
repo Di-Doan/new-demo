@@ -38,8 +38,10 @@ const {
 
 const { getRoleByEmail: _getRoleByEmail } = authService;
 
-const { createNewSubscription: _createNewSubscription, getSubscriptionByEmail: _getSubscriptionByEmail } = subscriptionService;
-
+const {
+  createNewSubscription: _createNewSubscription,
+  getSubscriptionByEmail: _getSubscriptionByEmail,
+} = subscriptionService;
 
 // send reset password email
 const resetPasswordEmail = catchAsync(async (req, res) => {
@@ -68,7 +70,7 @@ const resetPasswordEmail = catchAsync(async (req, res) => {
 const sendSubscriptionEmail = catchAsync(async (req, res) => {
   const { userEmail } = req.body;
 
-  const user = await _getSubscriptionByEmail(userEmail)
+  const user = await _getSubscriptionByEmail(userEmail);
 
   if (user) {
     return res.status(400).json({
@@ -78,9 +80,9 @@ const sendSubscriptionEmail = catchAsync(async (req, res) => {
   }
 
   try {
-    const result = await _sendSubscriptionEmail(userEmail);
+    await _sendSubscriptionEmail(userEmail);
     await _createNewSubscription(userEmail);
-    return res.status(200).json(_newSuccess({ result }));
+    return res.status(200).json(_newSuccess());
   } catch (error) {
     return res.status(400).json({
       errCode: Error.SubcriptionUnsuccessful.errCode,
@@ -142,8 +144,15 @@ const signin = catchAsync(async (req, res) => {
 
 // logout by deleting jwt cookie
 const logout = catchAsync(async (req, res) => {
-  res.clearCookie("user_jwt", { httpOnly: true, sameSite: "Strict" });
-  return res.status(200).json(_newSuccess());
+  try {
+    res.clearCookie("user_jwt", { httpOnly: true, sameSite: "Strict" });
+    return res.status(200).json(_newSuccess());
+  } catch (error) {
+    return res.status(400).json({
+      errCode: Error.LogoutUnsuccessful.errCode,
+      errMessage: Error.LogoutUnsuccessful.errMessage,
+    });
+  }
 });
 
 // reset password

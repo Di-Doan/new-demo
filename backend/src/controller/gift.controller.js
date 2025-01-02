@@ -1,6 +1,7 @@
 import giftService from "../services/function/gift.service.js";
 import responseService from "../services/response/response.service.js";
 import catchAsync from "../utils/catchAsync.js";
+import Error from "../config/Error.js";
 
 const {
   createGift: _createGift,
@@ -10,10 +11,7 @@ const {
   deleteGiftById: _deleteGiftById,
 } = giftService;
 
-const {
-  newSuccess: _newSuccess,
-  newError: _newError
-} = responseService
+const { newSuccess: _newSuccess, newError: _newError } = responseService;
 
 // create gift
 const createGift = catchAsync(async (req, res) => {
@@ -31,8 +29,15 @@ const createGift = catchAsync(async (req, res) => {
 
 // get all gift
 const getAllGift = catchAsync(async (req, res) => {
-  const result = await _getAllGift();
-  return res.status(200).json(_newSuccess({ result }));
+  try {
+    const result = await _getAllGift();
+    return res.status(200).json(_newSuccess({ result }));
+  } catch (error) {
+    return res.status(400).json({
+      errCode: Error.FetchAllGiftUnsuccessful.errCode,
+      errMessage: Error.FetchAllGiftUnsuccessful.errMessage,
+    });
+  }
 });
 
 // get gift by id
@@ -51,20 +56,20 @@ const updateGiftById = catchAsync(async (req, res) => {
 
 // delete gift by id
 const deleteGiftById = catchAsync(async (req, res) => {
-  const {giftId} = req.params
+  const { giftId } = req.params;
   const result = await _deleteGiftById(giftId);
   return res.status(200).json(_newSuccess({ result }));
 });
 
 // delete multiple gift
-const deleteMultipleGift = catchAsync(async(req, res)=> {
-  const giftList  = req.body
+const deleteMultipleGift = catchAsync(async (req, res) => {
+  const giftList = req.body;
 
   for (const gift of giftList) {
-    await _deleteGiftById(gift._id)
+    await _deleteGiftById(gift._id);
   }
   return res.status(200).json(_newSuccess());
-})
+});
 
 export default {
   createGift,
@@ -72,6 +77,5 @@ export default {
   getGiftById,
   updateGiftById,
   deleteGiftById,
-  deleteMultipleGift
+  deleteMultipleGift,
 };
-  

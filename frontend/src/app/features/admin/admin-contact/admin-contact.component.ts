@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnChanges, OnInit} from "@angular/core";
+import { Component, OnChanges, OnDestroy, OnInit} from "@angular/core";
 import { ContactModel} from "../../../shared/models";
 import { Subject, takeUntil } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
@@ -37,8 +37,7 @@ import { ContactService } from "../../../core/service/contact.service";
   ],
   providers: [MessageService, ConfirmationService],
 })
-export class AdminContactComponent implements OnInit, OnChanges {
-
+export class AdminContactComponent implements OnInit, OnChanges, OnDestroy {
   contactList!: ContactModel[];
 
   contact!: ContactModel;
@@ -56,11 +55,16 @@ export class AdminContactComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnInit() {
-    this.fetchContactList()
+    this.fetchContactList();
   }
 
   ngOnChanges() {
     this.fetchContactList();
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   fetchContactList() {
@@ -118,42 +122,39 @@ export class AdminContactComponent implements OnInit, OnChanges {
     });
   }
 
-  
-    deleteContact(contact: ContactModel) {
-      this.confirmationService.confirm({
-        message: "Xác nhận xoá " + contact.name + "?",
-        header: "Xác nhận",
-        icon: "pi pi-exclamation-triangle",
-        accept: () => {
-          this.contactService
-            .deleteSelectedContacts(contact._id)
-            .pipe(takeUntil(this.destroyed$))
-            .subscribe({
-              next: () => {
-                this.contact = new ContactModel();
-                this.messageService.add({
-                  severity: "success",
-                  summary: "Thành công",
-                  detail: "Xoá liên hệ thành công",
-                  life: 3000,
-                });
-  
-                setTimeout(() => {
-                  this.fetchContactList();
-                }, 1500);
-              },
-              error: (error: HttpErrorResponse) => {
-                this.messageService.add({
-                  severity: "error",
-                  summary: "Lỗi",
-                  detail: error.error.errMessage,
-                  life: 3000,
-                });
-              },
-            });
-        },
-      });
-    }
-  
+  deleteContact(contact: ContactModel) {
+    this.confirmationService.confirm({
+      message: "Xác nhận xoá " + contact.name + "?",
+      header: "Xác nhận",
+      icon: "pi pi-exclamation-triangle",
+      accept: () => {
+        this.contactService
+          .deleteSelectedContacts(contact._id)
+          .pipe(takeUntil(this.destroyed$))
+          .subscribe({
+            next: () => {
+              this.contact = new ContactModel();
+              this.messageService.add({
+                severity: "success",
+                summary: "Thành công",
+                detail: "Xoá liên hệ thành công",
+                life: 3000,
+              });
 
+              setTimeout(() => {
+                this.fetchContactList();
+              }, 1500);
+            },
+            error: (error: HttpErrorResponse) => {
+              this.messageService.add({
+                severity: "error",
+                summary: "Lỗi",
+                detail: error.error.errMessage,
+                life: 3000,
+              });
+            },
+          });
+      },
+    });
+  }
 }

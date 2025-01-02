@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { GiftService } from "../../../core/service/gift.service";
 import { GiftModel } from "../../../shared/models";
 import { Subject, takeUntil } from "rxjs";
@@ -43,7 +43,7 @@ import { InputTextModule } from "primeng/inputtext";
   ],
   providers: [MessageService, ConfirmationService],
 })
-export class AdminGiftComponent implements OnInit, OnChanges {
+export class AdminGiftComponent implements OnInit, OnChanges, OnDestroy {
   giftDialog: boolean = false;
 
   giftList!: GiftModel[];
@@ -78,6 +78,11 @@ export class AdminGiftComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     this.fetchGiftList();
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   fetchGiftList() {

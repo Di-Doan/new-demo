@@ -1,22 +1,23 @@
-import { Validators } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import {
   Component,
-  EventEmitter,
   OnInit,
-  Output,
   Renderer2,
 } from "@angular/core";
 import { AuthService } from "../../../core/service/auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 
+import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
+
 @Component({
   selector: "app-admin-navbar",
   standalone: true,
   templateUrl: "./admin-navbar.component.html",
   styleUrls: ["./admin-navbar.component.scss"],
-  imports: [CommonModule],
+  imports: [CommonModule, ToastModule],
+  providers: [MessageService],
 })
 export class AdminNavbarComponent implements OnInit {
   admin = { name: "" };
@@ -24,7 +25,8 @@ export class AdminNavbarComponent implements OnInit {
   constructor(
     private renderer: Renderer2,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -79,7 +81,12 @@ export class AdminNavbarComponent implements OnInit {
         this.router.navigate(["/gift-list"]);
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error);
+        this.messageService.add({
+          severity: "error",
+          summary: "Lỗi",
+          detail: error.error.errMessage,
+          life: 3000,
+        });
       },
     });
   }

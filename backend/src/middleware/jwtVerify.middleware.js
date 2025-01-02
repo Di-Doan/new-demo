@@ -26,7 +26,7 @@ const verifyToken = async (req, res, next) => {
     // Continue to the next middleware/route handler
     next();
   } catch (err) {
-    console.log(err);
+    throw err
   }
 };
 

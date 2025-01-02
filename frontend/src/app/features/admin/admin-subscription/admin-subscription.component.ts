@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnChanges, OnInit } from "@angular/core";
+import { Component, OnChanges, OnDestroy, OnInit } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 
@@ -34,35 +34,42 @@ import { SubscriptionService } from "../../../core/service/subscription.service"
     ConfirmDialogModule,
     InputIconModule,
     IconFieldModule,
-    InputTextModule
+    InputTextModule,
   ],
   providers: [MessageService, ConfirmationService],
 })
-export class AdminSubscriptionComponent implements OnInit, OnChanges {
+export class AdminSubscriptionComponent
+  implements OnInit, OnChanges, OnDestroy
+{
   subscriptionList!: SubscriptionModel[];
-  
+
   subscription!: SubscriptionModel;
-  
+
   selectedSubscriptions!: SubscriptionModel[] | null;
-  
+
   submitted: boolean = false;
-  
+
   destroyed$ = new Subject<void>();
-  
+
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private subscriptionService: SubscriptionService
   ) {}
-  
+
   ngOnInit() {
-    this.fetchSubscriptionList()
+    this.fetchSubscriptionList();
   }
-  
+
   ngOnChanges() {
     this.fetchSubscriptionList();
   }
-  
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
+
   fetchSubscriptionList() {
     this.subscriptionService
       .getAllSubscription()
@@ -81,7 +88,7 @@ export class AdminSubscriptionComponent implements OnInit, OnChanges {
         },
       });
   }
-  
+
   deleteSelectedSubscriptions() {
     this.confirmationService.confirm({
       message: "Xác nhận xoá đăng ký đã chọn?",
@@ -117,7 +124,7 @@ export class AdminSubscriptionComponent implements OnInit, OnChanges {
       },
     });
   }
-  
+
   deleteSubscription(subscription: SubscriptionModel) {
     this.confirmationService.confirm({
       message: "Xác nhận xoá " + subscription.userEmail + "?",

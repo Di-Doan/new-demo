@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import {
   FormBuilder,
   FormGroup,
@@ -22,7 +22,7 @@ import { MessageService } from "primeng/api";
   imports: [ReactiveFormsModule, FormsModule, CommonModule, ToastModule],
   providers: [MessageService]
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent implements OnInit, OnDestroy {
   contactForm!: FormGroup;
   contactError!: string;
 
@@ -33,6 +33,10 @@ export class ContactComponent implements OnInit {
     private contactService: ContactService,
     private messageService: MessageService
   ) {}
+  ngOnDestroy(): void {
+    this.destroyed$.next()
+    this.destroyed$.complete()
+  }
 
   ngOnInit() {
     this.initForm();

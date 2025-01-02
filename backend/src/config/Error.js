@@ -105,6 +105,14 @@ const Error = {
     errCode: 124,
     errMessage: "Email đã được đăng ký",
   },
+  LogoutUnsuccessful: {
+    errCode: 125,
+    errMessage: "Đăng xuất không thành công",
+  },
+  FetchAllGiftUnsuccessful: {
+    errCode: 126,
+    errMessage: "Lấy thông tin quà không thành công",
+  },
 
   // 200++ Error from Db
   CastError: {

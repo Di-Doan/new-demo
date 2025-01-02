@@ -12,12 +12,22 @@ import { AuthService } from "../service/auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router, RouterModule } from "@angular/router";
 
+import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
+
 @Component({
   selector: "app-header",
   standalone: true,
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"],
-  imports: [CarouselModule, CommonModule, LoginComponent, RouterModule],
+  imports: [
+    CarouselModule,
+    CommonModule,
+    LoginComponent,
+    RouterModule,
+    ToastModule,
+  ],
+  providers: [MessageService],
 })
 export class HeaderComponent implements OnInit, OnChanges {
   @ViewChild("loginModal") modal?: LoginComponent;
@@ -31,7 +41,8 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -59,10 +70,14 @@ export class HeaderComponent implements OnInit, OnChanges {
     this.authService.logout().subscribe({
       next: (res) => {
         this.router.navigate(["/"]);
-        // window.location.reload()
       },
       error: (error: HttpErrorResponse) => {
-        console.log(error);
+        this.messageService.add({
+          severity: "error",
+          summary: "Lỗi",
+          detail: error.error.errMessage,
+          life: 3000,
+        });
       },
     });
   }

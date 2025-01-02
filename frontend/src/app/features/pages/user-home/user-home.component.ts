@@ -2,8 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { HeaderComponent } from "../../../core/header/header.component";
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router, RouterModule, RouterOutlet } from "@angular/router";
 import { FooterComponent } from "../../../core/footer/footer.component";
-import { ContactComponent } from "../../contact/contact.component";
-import { Observable } from "rxjs";
 import { SpinnerService } from "../../../core/service/spinner.service";
 import { CommonModule } from "@angular/common";
 import { SpinnerComponent } from "../../../shared/helper/spinner/spinner.component";
@@ -17,7 +15,6 @@ import { SpinnerComponent } from "../../../shared/helper/spinner/spinner.compone
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    ContactComponent,
     RouterModule,
     CommonModule,
     SpinnerComponent,

@@ -2,11 +2,16 @@ import { createTransport } from "nodemailer";
 import expressHandlebars from "nodemailer-express-handlebars";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
+import subscriptionService from "../function/subscription.service.js";
 import dotenv from 'dotenv';
 dotenv.config(); 
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
+const {
+  createNewSubscription: _createNewSubscription,
+  getSubscriptionByEmail: _getSubscriptionByEmail,
+} = subscriptionService;
 
 // generate otp
 const generateOTP = () => {
@@ -57,10 +62,9 @@ const sendOTPEmail = async (to, name, otp) => {
    
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log("OTP email sent:", info.response);
     return info.response
   } catch (error) {
-    console.error("Error sending OTP email:", error);
+    throw error
   }
 };
 
@@ -79,11 +83,9 @@ const sendSubscriptionEmail = async (to) => {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log('Subscription email sent:', info.response);
     return info.response
   } catch (error) {
-    console.error('Error sending subscription email:', error);
-    return error
+    throw error
   }
 };
 

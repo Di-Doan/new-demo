@@ -1,4 +1,3 @@
-import { TokenHelper } from './../../shared/helper/token.helper';
 import {
   Component,
   OnDestroy,
@@ -7,20 +6,24 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { GiftItemComponent } from "./gift-item/gift-item.component";
-import { GiftDetailComponent } from "./gift-detail/gift-detail.component";
 import { Subscription } from "rxjs";
 import { GiftService } from "../../core/service/gift.service";
 import { GiftModel } from "../../shared/models";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { AuthService } from '../../core/service/auth.service';
+import { AuthService } from "../../core/service/auth.service";
+
+import { ToastModule } from "primeng/toast";
+import { MessageService } from "primeng/api";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
   selector: "app-gift-list",
   standalone: true,
   templateUrl: "./gift-list.component.html",
   styleUrls: ["./gift-list.component.scss"],
-  imports: [GiftItemComponent, GiftDetailComponent, CommonModule, FormsModule],
+  imports: [GiftItemComponent, CommonModule, FormsModule, ToastModule],
+  providers: [MessageService],
 })
 export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
   giftSubcription!: Subscription;
@@ -46,23 +49,25 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
 
   user = { name: "", point: "", role: "" };
 
-  constructor(private httpService: GiftService, private authService: AuthService) {}
+  constructor(
+    private httpService: GiftService,
+    private authService: AuthService,
+    private messageService: MessageService
+  ) {}
+
   ngOnChanges(changes: SimpleChanges) {
     this.updateUserInfo();
-
   }
   ngOnDestroy(): void {
     if (this.giftSubcription) {
       this.giftSubcription.unsubscribe();
     }
-    
   }
 
   ngOnInit() {
     this.fetchData();
 
     this.updateUserInfo();
-    
   }
 
   updateUserInfo() {
@@ -74,15 +79,20 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   fetchData() {
-    this.giftSubcription = this.httpService.getPost().subscribe(
-      (response) => {
+    this.giftSubcription = this.httpService.getPost().subscribe({
+      next: (response) => {
         this.giftData = response.data.result;
-        this.filterByHot(true)
+        this.filterByHot(true);
       },
-      (error) => {
-        console.log(error);
-      }
-    );
+      error: (error: HttpErrorResponse) => {
+        this.messageService.add({
+          severity: "error",
+          summary: "Lỗi",
+          detail: error.error.errMessage,
+          life: 3000,
+        });
+      },
+    });
   }
 
   filterByHot(isHot: boolean) {
@@ -124,7 +134,8 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     this.showList.aboutToExchange = change;
     this.aboutToExchangeGift = this.giftData.filter((item) => {
       const matchesAboutToExchange =
-      Number(this.user.point) < item.point && item.point <= Number(this.user.point) * 1.2;
+        Number(this.user.point) < item.point &&
+        item.point <= Number(this.user.point) * 1.2;
       return matchesAboutToExchange;
     });
 

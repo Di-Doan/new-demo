@@ -25,10 +25,9 @@ export const routes: Routes = [
         (m) => m.UserHomeComponent
       ),
     children: [
-      // Spread the userRoutes here as child routes
-      ...userRoutes, // This includes all routes from user.routes.ts
+      ...userRoutes, 
 
-      { path: "", redirectTo: "gift-list", pathMatch: "full" }, // Redirect empty path to /user/gift-list
+      { path: "", redirectTo: "gift-list", pathMatch: "full" }, 
     ],
     canMatch: [loadingMatch]
   },

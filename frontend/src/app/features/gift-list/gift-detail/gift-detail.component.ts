@@ -26,7 +26,7 @@ import { TokenHelper } from "../../../shared/helper/token.helper";
   imports: [CommonModule, PointPipe, ToastModule, ConfirmDialogModule],
   providers: [MessageService, ConfirmationService],
 })
-export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
+export class GiftDetailComponent implements OnInit, OnDestroy {
   @Input() giftDetail!: GiftModel;
   user = { name: "", point: "", role: "" };
   visible = false;
@@ -44,13 +44,6 @@ export class GiftDetailComponent implements OnInit, OnDestroy, OnChanges {
     private tokenHelper: TokenHelper
   ) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // this.updateUserInfo();
-    // if (this.tokenHelper.fetchUserDataCookie()) {
-    //   this.fetchUserGiftList()
-    // }
-    
-  }
 
   ngOnInit() {
     this.updateUserInfo();

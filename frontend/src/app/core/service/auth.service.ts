@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from "../../environment";
 import { Router } from "@angular/router";
-import { GiftModel, UserModel } from "../../shared/models";
+import { UserModel } from "../../shared/models";
 
 @Injectable({
   providedIn: "root",

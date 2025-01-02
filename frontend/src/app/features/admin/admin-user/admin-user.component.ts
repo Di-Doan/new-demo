@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { AuthService } from "../../../core/service/auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Subject, takeUntil } from "rxjs";
@@ -43,7 +43,7 @@ import { InputTextModule } from "primeng/inputtext";
   ],
   providers: [MessageService, ConfirmationService],
 })
-export class AdminUserComponent implements OnInit, OnChanges {
+export class AdminUserComponent implements OnInit, OnChanges, OnDestroy {
   userList!: UserModel[];
 
   userDialog: boolean = false;
@@ -68,6 +68,11 @@ export class AdminUserComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.fetchUserList();
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   fetchUserList() {
