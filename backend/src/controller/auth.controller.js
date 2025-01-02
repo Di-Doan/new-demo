@@ -20,6 +20,7 @@ const {
   updateUserById: _updateUserById,
   updateUserByEmail: _updateUserByEmail,
   deleteUserById: _deleteUserById,
+  getUserByEmailOrUsername: _getUserByEmailOrUsername,
 } = userService;
 
 const {
@@ -94,7 +95,7 @@ const sendSubscriptionEmail = catchAsync(async (req, res) => {
 // signin
 const signin = catchAsync(async (req, res) => {
   const { userEmail, password } = req.body;
-  const user = await _getUserByEmai(userEmail);
+  const user = await _getUserByEmailOrUsername(userEmail);
   if (!user) {
     return res.status(400).json({
       errCode: Error.UserNotFound.errCode,
@@ -110,7 +111,7 @@ const signin = catchAsync(async (req, res) => {
       errMessage: Error.PasswordInvalid.errMessage,
     });
   }
-  const userRole = await _getRoleByEmail(userEmail);
+  const userRole = await _getRoleByEmail(user.email);
 
   const token = jwt.sign(
     {

@@ -60,6 +60,14 @@ const getUserByEmail = async(userEmail) => {
     return result
 }
 
+// get user by email or username
+const getUserByEmailOrUsername = async (identifier) => {
+  const result = await UserModel.findOne({
+    $or: [{ email: identifier }, { username: identifier }],
+  });
+  return result;
+};
+
 // update user by id
 const updateUserById = async(userId, updatedInfo) => {
     const result = await UserModel.findOneAndUpdate( {_id: userId}, updatedInfo)
@@ -79,11 +87,12 @@ const deleteUserById = async(userId) => {
 }
 
 export default {
-    createUser,
-    getAllUser,
-    getUserById,
-    getUserByEmail,
-    updateUserById,
-    updateUserByEmail,
-    deleteUserById
-}
+  createUser,
+  getAllUser,
+  getUserById,
+  getUserByEmail,
+  updateUserById,
+  updateUserByEmail,
+  deleteUserById,
+  getUserByEmailOrUsername,
+};

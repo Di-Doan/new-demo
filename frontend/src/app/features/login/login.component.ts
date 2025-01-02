@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   initForm() {
     this.loginForm = this.formBuilder.group({
-      userEmail: ["", [Validators.required, Validators.email]],
+      userEmail: ["", [Validators.required ]],
       password: ["", Validators.required],
     });
   }
@@ -100,12 +100,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       const passwordControl = formGroup.get(password);
       const confirmPasswordControl = formGroup.get(confirmPassword);
 
-      // If password and confirmPassword don't match
       if (passwordControl?.value !== confirmPasswordControl?.value) {
         confirmPasswordControl?.setErrors({ passwordsMismatch: true });
         this.forgetPasswordError = "Mật khẩu không khớp. Vui lòng thử lại.";
       } else {
-        confirmPasswordControl?.setErrors(null); // Clear errors
+        confirmPasswordControl?.setErrors(null); 
         this.forgetPasswordError = ''
       }
 
@@ -153,7 +152,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authService.setAuthState(this.TokenHelper.fetchUserDataCookie());
           setTimeout(() => {
             this.close();
-          }, 500);
+            this.showLoginAlert = false;
+          }, 700);
         },
         error: (error: HttpErrorResponse) => {
           if (error.error && error.error.errMessage) {

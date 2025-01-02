@@ -148,7 +148,7 @@
 
       <div
         class="field"
-        *ngIf="user.password != user.email || user.password == ''"
+        *ngIf="user._id == undefined || user._id == null || user._id == ''"
       >
         <label for="password" class="my-2">Mật khẩu</label>
         <input
