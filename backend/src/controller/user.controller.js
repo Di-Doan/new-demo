@@ -4,6 +4,7 @@ import responseService from "../services/response/response.service.js";
 import catchAsync from "../utils/catchAsync.js";
 import emailService from "../services/email/email.service.js";
 import authService from "../services/function/auth.service.js"
+import userGiftService from "../services/function/userGift.service.js";
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -14,6 +15,7 @@ const {
   getUserByEmail: _getUserByEmai,
   updateUserById: _updateUserById,
   deleteUserById: _deleteUserById,
+  getUserByEmailOrUsername: _getUserByEmailOrUsername,
 } = userService;
 
 const { sendOTPEmail: _sendOTPEmail, generateOTP: _generateOTP, sendSubscriptionEmail: _sendSubscriptionEmail } = emailService;
@@ -22,20 +24,35 @@ const { newSuccess: _newSuccess, newError: _newError } = responseService;
 
 const {createRole: _createRole, updateRoleByEmail:_updateRoleByEmail, deleteRoleByEmail: _deleteRoleByEmail} = authService
 
+const {
+  createUserGiftList: _createUserGiftList,
+  deleteUserGiftByUserId: _deleteUserGiftByUserId,
+} = userGiftService;
+
 // create new user
 const createUser = catchAsync(async (req, res) => {
-  const { username, name, password, email, point, role } = req.body.newUser;
+  const { email, name, password, username, point, role } = req.body.newUser;
   const existUser = await _getUserByEmai(email);
-  if (existUser) {
+  const existUsername = await _getUserByEmailOrUsername(username );
+  console.log({ email, name, password, username, point, role });
+  if (existUser ) {
     return res.status(400).json({
       errCode: Error.EmailDuplicate.errCode,
       errMessage: Error.EmailDuplicate.errMessage,
     });
   }
 
+  if ( existUsername) {
+    return res.status(400).json({
+      errCode: Error.UsernameDuplicate.errCode,
+      errMessage: Error.UsernameDuplicate.errMessage,
+    });
+  }
+
   const result = await _createUser(username, name, password, email, point);
   await _createRole(email, role)
-  return res.status(200).json(_newSuccess(result));
+  await _createUserGiftList(result._id)
+  return res.status(200).json(_newSuccess());
 });
 
 // get all user
@@ -95,6 +112,8 @@ const deleteUserById = catchAsync(async (req, res) => {
       errMessage: Error.UserNotFound.errMessage,
     });
   }
+  await _deleteRoleByEmail(result.email)
+  await _deleteUserGiftByUserId(userId)
   return res.status(200).json(_newSuccess({ result }));
 });
 
@@ -105,6 +124,7 @@ const deleteMultipleUser = catchAsync(async (req, res) => {
   for (const user of userList) {
     await _deleteUserById(user._id)
     await _deleteRoleByEmail(user.email)
+    await _deleteUserGiftByUserId(user._id);
   }
   return res.status(200).json(_newSuccess());
 })

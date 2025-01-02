@@ -1,5 +1,11 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
+import {
+  Component,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import { AuthService } from "../../../core/service/auth.service";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Subject, takeUntil } from "rxjs";
@@ -182,14 +188,11 @@ export class AdminUserComponent implements OnInit, OnChanges, OnDestroy {
 
   saveUser() {
     this.submitted = true;
-
-    if (Object.values(this.user).some((value) => value === "")) {
-      this.messageService.add({
-        severity: "error",
-        summary: "Thất bại",
-        detail: "Vui lòng điền đủ thông tin",
-        life: 1500,
-      });
+    if (
+      Object.entries(this.user).some(
+        ([key, value]) => key !== "_id" && value === ""
+      )
+    ) {
       return;
     }
     if (this.user._id) {
@@ -220,6 +223,9 @@ export class AdminUserComponent implements OnInit, OnChanges, OnDestroy {
           },
         });
     } else {
+      if (this.user.password.length < 6 || this.user.password.length > 32) {
+        return;
+      }
       this.authService
         .createNewUser(this.user)
         .pipe(takeUntil(this.destroyed$))

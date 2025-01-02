@@ -6,7 +6,6 @@ import responseService from "../services/response/response.service.js";
 import catchAsync from "../utils/catchAsync.js";
 import UpdateToken from "../utils/updateTokenInfo.js";
 import cookie from "cookie";
-import updateTokenInfo from "../utils/updateTokenInfo.js";
 
 const {
   getAllUserGift: _getAllUserGift,

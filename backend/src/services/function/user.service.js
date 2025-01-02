@@ -60,6 +60,7 @@ const getUserByEmail = async(userEmail) => {
     return result
 }
 
+
 // get user by email or username
 const getUserByEmailOrUsername = async (identifier) => {
   const result = await UserModel.findOne({

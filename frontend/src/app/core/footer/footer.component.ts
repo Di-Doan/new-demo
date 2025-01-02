@@ -46,13 +46,13 @@ export class FooterComponent implements OnInit, OnDestroy {
       this.subscriptionFormError = "Email không hợp lệ";
       return;
     }
-
+    this.subscriptionFormError = "";
     this.authService
       .sendSubscriptionEmail(String(this.subscriptionForm.value))
       .pipe(takeUntil(this.destroyed$))
       .subscribe({
         next: (res) => {
-          this.subscriptionFormError = "";
+          // this.subscriptionFormError = "";
           this.subscriptionForm = new FormControl("", [
             Validators.pattern(this.emailPattern),
             Validators.required,
@@ -65,7 +65,7 @@ export class FooterComponent implements OnInit, OnDestroy {
           });
         },
         error: (error: HttpErrorResponse) => {
-          this.subscriptionFormError = "";
+          // this.subscriptionFormError = "";
           this.subscriptionForm = new FormControl("", [
             Validators.pattern(this.emailPattern),
             Validators.required,

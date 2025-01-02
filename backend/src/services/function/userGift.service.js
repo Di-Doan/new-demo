@@ -20,9 +20,18 @@ const exchangeGift = async (userId, giftId) => {
       { userId: userId },
       { $addToSet: { giftList: giftId } }
     );
-    return result
+    return result;
   } catch (error) {
-    throw error
+    throw error;
+  }
+};
+
+const deleteUserGiftByUserId = async (userId) => {
+  try {
+    const result = await UserGiftModel.findOneAndDelete({ userId: userId });
+    return result;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -30,4 +39,5 @@ export default {
   createUserGiftList,
   getAllUserGift,
   exchangeGift,
+  deleteUserGiftByUserId,
 };

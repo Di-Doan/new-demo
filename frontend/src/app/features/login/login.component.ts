@@ -79,10 +79,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       {
         userEmail: [window.localStorage.getItem("userEmail"), Validators.required],
         otp: [Number, Validators.required],
-        password: ["", Validators.required],
+        password: ["", [Validators.required, Validators.pattern('^.{6,32}$')]],
         confirmPassword: ["", Validators.required],
       },
       {
+
         validator: this.passwordsMatch("password", "confirmPassword"),
       }
     );

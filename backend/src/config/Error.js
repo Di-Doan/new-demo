@@ -113,6 +113,10 @@ const Error = {
     errCode: 126,
     errMessage: "Lấy thông tin quà không thành công",
   },
+ UsernameDuplicate: {
+    errCode: 127,
+    errMessage: "Tên đăng nhập đã được sử dụng",
+  },
 
   // 200++ Error from Db
   CastError: {
