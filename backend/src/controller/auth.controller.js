@@ -119,18 +119,18 @@ const signin = catchAsync(async (req, res) => {
       role: userRole.role,
       point: user.point,
     },
-    process.env.JWT_SECRET, // Secret key for signing the token
+    process.env.JWT_SECRET, 
     { expiresIn: process.env.TOKEN_EXPIRED }
   );
 
-  // Set the JWT token as an HttpOnly and Secure cookie
+
   res.cookie("user_jwt", token, {
     httpOnly: true,
-    sameSite: "Strict", // Helps mitigate CSRF attacks
+    sameSite: "Strict", 
     maxAge: process.env.TOKEN_AGE,
   });
 
-  // Optionally, set user-related data (non-HTTPOnly)
+
   res.cookie(
     "user_data",
     JSON.stringify({ name: user.name, point: user.point, role: userRole.role }),
