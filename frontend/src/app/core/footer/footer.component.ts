@@ -1,8 +1,10 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import {
+  FormControl,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from "@angular/forms";
 import { AuthService } from "../service/auth.service";
 import { Subject, takeUntil } from "rxjs";
@@ -17,37 +19,44 @@ import { MessageService } from "primeng/api";
   templateUrl: "./footer.component.html",
   styleUrls: ["./footer.component.scss"],
   imports: [FormsModule, ReactiveFormsModule, CommonModule, ToastModule],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class FooterComponent implements OnInit, OnDestroy {
-  subscriptionForm: string = ''
-  emailPattern: string = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
-  subscriptionFormError = ''
+  emailPattern: string = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$";
+  subscriptionFormError = "";
+  subscriptionForm = new FormControl("", [Validators.pattern(this.emailPattern), Validators.required]);
 
   destroyed$ = new Subject<void>();
 
-  constructor(private authService: AuthService, private messageService: MessageService) {}
+  constructor(
+    private authService: AuthService,
+    private messageService: MessageService
+  ) {}
 
-  ngOnDestroy(){
-    this.destroyed$.next()
-    this.destroyed$.complete()
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
-  
 
   ngOnInit() {}
 
   submitForm() {
-    if (!this.subscriptionForm.match(this.emailPattern)) {
-      return
+    if (this.subscriptionForm.invalid) {
+      this.subscriptionForm.markAllAsTouched();
+      this.subscriptionFormError = "Email không hợp lệ";
+      return;
     }
-    
+
     this.authService
-      .sendSubscriptionEmail(this.subscriptionForm)
+      .sendSubscriptionEmail(String(this.subscriptionForm.value))
       .pipe(takeUntil(this.destroyed$))
       .subscribe({
         next: (res) => {
-          this.subscriptionFormError = ''
-          this.subscriptionForm = ''
+          this.subscriptionFormError = "";
+          this.subscriptionForm = new FormControl("", [
+            Validators.pattern(this.emailPattern),
+            Validators.required,
+          ]);
           this.messageService.add({
             severity: "success",
             summary: "Thành công",
@@ -56,15 +65,18 @@ export class FooterComponent implements OnInit, OnDestroy {
           });
         },
         error: (error: HttpErrorResponse) => {
-          this.subscriptionForm = ''
+          this.subscriptionFormError = "";
+          this.subscriptionForm = new FormControl("", [
+            Validators.pattern(this.emailPattern),
+            Validators.required,
+          ]);
           this.messageService.add({
             severity: "error",
             summary: "Lỗi",
             detail: error.error.errMessage,
             life: 3000,
           });
-        }
-      }
-      );
+        },
+      });
   }
 }

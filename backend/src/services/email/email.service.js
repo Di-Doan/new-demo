@@ -5,6 +5,9 @@ import { dirname, join } from "path";
 import dotenv from 'dotenv';
 dotenv.config(); 
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+
 // generate otp
 const generateOTP = () => {
   const otp = Math.floor(100000 + Math.random() * 900000); // Generates a random 6-digit OTP
@@ -76,8 +79,10 @@ const sendSubscriptionEmail = async (to) => {
 
   try {
     const info = await transporter.sendMail(mailOptions);
+    console.log('Subscription email sent:', info.response);
     return info.response
   } catch (error) {
+    console.error('Error sending subscription email:', error);
     return error
   }
 };
