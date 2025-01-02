@@ -34,7 +34,7 @@ const createUser = catchAsync(async (req, res) => {
   const { email, name, password, username, point, role } = req.body.newUser;
   const existUser = await _getUserByEmai(email);
   const existUsername = await _getUserByEmailOrUsername(username );
-  console.log({ email, name, password, username, point, role });
+
   if (existUser ) {
     return res.status(400).json({
       errCode: Error.EmailDuplicate.errCode,

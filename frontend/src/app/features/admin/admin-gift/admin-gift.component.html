@@ -34,7 +34,7 @@
     dataKey="_id"
     currentPageReportTemplate="Đang hiện từ {first} tới {last} trong tổng số {totalRecords} mục"
     [showCurrentPageReport]="true"
-    [globalFilterFields]="['name', 'point']"
+    [globalFilterFields]="['name', 'point', 'start_date', 'end_date']"
   >
     <ng-template pTemplate="caption">
       <div
@@ -160,9 +160,9 @@
       <div class="field">
         <label for="point" class="my-2" >Điểm</label>
         <p-inputNumber id="point" [(ngModel)]="gift.point" required/>
-        <small class="p-error" *ngIf="submitted && !gift.point">
+        <!-- <small class="p-error" *ngIf="submitted && !gift.point">
           Điểm đổi quà không được để trống.
-        </small>
+        </small> -->
       </div>
 
       <div class="field col">
