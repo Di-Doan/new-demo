@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../core/service/auth.service';
+import { UserModel } from '../../../shared/models';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -11,12 +12,12 @@ import { AuthService } from '../../../core/service/auth.service';
   imports: [CommonModule, RouterModule]
 })
 export class AdminSidebarComponent implements OnInit {
-  admin = {name: ''}
+  admin: UserModel = new UserModel();
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authService.user$.subscribe((value) => {
-      this.admin.name = value.name;
+      this.admin  = new UserModel(value);
     });
   }
 

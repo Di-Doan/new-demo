@@ -13,28 +13,28 @@ export class GiftService {
 
   constructor(private http: HttpClient) { }
 
-  getPost(): Observable<any> {
-    const url = `${this.apiUrl}/getAllGift`
+  getAllGift(): Observable<any> {
+    const url = `${this.apiUrl}/get-all-gift`
     return this.http.get(url)
   }
 
   deleteSelectedGifts(giftId: string): Observable<any> {
-    const url = `${this.apiUrl}/deleteGiftById/${giftId}`
+    const url = `${this.apiUrl}/delete-gift-by-id/${giftId}`
     return this.http.delete(url, { withCredentials: true })
   }
 
   updateGiftInfo(giftId:string, updatedInfo: GiftModel): Observable<any> {
-    const url = `${this.apiUrl}/updateGiftById`
+    const url = `${this.apiUrl}/update-gift-by-id`
     return this.http.post(url, {giftId, updatedInfo}, { withCredentials: true })
   }
 
   createNewGift(img: string, name: string, start_date: string, end_date: string, point: number, isHot: boolean): Observable<any> {
-    const url = `${this.apiUrl}/createGift`
+    const url = `${this.apiUrl}/create-gift`
     return this.http.post(url, {img, name, start_date, end_date, point, isHot}, { withCredentials: true })
   }
 
   deleteMultipleGift(giftList: any): Observable<any> {
-    const url = `${this.apiUrl}/deleteMultipleGift`
+    const url = `${this.apiUrl}/delete-multiple-gift`
     return this.http.post(url, giftList, { withCredentials: true })
   }
 

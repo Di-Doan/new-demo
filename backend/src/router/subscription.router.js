@@ -8,8 +8,8 @@ const router = Router();
 
 const { getAllSubscription, deleteSubscriptionById, deleteMultipleSubscription } = SubscriptionController;
 
-router.route("/getAllSubscription").get(getAllSubscription);
-router.route("/deleteSubscriptionById/:subscriptionId").delete(verifyToken, verifyAdmin, deleteSubscriptionById);
-router.route("/deleteMultipleSubscription").post(verifyToken, verifyAdmin, deleteMultipleSubscription);
+router.route("/get-all-subscription").get(getAllSubscription);
+router.route("/delete-subscription-by-id/:subscriptionId").delete(verifyToken, verifyAdmin, deleteSubscriptionById);
+router.route("/delete-multiple-subscription").post(verifyToken, verifyAdmin, deleteMultipleSubscription);
 
 export default router;

@@ -14,6 +14,7 @@ import { Router, RouterModule } from "@angular/router";
 
 import { ToastModule } from "primeng/toast";
 import { MessageService } from "primeng/api";
+import { UserModel } from "../../shared/models";
 
 @Component({
   selector: "app-header",
@@ -37,7 +38,7 @@ export class HeaderComponent implements OnInit, OnChanges {
     "../../../assets/img/banner3.png",
     "../../../assets/img/banner4.png",
   ];
-  user = { name: "", point: "", role: "" };
+  user: UserModel = new UserModel();
 
   constructor(
     private authService: AuthService,
@@ -66,7 +67,7 @@ export class HeaderComponent implements OnInit, OnChanges {
   }
 
   logout() {
-    this.user = { name: "", point: "", role: "" };
+    this.user = new UserModel();
     this.authService.logout().subscribe({
       next: (res) => {
         this.router.navigate(["/"]);

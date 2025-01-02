@@ -8,8 +8,8 @@ const {getAllUserGift, exchangeGift, getUserGiftList} = userGiftController
 
 const {verifyToken, verifyUser } = jwtVerifyMiddleware
 
-router.route("/getAllUserGift").get(verifyToken, verifyUser, getAllUserGift)
-router.route("/exchangeGift").post(verifyToken, verifyUser, exchangeGift)
-router.route("/getUserGiftList").get(verifyToken, verifyUser, getUserGiftList)
+router.route("/get-all-user-gift").get(verifyToken, verifyUser, getAllUserGift)
+router.route("/exchange-gift").post(verifyToken, verifyUser, exchangeGift)
+router.route("/get-user-gift-list").get(verifyToken, verifyUser, getUserGiftList)
 
 export default router;

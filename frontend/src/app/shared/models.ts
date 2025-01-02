@@ -1,9 +1,9 @@
 export class ContactModel {
-  _id: string = '';
-  name: string = '';
-  email: string = '';
-  title: string = '';
-  note: string = '';
+  _id: string = "";
+  name: string = "";
+  email: string = "";
+  title: string = "";
+  note: string = "";
 }
 
 export class SubscriptionModel {
@@ -12,21 +12,37 @@ export class SubscriptionModel {
 }
 
 export class UserModel {
-  _id: string = '';
-  username: string = '';
-  password: string = ''
-  name: string = ''
-  email: string = '';
+  _id: string = "";
+  username: string = "";
+  password: string = "";
+  name: string = "";
+  email: string = "";
   point: number = 0;
-  role: string = 'user'
+  role: string = "user";
+  roleName: string = "Người dùng";
+  constructor(user: UserModel = {} as UserModel) {
+    user.roleName = user.role === "admin" ? "Quản trị viên" : "Người dùng";
+    Object.assign(this, user);
+    return this;
+  }
 }
 
 export class GiftModel {
-  _id: string = '';
-  img: string = '';
-  name: string = '';
-  start_date: string = '';
-  end_date: string = '';
+  _id: string = "";
+  img: string = "";
+  name: string = "";
+  start_date: string = "";
+  end_date: string = "";
   point: number = 0;
-  isHot: boolean = false
+  isHot: boolean = false;
+}
+
+export interface IGift{
+  _id: string;
+  img: string;
+  name: string;
+  start_date: string;
+  end_date: string;
+  point: number;
+  isHot: boolean;
 }

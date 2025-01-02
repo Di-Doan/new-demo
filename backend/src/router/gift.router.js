@@ -8,11 +8,11 @@ const { createGift, getAllGift, getGiftById, updateGiftById, deleteGiftById, del
 
   const {verifyToken, verifyAdmin} = jwtVerifyMiddleware
 
-router.route("/getAllGift").get(getAllGift);
-router.route("/createGift").post(verifyToken, verifyAdmin, createGift);
-router.route("/getGiftById/:giftId").get(getGiftById);
-router.route("/updateGiftById").post(verifyToken, verifyAdmin, updateGiftById);
-router.route("/deleteGiftById/:giftId").delete(verifyToken, verifyAdmin, deleteGiftById);
-router.route("/deleteMultipleGift").post(verifyToken, verifyAdmin, deleteMultipleGift)
+router.route("/get-all-gift").get(getAllGift);
+router.route("/create-gift").post(verifyToken, verifyAdmin, createGift);
+router.route("/get-gift-by-id/:giftId").get(getGiftById);
+router.route("/update-gift-by-id").post(verifyToken, verifyAdmin, updateGiftById);
+router.route("/delete-gift-by-id/:giftId").delete(verifyToken, verifyAdmin, deleteGiftById);
+router.route("/delete-multiple-gift").post(verifyToken, verifyAdmin, deleteMultipleGift)
 
 export default router;

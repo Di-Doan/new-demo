@@ -8,10 +8,10 @@ const {resetPasswordEmail, sendSubscriptionEmail, signin, logout, resetPassword 
 
 const {verifyToken, verifyAdmin} = jwtVerifyMiddleware
 
-router.route("/resetPasswordEmail").post(resetPasswordEmail);
-router.route("/sendSubscription").post(sendSubscriptionEmail)
-router.route("/signin").post(verifyToken, signin)
-router.route("/logout").get(logout)
-router.route("/resetPassword").post(resetPassword)
+router.route("/reset-password-email").post(resetPasswordEmail);
+router.route("/send-subscription").post(sendSubscriptionEmail);
+router.route("/signin").post(verifyToken, signin);
+router.route("/logout").get(logout);
+router.route("/reset-password").post(resetPassword);
 
 export default router

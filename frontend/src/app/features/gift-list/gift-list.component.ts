@@ -8,7 +8,7 @@ import {
 import { GiftItemComponent } from "./gift-item/gift-item.component";
 import { Subscription } from "rxjs";
 import { GiftService } from "../../core/service/gift.service";
-import { GiftModel } from "../../shared/models";
+import { GiftModel, UserModel } from "../../shared/models";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { AuthService } from "../../core/service/auth.service";
@@ -47,7 +47,7 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     aboutToExchange: false,
   };
 
-  user = { name: "", point: "", role: "" };
+  user: UserModel = new UserModel();
 
   constructor(
     private httpService: GiftService,
@@ -79,7 +79,7 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   fetchData() {
-    this.giftSubcription = this.httpService.getPost().subscribe({
+    this.giftSubcription = this.httpService.getAllGift().subscribe({
       next: (response) => {
         this.giftData = response.data.result;
         this.filterByHot(true);

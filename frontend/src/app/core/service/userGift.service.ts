@@ -16,17 +16,17 @@ export class UserGiftService {
   constructor(private http: HttpClient) {}
 
   getAllUserGift(): Observable<any> {
-    const url = `${this.apiUrl}/getAllUserGift`;
+    const url = `${this.apiUrl}/get-all-user-gift`;
     return this.http.get(url, { withCredentials: true });
   }
 
   exchangeGift(giftId: string): Observable<any> {
-    const url = `${this.apiUrl}/exchangeGift`;
+    const url = `${this.apiUrl}/exchange-gift`;
     return this.http.post(url, {giftId: giftId}, { withCredentials: true });
   }
 
   getUserGiftList(): Observable<any> {
-    const url = `${this.apiUrl}/getUserGiftList`;
+    const url = `${this.apiUrl}/get-user-gift-list`;
     return this.http.get(url, { withCredentials: true })
   }
 

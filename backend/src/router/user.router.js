@@ -15,12 +15,12 @@ const {
 
 const {verifyToken, verifyAdmin } = jwtVerifyMiddleware
 
-router.route("/getAllUser").get(verifyToken, verifyAdmin, getAllUser);
-router.route("/createUser").post(verifyToken, verifyAdmin, createUser);
-router.route("/getUserById").get(getUserById);
-router.route("/getUserByEmail").post(getUserByEmail);
-router.route("/updateUserById").post(verifyToken, verifyAdmin, updateUserById);
-router.route("/deleteUserById/:userId").delete(verifyToken, verifyAdmin, deleteUserById);
-router.route("/deleteMultipleUsers").post(verifyToken, verifyAdmin, deleteMultipleUser)
+router.route("/get-all-user").get(verifyToken, verifyAdmin, getAllUser);
+router.route("/create-user").post(verifyToken, verifyAdmin, createUser);
+router.route("/get-user-by-id").get(getUserById);
+router.route("/get-user-by-email").post(getUserByEmail);
+router.route("/update-user-by-id").post(verifyToken, verifyAdmin, updateUserById);
+router.route("/delete-user-by-id/:userId").delete(verifyToken, verifyAdmin, deleteUserById);
+router.route("/delete-multiple-users").post(verifyToken, verifyAdmin, deleteMultipleUser)
 
 export default router;

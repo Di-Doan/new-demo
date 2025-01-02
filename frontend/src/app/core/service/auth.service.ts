@@ -13,11 +13,8 @@ export class AuthService {
   apiUrl = environment.apiUrl;
 
   // Define subjects to manage authentication state
-  private userSubject: BehaviorSubject<any> = new BehaviorSubject<any>({
-    name: "",
-    point: 0,
-    role: "",
-  });
+  private userSubject: BehaviorSubject<UserModel> =
+    new BehaviorSubject<UserModel>(new UserModel());
 
   user$ = this.userSubject.asObservable();
 
@@ -43,23 +40,23 @@ export class AuthService {
 
   logout() {
     this.TokenHelper.deleteCookie("user_data");
-    this.userSubject.next({name: "", point: '', role: "" });
+    this.userSubject.next(new UserModel());
     const url = `${this.apiUrl}/auth/logout`;
     return this.http.get(url, { withCredentials: true });
   }
 
   forgetPassword(email: string): Observable<any> {
-    const url = `${this.apiUrl}/auth/resetPasswordEmail`;
+    const url = `${this.apiUrl}/auth/reset-password-email`;
     return this.http.post(url, { userEmail: email });
   }
 
   sendSubscriptionEmail(email: string): Observable<any> {
-    const url = `${this.apiUrl}/auth/sendSubscription`;
+    const url = `${this.apiUrl}/auth/send-subscription`;
     return this.http.post(url, { userEmail: email });
   }
 
   resetPassword(email: string, otp: number, password: string): Observable<any> {
-    const url = `${this.apiUrl}/auth/resetPassword`;
+    const url = `${this.apiUrl}/auth/reset-password`;
     return this.http.post(url, {
       userEmail: email,
       otp: otp,
@@ -67,44 +64,50 @@ export class AuthService {
     });
   }
 
-  setAuthState(user: { email: string; point: number; role: string }) {
-    this.userSubject.next(user);
+  setAuthState(user: UserModel) {
+    const userData = new UserModel(user);
+    this.userSubject.next(userData);
     this.router.navigate([user.role == "admin" ? "/admin" : "/"]);
   }
 
   fetchAllUser(): Observable<any> {
-    const url = `${this.apiUrl}/user/getAllUser`;
+    const url = `${this.apiUrl}/user/get-all-user`;
     return this.http.get(url, { withCredentials: true });
   }
 
   deleteSelectedUser(userId: string): Observable<any> {
-    const url = `${this.apiUrl}/user/deleteUserById/${userId}`;
+    const url = `${this.apiUrl}/user/delete-user-by-id/${userId}`;
     return this.http.delete(url, { withCredentials: true });
   }
 
   updateUserInfo(userId: string, updatedInfo: UserModel): Observable<any> {
-    const url = `${this.apiUrl}/user/updateUserById`;
-    return this.http.post(url, { userId, updatedInfo }, { withCredentials: true });
+    const url = `${this.apiUrl}/user/update-user-by-id`;
+    return this.http.post(
+      url,
+      { userId, updatedInfo },
+      { withCredentials: true }
+    );
   }
 
-  createNewUser(
-    newUser: UserModel
-  ): Observable<any> {
-    const url = `${this.apiUrl}/user/createUser`;
-    return this.http.post(url, {
-      newUser
-    }, { withCredentials: true });
+  createNewUser(newUser: UserModel): Observable<any> {
+    const url = `${this.apiUrl}/user/create-user`;
+    return this.http.post(
+      url,
+      {
+        newUser,
+      },
+      { withCredentials: true }
+    );
   }
 
   deleteMultipleUsers(userList: any): Observable<any> {
-    const url = `${this.apiUrl}/user/deleteMultipleUsers`
-    return this.http.post(url, userList, { withCredentials: true })
+    const url = `${this.apiUrl}/user/delete-multiple-users`;
+    return this.http.post(url, userList, { withCredentials: true });
   }
 
   updateUserData(newData: any) {
-    this.userSubject.next(newData)
+    this.userSubject.next(newData);
   }
-
 }
 
 

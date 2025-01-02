@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 
 import { ToastModule } from "primeng/toast";
 import { MessageService } from "primeng/api";
+import { UserModel } from "../../../shared/models";
 
 @Component({
   selector: "app-admin-navbar",
@@ -20,7 +21,7 @@ import { MessageService } from "primeng/api";
   providers: [MessageService],
 })
 export class AdminNavbarComponent implements OnInit {
-  admin = { name: "" };
+  admin: UserModel = new UserModel();
 
   constructor(
     private renderer: Renderer2,
@@ -31,7 +32,7 @@ export class AdminNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user$.subscribe((value) => {
-      this.admin.name = value.name;
+      this.admin = new UserModel(value);
     });
   }
 

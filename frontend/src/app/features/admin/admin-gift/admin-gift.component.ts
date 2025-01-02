@@ -87,7 +87,7 @@ export class AdminGiftComponent implements OnInit, OnChanges, OnDestroy {
 
   fetchGiftList() {
     this.giftService
-      .getPost()
+      .getAllGift()
       .pipe(takeUntil(this.destroyed$))
       .subscribe({
         next: (res) => {

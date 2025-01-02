@@ -10,7 +10,7 @@ const updateJwtToken = (oldToken, newPayload) => {
 
     const newToken = jwt.sign(
       updatedPayload,
-      process.env.JWT_SECRET, // Secret key for signing the token
+      process.env.JWT_SECRET, 
     );
 
     return newToken;

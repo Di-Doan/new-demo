@@ -14,14 +14,10 @@ const {
 
 const router = Router();
 
-router.route("/createNewContact").post(createContact)
-router.route("/getAllContact").get(verifyToken, verifyAdmin, getAllContact);
-router.route("/updateContactById").post(verifyToken, verifyAdmin, updateContactById);
-router
-  .route("/deleteContactById/:contactId")
-  .delete(verifyToken, verifyAdmin, deleteContactById);
-router
-  .route("/deleteMultipleContact")
-  .post(verifyToken, verifyAdmin, deleteMultipleContact);
+router.route("/create-new-contact").post(createContact);
+router.route("/get-all-contact").get(verifyToken, verifyAdmin, getAllContact);
+router.route("/update-contact-by-id").post(verifyToken, verifyAdmin, updateContactById);
+router.route("/delete-contact-by-id/:contactId").delete(verifyToken, verifyAdmin, deleteContactById);
+router.route("/delete-multiple-contact").post(verifyToken, verifyAdmin, deleteMultipleContact);
 
 export default router

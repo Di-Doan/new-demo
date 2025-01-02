@@ -14,22 +14,22 @@ export class ContactService {
   constructor(private http: HttpClient) {}
 
   createNewContact(contact: ContactModel): Observable<any> {
-    const url = `${this.apiUrl}/createNewContact`;
+    const url = `${this.apiUrl}/create-new-contact`;
     return this.http.post(url, contact);
   }
 
   getAllContact(): Observable<any> {
-    const url = `${this.apiUrl}/getAllContact`;
+    const url = `${this.apiUrl}/get-all-contact`;
     return this.http.get(url, { withCredentials: true });
   }
 
   deleteSelectedContacts(contactId: string): Observable<any> {
-    const url = `${this.apiUrl}/deleteContactById/${contactId}`;
+    const url = `${this.apiUrl}/delete-contact-by-id/${contactId}`;
     return this.http.delete(url, { withCredentials: true });
   }
 
   updateContactInfo(contactId: string, updatedInfo: ContactModel): Observable<any> {
-    const url = `${this.apiUrl}/updateContactById`;
+    const url = `${this.apiUrl}/update-contact-by-id`;
     return this.http.post(
       url,
       { contactId, updatedInfo },
@@ -38,7 +38,7 @@ export class ContactService {
   }
 
   deleteMultipleContact(contactList: any): Observable<any> {
-    const url = `${this.apiUrl}/deleteMultipleContact`;
+    const url = `${this.apiUrl}/delete-multiple-contact`;
     return this.http.post(url, contactList, { withCredentials: true });
   }
 }

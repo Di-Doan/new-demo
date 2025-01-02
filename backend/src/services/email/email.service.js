@@ -15,7 +15,7 @@ const {
 
 // generate otp
 const generateOTP = () => {
-  const otp = Math.floor(100000 + Math.random() * 900000); // Generates a random 6-digit OTP
+  const otp = Math.floor(100000 + Math.random() * 900000); 
   return otp;
 };
 
@@ -29,34 +29,33 @@ const transporter = createTransport({
   },
 });
 
-// Get the current directory from import.meta.url
-const __filename = fileURLToPath(import.meta.url); // Get the current file path
-const __dirname = dirname(__filename); // Get the current directory path
 
-// Set up Handlebars template engine (use current directory for templates)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+
 transporter.use(
   "compile",
   expressHandlebars({
     viewEngine: {
-      extname: ".hbs", // Use .hbs extension
-      defaultLayout: "", // If not using layouts, leave as empty string
+      extname: ".hbs", 
+      defaultLayout: "",
     },
-    viewPath: join(__dirname, ""), // Use current directory for templates
-    extName: ".hbs", // Set file extension for templates
+    viewPath: join(__dirname, ""), 
+    extName: ".hbs", 
   })
 );
 
 // send otp email
 const sendOTPEmail = async (to, name, otp) => {
   const mailOptions = {
-    from: process.env.EMAIL_FROM, // Sender's email address
-    to: to, // Recipient's email address
-    subject: "Your Password Reset OTP", // Subject line
-    template: "forgotPasswordTemplate", // Name of the Handlebars template (without .hbs extension)
+    from: process.env.EMAIL_FROM,
+    to: to, 
+    subject: "Your Password Reset OTP", 
+    template: "forgotPasswordTemplate", 
     context: {
-      // Dynamic content for the template
-      name: name, // User's name
-      otp: otp, // The generated OTP
+      name: name, 
+      otp: otp, 
     },
   };
    

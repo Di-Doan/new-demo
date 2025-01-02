@@ -13,18 +13,18 @@ export class SubscriptionService {
 
 
   getAllSubscription(): Observable<any> {
-    const url = `${this.apiUrl}/getAllSubscription`;
+    const url = `${this.apiUrl}/get-all-subscription`;
     return this.http.get(url, { withCredentials: true });
   }
 
   deleteSelectedSubscriptions(subscriptionId: string): Observable<any> {
-    const url = `${this.apiUrl}/deleteSubscriptionById/${subscriptionId}`;
+    const url = `${this.apiUrl}/delete-subscription-by-id/${subscriptionId}`;
     return this.http.delete(url, { withCredentials: true });
   }
 
 
   deleteMultipleSubscription(subscriptionList: any): Observable<any> {
-    const url = `${this.apiUrl}/deleteMultipleSubscription`;
+    const url = `${this.apiUrl}/delete-multiple-subscription`;
     return this.http.post(url, subscriptionList, { withCredentials: true });
   }
 }

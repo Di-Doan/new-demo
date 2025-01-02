@@ -7,7 +7,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from "@angular/core";
-import { GiftModel } from "../../../shared/models";
+import { GiftModel, UserModel } from "../../../shared/models";
 import { PointPipe } from "../../../shared/pipes/point.pipe";
 import { AuthService } from "../../../core/service/auth.service";
 import { MessageService, ConfirmationService } from "primeng/api";
@@ -28,7 +28,7 @@ import { TokenHelper } from "../../../shared/helper/token.helper";
 })
 export class GiftDetailComponent implements OnInit, OnDestroy {
   @Input() giftDetail!: GiftModel;
-  user = { name: "", point: "", role: "" };
+  user: UserModel = new UserModel();
   visible = false;
   alertVisible = false;
 
