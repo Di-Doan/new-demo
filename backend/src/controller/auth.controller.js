@@ -19,7 +19,6 @@ const {
   getUserByEmail: _getUserByEmai,
   updateUserById: _updateUserById,
   updateUserByEmail: _updateUserByEmail,
-  deleteUserById: _deleteUserById,
   getUserByEmailOrUsername: _getUserByEmailOrUsername,
 } = userService;
 

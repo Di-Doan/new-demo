@@ -70,6 +70,7 @@ export class AdminUserComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.fetchUserList();
+ 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
