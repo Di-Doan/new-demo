@@ -1,4 +1,12 @@
 import {
+  animate,
+  animation,
+  style,
+  transition,
+  trigger,
+  useAnimation
+} from "./chunk-KBGL3CLD.js";
+import {
   TimesIcon
 } from "./chunk-FFGDN4TK.js";
 import {
@@ -16,14 +24,6 @@ import {
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
-import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-  useAnimation
-} from "./chunk-KBGL3CLD.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -109,8 +109,8 @@ import {
   ɵɵtextInterpolate,
   ɵɵviewQuery
 } from "./chunk-SF7Q7RME.js";
-import "./chunk-SDQMWN4J.js";
 import "./chunk-6UHCRHZ7.js";
+import "./chunk-SDQMWN4J.js";
 import {
   __spreadValues
 } from "./chunk-DSK7TZNG.js";

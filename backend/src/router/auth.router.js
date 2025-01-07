@@ -6,7 +6,7 @@ const router = Router();
 
 const {resetPasswordEmail, sendSubscriptionEmail, signin, logout, resetPassword } = AuthController
 
-const {verifyToken, verifyAdmin} = jwtVerifyMiddleware
+const {verifyToken} = jwtVerifyMiddleware
 
 router.route("/reset-password-email").post(resetPasswordEmail);
 router.route("/send-subscription").post(sendSubscriptionEmail);

@@ -21,7 +21,12 @@ export class UserModel {
   role: string = "user";
   roleName: string = "Người dùng";
   constructor(user: UserModel = {} as UserModel) {
-    user.roleName = user.role === "admin" ? "Quản trị viên" : "Người dùng";
+    if ( user.role === "superAdmin") {
+      user.roleName = "Quản trị viên siêu cấp"
+    } else {
+      user.roleName = user.role === "admin" ? "Quản trị viên" : "Người dùng";
+    }
+    
     Object.assign(this, user);
     return this;
   }

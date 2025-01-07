@@ -15,7 +15,6 @@ export const routes: Routes = [
       ...adminRoutes,
       { path: "", redirectTo: "/admin/gift-list", pathMatch: "full" },
     ],
-    canActivate: [adminGuard],
     canMatch: [loadingMatch]
   },
   {

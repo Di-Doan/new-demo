@@ -31,6 +31,7 @@ export class AuthService {
 
   login(userEmail: string, password: string): Observable<any> {
     const url = `${this.apiUrl}/auth/signin`;
+    
     return this.http.post(
       url,
       { userEmail, password },
@@ -67,7 +68,7 @@ export class AuthService {
   setAuthState(user: UserModel) {
     const userData = new UserModel(user);
     this.userSubject.next(userData);
-    this.router.navigate([user.role == "admin" ? "/admin" : "/"]);
+    this.router.navigate([(user.role == "admin" || user.role == "superAdmin") ? "/admin" : "/"]);
   }
 
   fetchAllUser(): Observable<any> {

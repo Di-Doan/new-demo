@@ -6,10 +6,10 @@ const router = Router();
 
 const {getAllUserGift, exchangeGift, getUserGiftList} = userGiftController
 
-const {verifyToken, verifyUser } = jwtVerifyMiddleware
+const {verifyToken } = jwtVerifyMiddleware
 
-router.route("/get-all-user-gift").get(verifyToken, verifyUser, getAllUserGift)
-router.route("/exchange-gift").post(verifyToken, verifyUser, exchangeGift)
-router.route("/get-user-gift-list").get(verifyToken, verifyUser, getUserGiftList)
+router.route("/get-all-user-gift").get(verifyToken, getAllUserGift)
+router.route("/exchange-gift").post(verifyToken, exchangeGift)
+router.route("/get-user-gift-list").get(verifyToken, getUserGiftList)
 
 export default router;

@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private TokenHelper: TokenHelper,
     private userGiftService: UserGiftService,
-    private messageService: MessageService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   initForm() {
     this.loginForm = this.formBuilder.group({
-      userEmail: ["", [Validators.required ]],
+      userEmail: ["", [Validators.required]],
       password: ["", Validators.required],
     });
   }
@@ -77,13 +77,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   initResetPasswordForm() {
     this.resetPasswordForm = this.formBuilder.group(
       {
-        userEmail: [window.localStorage.getItem("userEmail"), Validators.required],
-        otp: [Number, Validators.required],
-        password: ["", [Validators.required, Validators.pattern('^.{6,32}$')]],
+        userEmail: [
+          window.localStorage.getItem("userEmail"),
+          Validators.required,
+        ],
+        otp: [null, Validators.required],
+        password: ["", [Validators.required, Validators.pattern("^.{6,32}$")]],
         confirmPassword: ["", Validators.required],
       },
       {
-
         validator: this.passwordsMatch("password", "confirmPassword"),
       }
     );
@@ -101,12 +103,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       const passwordControl = formGroup.get(password);
       const confirmPasswordControl = formGroup.get(confirmPassword);
 
-      if (passwordControl?.value !== confirmPasswordControl?.value) {
+      if (
+        passwordControl?.value !== confirmPasswordControl?.value &&
+        passwordControl?.value !== ""
+      ) {
         confirmPasswordControl?.setErrors({ passwordsMismatch: true });
         this.forgetPasswordError = "Mật khẩu không khớp. Vui lòng thử lại.";
+        return { passwordsMatch: "Mật khẩu không khớp. Vui lòng thử lại." };
       } else {
-        confirmPasswordControl?.setErrors(null); 
-        this.forgetPasswordError = ''
+        confirmPasswordControl?.setErrors(null);
+        this.forgetPasswordError = "";
       }
 
       return null;
@@ -119,19 +125,19 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   close() {
     this.visible = false;
-    this.initForm()
-    this.loginTab()
+    this.initForm();
+    this.loginTab();
   }
 
   forgetPasswordTab() {
     this.loginPage = false;
-    this.initForm()
+    this.initForm();
   }
 
   loginTab() {
     this.loginPage = true;
-    this.initResetPasswordForm()
-    this.initForgetPasswordForm()
+    this.initResetPasswordForm();
+    this.initForgetPasswordForm();
   }
 
   submitForm() {
@@ -168,14 +174,16 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   submitForgetPassword() {
-
     if (this.forgetPasswordForm.invalid) {
       this.forgetPasswordForm.markAllAsTouched();
       this.forgetPasswordError = "Đã có lỗi xảy ra. Vui lòng thử lại.";
       return;
     }
 
-    window.localStorage.setItem('userEmail', String(this.forgetPasswordForm.value))
+    window.localStorage.setItem(
+      "userEmail",
+      String(this.forgetPasswordForm.value)
+    );
 
     this.authService
       .forgetPassword(String(this.forgetPasswordForm.value))
@@ -202,7 +210,18 @@ export class LoginComponent implements OnInit, OnDestroy {
   submitOtp() {
     if (this.resetPasswordForm.invalid) {
       this.resetPasswordForm.markAllAsTouched();
-      this.forgetPasswordError = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+      if (
+        this.resetPasswordForm.get("password")?.errors ||
+        this.resetPasswordForm.get("otp")?.errors ||
+        this.resetPasswordForm.get("confirmPassword")?.errors
+      ) {
+        this.forgetPasswordError = "Vui lòng điền đầy đủ thông tin";
+        return
+      }
+      if (this.resetPasswordForm.get("password")?.errors?.["pattern"]) {
+        this.forgetPasswordError = "Mật khẩu phải từ 6 - 32 ký tự";
+      }
+      this.forgetPasswordError = "Đã có lỗi xảy ra. Vui lòng thử lại";
       return;
     }
     const userEmail = String(this.resetPasswordForm.get("userEmail")?.value);
@@ -215,7 +234,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.forgotAlertMessage = "Đổi mật khẩu thành công!";
-          window.localStorage.removeItem('userEmail')
+          window.localStorage.removeItem("userEmail");
           this.showForgotAlert = true;
           setTimeout(() => (this.showForgotAlert = false), 2000);
           this.forgetPasswordError = "";
@@ -237,7 +256,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe({
         next: (res) => {
-          this.userGiftService.updateUserGiftList(res.data.userGiftList.giftList)  
+          this.userGiftService.updateUserGiftList(
+            res.data.userGiftList.giftList
+          );
         },
         error: (error: HttpErrorResponse) => {
           this.messageService.add({
@@ -246,7 +267,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             detail: error.error.errMessage,
             life: 3000,
           });
-        }
+        },
       });
   }
 }

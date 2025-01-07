@@ -43,7 +43,7 @@
       </a>
       <div class="collapse" id="crud-pages">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item" routerLinkActive="active-link">
+          <li class="nav-item" routerLinkActive="active-link" *ngIf="admin.role == 'admin'">
             <a
               class="nav-link"
               routerLink="/admin/gift-list"
@@ -51,7 +51,7 @@
               >Thông Tin Quà Tặng
             </a>
           </li>
-          <li class="nav-item" routerLinkActive="active-link">
+          <li class="nav-item" routerLinkActive="active-link" *ngIf="admin.role == 'superAdmin'">
             <a
               class="nav-link"
               routerLink="/admin/user-list"
@@ -62,7 +62,7 @@
         </ul>
       </div>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" *ngIf="admin.role == 'admin'">
       <a
         class="nav-link"
         data-bs-toggle="collapse"

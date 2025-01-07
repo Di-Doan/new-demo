@@ -63,9 +63,9 @@
         z-index: 998;
         padding: 0 20px;
 
-        display: flex; /* Use flexbox to center text */
-        flex-direction: column; /* Stack text elements vertically */
-        justify-content: center; /* Center text vertically */
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
         text-align: center;
       }
       .text-box {
@@ -74,10 +74,10 @@
         padding: 0;
         text-align: center;
 
-        display: flex; /* Enable flexbox */
-        flex-direction: column; /* Stack items vertically */
-        justify-content: center; /* Center content vertically */
-        align-items: center; /* Center content horizontally */
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center; 
       }
     }
   }

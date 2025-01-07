@@ -88,7 +88,7 @@
     <ng-template pTemplate="body" let-user>
       <tr class="quicksand-normal">
         <td style="width: 3rem">
-          <p-tableCheckbox [value]="user" />
+          <p-tableCheckbox [value]="user" *ngIf="user.role != 'superAdmin'"/>
         </td>
         <td style="min-width: 10rem">{{ user.name }}</td>
         <td>{{ user.username }}</td>
@@ -103,6 +103,7 @@
             [outlined]="true"
             [style]="{ 'margin-right': '10px', 'border-radius': '50%' }"
             (click)="editUser(user)"
+            *ngIf="user.role != 'superAdmin'"
           />
           <p-button
             icon="pi pi-trash"
@@ -110,6 +111,7 @@
             [outlined]="true"
             [style]="{ 'border-radius': '50%' }"
             (click)="deleteUser(user)"
+            *ngIf="user.role != 'superAdmin'"
           />
         </td>
       </tr>

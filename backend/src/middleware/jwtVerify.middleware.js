@@ -8,7 +8,7 @@ dotenv.config();
 
 const { newSuccess: _newSuccess, newError: _newError } = responseService;
 
-const { getUserById: _getUserById} = userService;
+const { getUserById: _getUserById } = userService;
 
 const verifyToken = async (req, res, next) => {
   const cookies = cookie.parse(req.headers.cookie || "");
@@ -16,6 +16,16 @@ const verifyToken = async (req, res, next) => {
   try {
     if (token) {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      const verifiedUser = await _getUserById(decoded.userId);
+
+      if (!verifiedUser) {
+        return res.status(400).json({
+          errCode: Error.UserNotFound.errCode,
+          errMessage: Error.UserNotFound.errMessage,
+        });
+      }
+
       req.user = {
         userId: decoded.userId,
         role: decoded.role,
@@ -36,9 +46,7 @@ const verifyAdmin = async (req, res, next) => {
     userId = req.user.userId;
   }
 
-  const verifiedUser = await _getUserById(userId);
-
-  if (role == "admin" && verifiedUser) {
+  if (role == "admin" ) {
     next();
   } else {
     return res.status(400).json({
@@ -48,15 +56,18 @@ const verifyAdmin = async (req, res, next) => {
   }
 };
 
-const verifyUser = async (req, res, next) => {
+
+
+const verifySuperAdmin = async (req, res, next) => {
+  let role = "";
   let userId = "";
   if (req.user) {
+    role = req.user.role;
     userId = req.user.userId;
   }
 
-  const verifiedUser = await _getUserById(userId);
 
-  if (verifiedUser) {
+  if (role == "superAdmin" ) {
     next();
   } else {
     return res.status(400).json({
@@ -69,5 +80,5 @@ const verifyUser = async (req, res, next) => {
 export default {
   verifyToken,
   verifyAdmin,
-  verifyUser,
+  verifySuperAdmin,
 };
