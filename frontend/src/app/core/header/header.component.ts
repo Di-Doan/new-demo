@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import {
   Component,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
   ViewChild,
@@ -15,6 +16,7 @@ import { Router, RouterModule } from "@angular/router";
 import { ToastModule } from "primeng/toast";
 import { MessageService } from "primeng/api";
 import { UserModel } from "../../shared/models";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: "app-header",
@@ -30,7 +32,7 @@ import { UserModel } from "../../shared/models";
   ],
   providers: [MessageService],
 })
-export class HeaderComponent implements OnInit, OnChanges {
+export class HeaderComponent implements OnInit, OnChanges, OnDestroy {
   @ViewChild("loginModal") modal?: LoginComponent;
   slides: any[] = [
     "../../../assets/img/banner1.png",
@@ -40,11 +42,17 @@ export class HeaderComponent implements OnInit, OnChanges {
   ];
   user: UserModel = new UserModel();
 
+  destroyed$ = new Subject<void>();
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private messageService: MessageService
   ) {}
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
 
   ngOnInit() {
     this.updateUserInfo();
@@ -68,7 +76,7 @@ export class HeaderComponent implements OnInit, OnChanges {
 
   logout() {
     this.user = new UserModel();
-    this.authService.logout().subscribe({
+    this.authService.logout().pipe(takeUntil(this.destroyed$)).subscribe({
       next: (res) => {
         this.router.navigate(["/"]);
       },

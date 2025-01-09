@@ -1,22 +1,31 @@
 <div class="card flex justify-content-center">
   <p-card [header]="giftDetail.name" [style]="{ width: '350px' }">
-      <ng-template pTemplate="header">
-        <div class="d-flex justify-content-center mt-3">
-          <img class="justify-content-center" alt="Card" [src]="giftDetail.img" style="width: fit-content;"/>
-        </div>
-          
-      </ng-template>
+    <ng-template pTemplate="header">
+      <div class="d-flex justify-content-center mt-3">
+        <img
+          class="justify-content-center"
+          alt="Card"
+          [src]="giftDetail.img"
+          style="width: fit-content"
+        />
+      </div>
+    </ng-template>
 
-      <ng-template pTemplate="subtitle">
-        <div class="d-flex">
-          <img alt="Subheader Image" src="../../../../assets/img/logo-mini.png" style="width: 24px;" />
-          <span class="ms-2">{{giftDetail.point}}</span>
-        </div>
-      </ng-template>
+    <ng-template pTemplate="subtitle">
+      <div class="d-flex">
+        <img
+          alt="Subheader Image"
+          src="../../../../assets/img/logo-mini.png"
+          style="width: 24px"
+        />
+        <span class="ms-2">{{ giftDetail.point }}</span>
+      </div>
+    </ng-template>
 
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-          quas!
-      </p>
+    <ul class="quicksand-normal-2">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+      <li>Curabitur et mauris iaculis, euismod magna id, tempor nulla.</li>
+      <li>Duis lacinia lectus a nibh venenatis consequat.</li>
+    </ul>
   </p-card>
 </div>

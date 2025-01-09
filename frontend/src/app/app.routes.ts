@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router";
-import { adminGuard } from "./shared/guard/admin.guard";
 import { userRoutes } from "./features/pages/user-home/user-home.routes";
 import { adminRoutes } from "./features/pages/admin-home/admin-home.routes";
 import { loadingMatch } from "./shared/guard/loading.guard";
@@ -15,7 +14,7 @@ export const routes: Routes = [
       ...adminRoutes,
       { path: "", redirectTo: "/admin/gift-list", pathMatch: "full" },
     ],
-    canMatch: [loadingMatch]
+    canMatch: [loadingMatch],
   },
   {
     path: "",
@@ -24,17 +23,15 @@ export const routes: Routes = [
         (m) => m.UserHomeComponent
       ),
     children: [
-      ...userRoutes, 
+      ...userRoutes,
 
-      { path: "", redirectTo: "gift-list", pathMatch: "full" }, 
+      { path: "", redirectTo: "gift-list", pathMatch: "full" },
     ],
-    canMatch: [loadingMatch]
+    canMatch: [loadingMatch],
   },
   {
     path: "**",
-    loadComponent: () =>
-      import("./features/not-found/not-found.component").then(
-        (m) => m.NotFoundComponent
-      ),
+    redirectTo: "gift-list", pathMatch: "full" 
+      
   },
 ];

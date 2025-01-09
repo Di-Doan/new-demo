@@ -1,12 +1,4 @@
 import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-  useAnimation
-} from "./chunk-KBGL3CLD.js";
-import {
   TimesIcon
 } from "./chunk-FFGDN4TK.js";
 import {
@@ -24,6 +16,14 @@ import {
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
+import {
+  animate,
+  animation,
+  style,
+  transition,
+  trigger,
+  useAnimation
+} from "./chunk-KBGL3CLD.js";
 import {
   CommonModule,
   DOCUMENT,

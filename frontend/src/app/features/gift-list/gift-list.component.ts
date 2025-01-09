@@ -6,7 +6,7 @@ import {
   SimpleChanges,
 } from "@angular/core";
 import { GiftItemComponent } from "./gift-item/gift-item.component";
-import { Subscription } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { GiftService } from "../../core/service/gift.service";
 import { GiftModel, UserModel } from "../../shared/models";
 import { CommonModule } from "@angular/common";
@@ -26,7 +26,6 @@ import { HttpErrorResponse } from "@angular/common/http";
   providers: [MessageService],
 })
 export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
-  giftSubcription!: Subscription;
   giftData!: GiftModel[];
 
   hotGift!: GiftModel[];
@@ -49,6 +48,8 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
 
   user: UserModel = new UserModel();
 
+  destroyed$ = new Subject<void>();
+
   constructor(
     private httpService: GiftService,
     private authService: AuthService,
@@ -59,14 +60,12 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     this.updateUserInfo();
   }
   ngOnDestroy(): void {
-    if (this.giftSubcription) {
-      this.giftSubcription.unsubscribe();
-    }
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   ngOnInit() {
-    this.fetchData();
-
+    this.fetchGiftData();
     this.updateUserInfo();
   }
 
@@ -78,8 +77,8 @@ export class GiftListComponent implements OnInit, OnDestroy, OnChanges {
     });
   }
 
-  fetchData() {
-    this.giftSubcription = this.httpService.getAllGift().subscribe({
+  fetchGiftData() {
+    this.httpService.getAllGift().pipe(takeUntil(this.destroyed$)).subscribe({
       next: (response) => {
         this.giftData = response.data.result;
         this.filterByHot(true);

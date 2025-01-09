@@ -11,10 +11,9 @@ import {
   ValidationErrors,
 } from "@angular/forms";
 import { AuthService } from "../../core/service/auth.service";
-import { Subject, Subscription, takeUntil } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { NgbAlertModule } from "@ng-bootstrap/ng-bootstrap";
-import { Router } from "@angular/router";
 import { UserGiftService } from "../../core/service/userGift.service";
 import { MessageService } from "primeng/api";
 

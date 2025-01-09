@@ -34,7 +34,7 @@ const getUserGiftList = catchAsync(async (req, res)=> {
   }
 
   return res.status(200).json(_newSuccess({userGiftList}));
-})
+});
 
 const getAllUserGift = catchAsync(async (req, res) => {
   const { userId } = req.user;
@@ -60,12 +60,7 @@ const getAllUserGift = catchAsync(async (req, res) => {
     const detail = await _getGiftById(gift);
     if (detail) {
       list.push(detail);
-    } else {
-      return res.status(400).json({
-        errCode: Error.GiftNotFound.errCode,
-        errMessage: Error.GiftNotFound.errMessage,
-      });
-    }
+    } 
   }
 
   return res.status(200).json(_newSuccess({ list }));

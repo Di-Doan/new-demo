@@ -27,5 +27,5 @@ export const userRoutes: Routes = [
       ),
       canActivate: [userGuard]
   },
-  { path: "", redirectTo: "/gift-list", pathMatch: "full" }
+
 ];
