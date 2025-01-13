@@ -20,7 +20,7 @@ const port = process.env.PORT || 8080;
 
 app.use(
   cors({
-    origin: "https://fir-e627a.web.app/",
+    origin: "https://fir-e627a.web.app",
     methods: ["GET", "POST", "PUT", "DELETE"], 
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
