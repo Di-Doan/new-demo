@@ -126,6 +126,7 @@ const signin = catchAsync(async (req, res) => {
   res.cookie("user_jwt", token, {
     httpOnly: true,
     sameSite: "None", 
+    secure: true,
     maxAge: process.env.TOKEN_AGE,
   });
 
@@ -135,6 +136,7 @@ const signin = catchAsync(async (req, res) => {
     JSON.stringify({ name: user.name, point: user.point, role: userRole.role }),
     {
       sameSite: "None",
+      secure: true,
       maxAge: process.env.TOKEN_AGE,
     }
   );
