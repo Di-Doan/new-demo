@@ -18,14 +18,12 @@ const { json, urlencoded } = pkg;
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(
-  cors({
-    origin: "https://fir-e627a.web.app",
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allow methods you use
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Allow methods you use
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
 
 app.options(
   "*",
