@@ -94,18 +94,18 @@
   }
 }
 
-.carousel-indicators button {
-  background-color: rgba(129, 126, 126, 0.368) !important;
-  width: 15px !important;
-  height: 15px !important;
-  border-radius: 50% !important;
-  border-width: 2px !important;
+// .carousel-indicators button {
+//   background-color: rgba(129, 126, 126, 0.368) !important;
+//   width: 15px !important;
+//   height: 15px !important;
+//   border-radius: 50% !important;
+//   border-width: 2px !important;
 
-  @media (max-width: 576px) {
-    width: 10px !important;
-    height: 10px !important;
-  }
-}
+//   @media (max-width: 576px) {
+//     width: 10px !important;
+//     height: 10px !important;
+//   }
+// }
 
 .carousel-indicator-active {
   background-color: #e39717; /* Active indicator color */

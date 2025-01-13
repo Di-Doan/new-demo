@@ -1,0 +1,402 @@
+[
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 1",
+    "start_date": "01.01.2023",
+    "end_date": "31.01.2023",
+    "point": 150,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 2",
+    "start_date": "02.01.2023",
+    "end_date": "01.02.2023",
+    "point": 200,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 3",
+    "start_date": "03.01.2023",
+    "end_date": "02.02.2023",
+    "point": 250,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 4",
+    "start_date": "04.01.2023",
+    "end_date": "03.02.2023",
+    "point": 300,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 5",
+    "start_date": "05.01.2023",
+    "end_date": "04.02.2023",
+    "point": 350,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 6",
+    "start_date": "06.01.2023",
+    "end_date": "05.02.2023",
+    "point": 400,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 7",
+    "start_date": "07.01.2023",
+    "end_date": "06.02.2023",
+    "point": 450,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 8",
+    "start_date": "08.01.2023",
+    "end_date": "07.02.2023",
+    "point": 500,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 9",
+    "start_date": "09.01.2023",
+    "end_date": "08.02.2023",
+    "point": 550,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 10",
+    "start_date": "10.01.2023",
+    "end_date": "09.02.2023",
+    "point": 600,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 11",
+    "start_date": "11.01.2023",
+    "end_date": "10.02.2023",
+    "point": 650,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 12",
+    "start_date": "12.01.2023",
+    "end_date": "11.02.2023",
+    "point": 700,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 13",
+    "start_date": "13.01.2023",
+    "end_date": "12.02.2023",
+    "point": 750,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 14",
+    "start_date": "14.01.2023",
+    "end_date": "13.02.2023",
+    "point": 800,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 15",
+    "start_date": "15.01.2023",
+    "end_date": "14.02.2023",
+    "point": 850,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 16",
+    "start_date": "16.01.2023",
+    "end_date": "15.02.2023",
+    "point": 900,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 17",
+    "start_date": "17.01.2023",
+    "end_date": "16.02.2023",
+    "point": 950,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 18",
+    "start_date": "18.01.2023",
+    "end_date": "17.02.2023",
+    "point": 1000,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 19",
+    "start_date": "19.01.2023",
+    "end_date": "18.02.2023",
+    "point": 1050,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 20",
+    "start_date": "20.01.2023",
+    "end_date": "19.02.2023",
+    "point": 1100,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 21",
+    "start_date": "21.01.2023",
+    "end_date": "20.02.2023",
+    "point": 1150,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 22",
+    "start_date": "22.01.2023",
+    "end_date": "21.02.2023",
+    "point": 1200,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 23",
+    "start_date": "23.01.2023",
+    "end_date": "22.02.2023",
+    "point": 1250,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 24",
+    "start_date": "24.01.2023",
+    "end_date": "23.02.2023",
+    "point": 1300,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 25",
+    "start_date": "25.01.2023",
+    "end_date": "24.02.2023",
+    "point": 1350,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 26",
+    "start_date": "26.01.2023",
+    "end_date": "25.02.2023",
+    "point": 1400,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 27",
+    "start_date": "27.01.2023",
+    "end_date": "26.02.2023",
+    "point": 1450,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 28",
+    "start_date": "28.01.2023",
+    "end_date": "27.02.2023",
+    "point": 1500,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 29",
+    "start_date": "29.01.2023",
+    "end_date": "28.02.2023",
+    "point": 1550,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 30",
+    "start_date": "30.01.2023",
+    "end_date": "01.03.2023",
+    "point": 1600,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 31",
+    "start_date": "31.01.2023",
+    "end_date": "02.03.2023",
+    "point": 1650,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 32",
+    "start_date": "01.02.2023",
+    "end_date": "03.03.2023",
+    "point": 1700,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 33",
+    "start_date": "02.02.2023",
+    "end_date": "04.03.2023",
+    "point": 1750,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 34",
+    "start_date": "03.02.2023",
+    "end_date": "05.03.2023",
+    "point": 1800,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 35",
+    "start_date": "04.02.2023",
+    "end_date": "06.03.2023",
+    "point": 1850,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 36",
+    "start_date": "05.02.2022023",
+    "end_date": "07.03.2023",
+    "point": 1900,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 37",
+    "start_date": "06.02.2023",
+    "end_date": "08.03.2023",
+    "point": 1950,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 38",
+    "start_date": "07.02.2023",
+    "end_date": "09.03.2023",
+    "point": 2000,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 39",
+    "start_date": "08.02.2023",
+    "end_date": "10.03.2023",
+    "point": 2050,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 40",
+    "start_date": "09.02.2023",
+    "end_date": "11.03.2023",
+    "point": 2100,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 41",
+    "start_date": "10.02.2023",
+    "end_date": "12.03.2023",
+    "point": 2150,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 42",
+    "start_date": "11.02.2023",
+    "end_date": "13.03.2023",
+    "point": 2200,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 43",
+    "start_date": "12.02.2023",
+    "end_date": "14.03.2023",
+    "point": 2250,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/klever.png",
+    "name": "Gift 44",
+    "start_date": "13.02.2023",
+    "end_date": "15.03.2023",
+    "point": 2300,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/nature.png",
+    "name": "Gift 45",
+    "start_date": "14.02.2023",
+    "end_date": "16.03.2023",
+    "point": 2350,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/pibook.png",
+    "name": "Gift 46",
+    "start_date": "15.02.2023",
+    "end_date": "17.03.2023",
+    "point": 2400,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/rose.png",
+    "name": "Gift 47",
+    "start_date": "16.02.2023",
+    "end_date": "18.03.2023",
+    "point": 2450,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/Smoothie.png",
+    "name": "Gift 48",
+    "start_date": "17.02.2023",
+    "end_date": "19.03.2023",
+    "point": 2500,
+    "isHot": false
+  },
+  {
+    "img": "../../../../assets/img/gift-img/vnmobile.png",
+    "name": "Gift 49",
+    "start_date": "18.02.2023",
+    "end_date": "20.03.2023",
+    "point": 2550,
+    "isHot": true
+  },
+  {
+    "img": "../../../../assets/img/gift-img/viettel.png",
+    "name": "Gift 50",
+    "start_date": "19.02.2023",
+    "end_date": "21.03.2023",
+    "point": 2600,
+    "isHot": false
+  }
+]
