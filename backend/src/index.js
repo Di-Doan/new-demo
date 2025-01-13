@@ -25,12 +25,15 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors({
-  origin: 'http://localhost:4200',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
+app.options(
+  "*",
+  cors({
+    origin: "https://fir-e627a.web.app ",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 
 app.use(helmet());
 
