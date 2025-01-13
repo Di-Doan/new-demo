@@ -152,10 +152,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroyed$))
       .subscribe({
         next: (res) => {
+          this.authService.setAuthState(this.TokenHelper.fetchUserDataCookie());
           this.loginAlertMessage = "Đăng nhập thành công!";
           this.showLoginAlert = true;
           this.loginError = "";
-          this.authService.setAuthState(this.TokenHelper.fetchUserDataCookie());
           setTimeout(() => {
             this.close();
             this.showLoginAlert = false;

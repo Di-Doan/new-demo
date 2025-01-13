@@ -124,6 +124,7 @@ const signin = catchAsync(async (req, res) => {
 
 
   res.cookie("user_jwt", token, {
+    domain: 'https://fir-e627a.web.app/',
     httpOnly: true,
     sameSite: "None", 
     secure: true,
@@ -135,6 +136,7 @@ const signin = catchAsync(async (req, res) => {
     "user_data",
     JSON.stringify({ name: user.name, point: user.point, role: userRole.role }),
     {
+      domain: "https://fir-e627a.web.app/",
       sameSite: "None",
       secure: true,
       maxAge: process.env.TOKEN_AGE,
