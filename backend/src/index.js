@@ -19,23 +19,17 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(
-  cors({
-    origin: "https://fir-e627a.web.app",
-    methods: ["GET", "POST", "PUT", "DELETE"], 
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
+  cors()
 );
 
-app.options(
-  "*",
-  cors({
-    origin: "https://fir-e627a.web.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+// app.options(
+//   "*",
+//   cors({
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
 
 app.use(helmet());
 
