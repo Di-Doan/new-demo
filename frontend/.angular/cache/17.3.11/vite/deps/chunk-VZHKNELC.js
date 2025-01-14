@@ -6,10 +6,16 @@ import {
 } from "./chunk-YZGHS5BL.js";
 import {
   Ripple
-} from "./chunk-37GUKZ5I.js";
+} from "./chunk-KWEC7KYZ.js";
 import {
   DomHandler
 } from "./chunk-JZQAVOZS.js";
+import {
+  ObjectUtils,
+  PrimeTemplate,
+  SharedModule,
+  UniqueComponentId
+} from "./chunk-2BCBPNFZ.js";
 import {
   DOCUMENT,
   NgClass,
@@ -17,12 +23,6 @@ import {
   NgStyle,
   NgTemplateOutlet
 } from "./chunk-FQEM7BSC.js";
-import {
-  ObjectUtils,
-  PrimeTemplate,
-  SharedModule,
-  UniqueComponentId
-} from "./chunk-2BCBPNFZ.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -1082,4 +1082,4 @@ export {
   Button,
   ButtonModule
 };
-//# sourceMappingURL=chunk-5WNKN4UZ.js.map
+//# sourceMappingURL=chunk-VZHKNELC.js.map

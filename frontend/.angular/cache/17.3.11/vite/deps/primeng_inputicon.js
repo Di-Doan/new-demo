@@ -1,10 +1,10 @@
 import {
+  SharedModule
+} from "./chunk-2BCBPNFZ.js";
+import {
   CommonModule,
   NgClass
 } from "./chunk-FQEM7BSC.js";
-import {
-  SharedModule
-} from "./chunk-2BCBPNFZ.js";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -21,8 +21,8 @@ import {
   ɵɵprojectionDef,
   ɵɵproperty
 } from "./chunk-SF7Q7RME.js";
-import "./chunk-6UHCRHZ7.js";
 import "./chunk-SDQMWN4J.js";
+import "./chunk-6UHCRHZ7.js";
 import "./chunk-DSK7TZNG.js";
 
 // node_modules/primeng/fesm2022/primeng-inputicon.mjs
