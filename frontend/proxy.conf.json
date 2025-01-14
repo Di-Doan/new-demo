@@ -1,0 +1,9 @@
+{
+    "/api": {
+      "target": "https://new-demo-2-334h.onrender.com",  
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
+  
