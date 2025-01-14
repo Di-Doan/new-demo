@@ -1,12 +1,12 @@
-import dotenv from 'dotenv';
-dotenv.config(); 
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import pkg from "body-parser";
 import UserRouter from "./router/user.router.js";
 import GiftRouter from "./router/gift.router.js";
 import AuthRouter from "./router/auth.router.js";
-import ContactRouter from "./router/contact.router.js"
-import UserGiftRouter from "./router/userGift.router.js"
+import ContactRouter from "./router/contact.router.js";
+import UserGiftRouter from "./router/userGift.router.js";
 import SubscriptionRouter from "./router/subscription.router.js";
 import "./config/mongo.config.js";
 
@@ -19,7 +19,12 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 app.use(
-  cors()
+  cors({
+    origin: "https://new-demo-3o99.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
 );
 
 // app.options(
@@ -40,10 +45,12 @@ app.use(urlencoded({ extended: true }));
 app.use("/api/user", UserRouter);
 app.use("/api/gift", GiftRouter);
 app.use("/api/auth", AuthRouter);
-app.use("/api/contact", ContactRouter)
-app.use("/api/userGift", UserGiftRouter)
+app.use("/api/contact", ContactRouter);
+app.use("/api/userGift", UserGiftRouter);
 app.use("/api/subscription", SubscriptionRouter);
-app.use("/api/*", (req, res) => res.status(404).json({ message: "API không tồn tại" }));
+app.use("/api/*", (req, res) =>
+  res.status(404).json({ message: "API không tồn tại" })
+);
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}.`);
