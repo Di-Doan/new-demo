@@ -137,6 +137,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginPage = true;
     this.initResetPasswordForm();
     this.initForgetPasswordForm();
+    this.loginError = "";
+    this.forgetPasswordError = "";
   }
 
   submitForm() {
